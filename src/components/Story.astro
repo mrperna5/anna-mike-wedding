@@ -1,0 +1,43 @@
+---
+---
+
+<section id="story" class="section">
+	<div class="container story">
+		<div class="story__text reveal">
+			<p class="kicker">Our story</p>
+			<p class="lede story__lede">
+				Ten years, three cities, and one very persistent idea that we ought to
+				do this somewhere with good wine.
+			</p>
+			<p>
+				We’re saving the long version for the toasts. The short one: we met
+				young, took our time, and somewhere along the way Tuscany became the
+				place we kept coming back to. It felt right to bring everyone here.
+			</p>
+		</div>
+
+		<!-- Full-bleed photographic moment — replace flat field with a photo. -->
+		<figure class="story__photo photo reveal">
+			<figcaption class="photo__cap">Us, somewhere in Italy</figcaption>
+		</figure>
+	</div>
+</section>
+
+<style>
+	.story {
+		display: grid;
+		gap: clamp(2rem, 5vw, 4rem);
+		align-items: center;
+	}
+	.story__lede {
+		margin: 1.25rem 0 1.75rem;
+	}
+	.story__photo {
+		height: clamp(18rem, 60vw, 32rem);
+	}
+	@media (min-width: 48rem) {
+		.story {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+</style>

@@ -1,0 +1,110 @@
+---
+import { dressCode } from '../data/dressCode';
+---
+
+<section id="dress" class="section section--alt">
+	<div class="container">
+		<header class="dress__head reveal">
+			<p class="kicker">What to wear</p>
+			<h2 class="dress__title">Dress code</h2>
+			<p class="measure">
+				Three days, three moods. Lean into the palette if it helps — soft
+				creams, olive, and the occasional terracotta — but mostly just come as
+				the most comfortable version of yourself.
+			</p>
+		</header>
+
+		<div class="dress__list">
+			{
+				dressCode.map((d) => (
+					<article class="dress__row reveal">
+						<div class="dress__info">
+							<p class="dress__day">{d.day}</p>
+							<h3 class="dress__code">{d.code}</h3>
+							<p class="dress__event">{d.event}</p>
+							<p class="dress__note">{d.note}</p>
+						</div>
+						<div class="dress__swatches" aria-hidden="true">
+							{d.swatches.map((s) => (
+								<span class="dress__swatch">
+									<span class="dress__chip" style={`background:${s.hex}`} />
+									<span class="dress__name">{s.name}</span>
+								</span>
+							))}
+						</div>
+					</article>
+				))
+			}
+		</div>
+	</div>
+</section>
+
+<style>
+	.dress__head {
+		margin-bottom: clamp(2.5rem, 6vw, 4rem);
+	}
+	.dress__title {
+		font-size: var(--fs-h1);
+		margin: 1rem 0 1.5rem;
+	}
+	.dress__row {
+		display: grid;
+		gap: 1.5rem;
+		padding: clamp(1.75rem, 4vw, 2.5rem) 0;
+		border-top: 1px solid var(--hairline);
+	}
+	.dress__row:last-child {
+		border-bottom: 1px solid var(--hairline);
+	}
+	.dress__day {
+		font-size: var(--fs-label);
+		letter-spacing: var(--track-wide);
+		text-transform: uppercase;
+		color: var(--olive-muted);
+		margin: 0 0 0.5rem;
+	}
+	.dress__code {
+		font-size: var(--fs-h2);
+		margin: 0 0 0.35rem;
+	}
+	.dress__event {
+		font-family: var(--font-display);
+		font-style: italic;
+		color: var(--olive);
+		margin: 0 0 0.85rem;
+	}
+	.dress__note {
+		font-size: var(--fs-small);
+		max-width: var(--measure);
+		margin: 0;
+	}
+	.dress__swatches {
+		display: flex;
+		gap: 1.5rem;
+	}
+	.dress__swatch {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		align-items: center;
+	}
+	.dress__chip {
+		width: 2.75rem;
+		height: 2.75rem;
+		border-radius: 50%;
+		border: 1px solid var(--hairline);
+	}
+	.dress__name {
+		font-size: 0.7rem;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--olive-muted);
+	}
+	@media (min-width: 48rem) {
+		.dress__row {
+			grid-template-columns: 1fr auto;
+			align-items: center;
+			gap: 3rem;
+		}
+	}
+</style>

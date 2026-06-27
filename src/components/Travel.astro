@@ -1,0 +1,85 @@
+---
+const steps = [
+	{
+		label: 'Fly',
+		title: 'Florence or Rome',
+		body: 'Florence (FLR) is closest — about 1h40 by car. Rome (FCO) is a larger hub roughly 2h30 away. Pisa and Perugia work too.',
+	},
+	{
+		label: 'Drive',
+		title: 'Into the Val d’Orcia',
+		body: 'Hire a car at the airport. The last stretch winds through the hills and is half the pleasure of arriving.',
+	},
+	{
+		label: 'Rail',
+		title: 'Train to Chiusi',
+		body: 'Prefer the train? Chiusi-Chianciano Terme is the nearest station, then a 40-minute drive or taxi to Pienza.',
+	},
+];
+---
+
+<section id="travel" class="section section--alt">
+	<div class="container">
+		<header class="travel__head reveal">
+			<p class="kicker">Getting there</p>
+			<h2 class="travel__title">Travel</h2>
+			<p class="measure">
+				Pienza sits in southern Tuscany, between Siena and the Umbrian border.
+				However you come, you’ll want wheels once you’re here.
+			</p>
+		</header>
+
+		<ol class="travel__steps">
+			{
+				steps.map((s) => (
+					<li class="travel__step reveal">
+						<p class="travel__label">{s.label}</p>
+						<h3 class="travel__name">{s.title}</h3>
+						<p class="travel__body">{s.body}</p>
+					</li>
+				))
+			}
+		</ol>
+	</div>
+</section>
+
+<style>
+	.travel__head {
+		margin-bottom: clamp(2.5rem, 6vw, 4rem);
+	}
+	.travel__title {
+		font-size: var(--fs-h1);
+		margin: 1rem 0 1.5rem;
+	}
+	.travel__steps {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: grid;
+		gap: clamp(1.5rem, 4vw, 2.5rem);
+	}
+	.travel__step {
+		padding-top: 1.25rem;
+		border-top: 1px solid var(--hairline);
+	}
+	.travel__label {
+		font-size: var(--fs-label);
+		letter-spacing: var(--track-label);
+		text-transform: uppercase;
+		color: var(--terracotta);
+		margin: 0 0 0.75rem;
+	}
+	.travel__name {
+		font-size: var(--fs-h3);
+		margin: 0 0 0.65rem;
+	}
+	.travel__body {
+		margin: 0;
+		font-size: var(--fs-small);
+	}
+	@media (min-width: 48rem) {
+		.travel__steps {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+</style>

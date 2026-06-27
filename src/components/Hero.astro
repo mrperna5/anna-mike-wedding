@@ -1,0 +1,75 @@
+---
+import { site } from '../data/site';
+---
+
+<section class="hero">
+	<div class="container hero__inner">
+		<p class="kicker hero__kicker">Together with their families</p>
+
+		<h1 class="couple hero__names">
+			{site.couple.one}<span class="couple__and">and</span>{site.couple.two}
+		</h1>
+
+		<hr class="rule rule--center" />
+
+		<p class="hero__sub">are to be married in {site.location}</p>
+		<p class="hero__date">{site.dateLong}</p>
+
+		<a class="link hero__cta" href="#overview">Explore the weekend</a>
+	</div>
+
+	<!-- Full-bleed photographic moment. Replace the flat field with a real
+	     image: drop a photo in /public/images and set it as background, or
+	     swap this block for Astro's <Image />. Caption stays. -->
+	<figure class="hero__photo photo">
+		<figcaption class="photo__cap">{site.region}, where the light goes gold</figcaption>
+	</figure>
+</section>
+
+<style>
+	.hero__inner {
+		text-align: center;
+		padding-block: clamp(3.5rem, 9vw, 7rem) clamp(2.5rem, 6vw, 4rem);
+	}
+	.hero__kicker {
+		margin-bottom: clamp(1.75rem, 4vw, 2.75rem);
+	}
+	.hero__names {
+		margin: 0;
+	}
+	.rule--center {
+		margin-block: clamp(1.75rem, 4vw, 2.5rem);
+	}
+	.hero__sub {
+		font-family: var(--font-display);
+		font-style: italic;
+		font-size: var(--fs-h3);
+		color: var(--ink-soft);
+		margin: 0 0 0.9rem;
+	}
+	.hero__date {
+		font-family: var(--font-sans);
+		font-size: var(--fs-label);
+		letter-spacing: var(--track-label);
+		text-transform: uppercase;
+		font-weight: 500;
+		color: var(--olive);
+		margin: 0;
+	}
+	.hero__cta {
+		display: inline-block;
+		margin-top: clamp(2.25rem, 5vw, 3.25rem);
+	}
+	.hero__photo {
+		height: clamp(16rem, 48vw, 30rem);
+		margin: 0;
+		/* Subtle tonal variation reads as light across the field, not a
+		   decorative gradient. Replace with a real photograph. */
+		background-image: linear-gradient(
+			180deg,
+			color-mix(in srgb, var(--olive) 82%, #fff) 0%,
+			var(--olive) 60%,
+			color-mix(in srgb, var(--olive) 88%, #000) 100%
+		);
+	}
+</style>

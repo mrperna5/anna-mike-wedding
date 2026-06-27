@@ -1,0 +1,101 @@
+---
+import { faq } from '../data/faq';
+---
+
+<section id="faq" class="section section--alt">
+	<div class="container faq">
+		<header class="faq__head reveal">
+			<p class="kicker">Good to know</p>
+			<h2 class="faq__title">Questions</h2>
+		</header>
+
+		<div class="faq__list">
+			{
+				faq.map((item) => (
+					<details class="faq__item reveal">
+						<summary class="faq__q">
+							<span>{item.q}</span>
+							<span class="faq__icon" aria-hidden="true" />
+						</summary>
+						<p class="faq__a">{item.a}</p>
+					</details>
+				))
+			}
+		</div>
+	</div>
+</section>
+
+<style>
+	.faq {
+		display: grid;
+		gap: clamp(2rem, 5vw, 4rem);
+	}
+	.faq__title {
+		font-size: var(--fs-h1);
+		margin-top: 1rem;
+	}
+	.faq__list {
+		margin: 0;
+	}
+	.faq__item {
+		border-top: 1px solid var(--hairline);
+	}
+	.faq__item:last-child {
+		border-bottom: 1px solid var(--hairline);
+	}
+	.faq__q {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 1.5rem;
+		padding: 1.4rem 0;
+		cursor: pointer;
+		list-style: none;
+		font-family: var(--font-display);
+		font-size: var(--fs-h3);
+		color: var(--ink);
+	}
+	.faq__q::-webkit-details-marker {
+		display: none;
+	}
+	.faq__icon {
+		position: relative;
+		flex: 0 0 14px;
+		width: 14px;
+		height: 14px;
+	}
+	.faq__icon::before,
+	.faq__icon::after {
+		content: '';
+		position: absolute;
+		background: var(--terracotta);
+		transition: transform 0.3s var(--ease);
+	}
+	.faq__icon::before {
+		top: 6px;
+		left: 0;
+		width: 14px;
+		height: 1px;
+	}
+	.faq__icon::after {
+		top: 0;
+		left: 6px;
+		width: 1px;
+		height: 14px;
+	}
+	.faq__item[open] .faq__icon::after {
+		transform: scaleY(0);
+	}
+	.faq__a {
+		max-width: var(--measure);
+		padding-bottom: 1.5rem;
+		margin: 0;
+		font-size: var(--fs-small);
+	}
+	@media (min-width: 48rem) {
+		.faq {
+			grid-template-columns: 16rem 1fr;
+			align-items: start;
+		}
+	}
+</style>

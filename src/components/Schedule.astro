@@ -1,0 +1,116 @@
+---
+import { schedule } from '../data/schedule';
+---
+
+<section id="schedule" class="section section--alt">
+	<div class="container">
+		<header class="sched__head reveal">
+			<p class="kicker">The weekend, hour by hour</p>
+			<h2 class="sched__title">Schedule</h2>
+		</header>
+
+		<ol class="sched__list">
+			{
+				schedule.map((e) => (
+					<li class="sched__item reveal">
+						<span class="sched__n">{e.n}</span>
+						<div class="sched__when">
+							<p class="sched__day">{e.day}</p>
+							<p class="sched__date">{e.date}</p>
+						</div>
+						<div class="sched__body">
+							<h3 class="sched__name">{e.title}</h3>
+							<p class="sched__meta">
+								{e.time} · {e.place}
+							</p>
+							<p class="sched__blurb">{e.blurb}</p>
+							<p class="sched__dress">Dress — {e.dress}</p>
+						</div>
+					</li>
+				))
+			}
+		</ol>
+	</div>
+</section>
+
+<style>
+	.sched__head {
+		margin-bottom: clamp(2.5rem, 6vw, 4rem);
+	}
+	.sched__title {
+		font-size: var(--fs-h1);
+		margin-top: 1rem;
+	}
+	.sched__list {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+	.sched__item {
+		display: grid;
+		grid-template-columns: auto 1fr;
+		grid-template-areas:
+			'num when'
+			'num body';
+		gap: 0.25rem 1.25rem;
+		padding: clamp(1.75rem, 4vw, 2.5rem) 0;
+		border-top: 1px solid var(--hairline);
+	}
+	.sched__item:last-child {
+		border-bottom: 1px solid var(--hairline);
+	}
+	.sched__n {
+		grid-area: num;
+		font-family: var(--font-display);
+		font-size: clamp(1.5rem, 4vw, 2.25rem);
+		color: var(--terracotta);
+		line-height: 1;
+	}
+	.sched__when {
+		grid-area: when;
+	}
+	.sched__day {
+		font-family: var(--font-display);
+		font-size: var(--fs-h3);
+		color: var(--ink);
+		margin: 0;
+	}
+	.sched__date {
+		font-size: var(--fs-label);
+		letter-spacing: var(--track-wide);
+		text-transform: uppercase;
+		color: var(--olive-muted);
+		margin: 0.15rem 0 0.75rem;
+	}
+	.sched__body {
+		grid-area: body;
+		max-width: var(--measure);
+	}
+	.sched__name {
+		font-size: var(--fs-h2);
+		margin: 0 0 0.5rem;
+	}
+	.sched__meta {
+		font-style: italic;
+		font-family: var(--font-display);
+		color: var(--olive);
+		margin: 0 0 0.85rem;
+	}
+	.sched__blurb {
+		margin: 0 0 0.85rem;
+	}
+	.sched__dress {
+		font-size: var(--fs-small);
+		color: var(--olive-muted);
+		margin: 0;
+	}
+
+	@media (min-width: 48rem) {
+		.sched__item {
+			grid-template-columns: 4rem 12rem 1fr;
+			grid-template-areas: 'num when body';
+			gap: 2rem;
+			align-items: start;
+		}
+	}
+</style>

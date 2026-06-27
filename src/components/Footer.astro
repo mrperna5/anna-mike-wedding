@@ -1,0 +1,42 @@
+---
+import { site } from '../data/site';
+---
+
+<footer class="footer">
+	<div class="container footer__inner">
+		<p class="couple footer__names">
+			{site.couple.one}<span class="couple__and">and</span>{site.couple.two}
+		</p>
+		<p class="kicker footer__meta">
+			{site.location} · {site.dateShort}
+		</p>
+		<a class="footer__top" href="#top">Back to top</a>
+	</div>
+</footer>
+
+<style>
+	.footer {
+		border-top: 1px solid var(--hairline);
+		padding-block: clamp(3rem, 7vw, 5rem);
+		text-align: center;
+	}
+	.footer__names {
+		--fs-display: clamp(2.5rem, 8vw, 4rem);
+		margin: 0 0 1.25rem;
+	}
+	.footer__meta {
+		margin: 0 0 1.75rem;
+	}
+	.footer__top {
+		font-size: var(--fs-label);
+		letter-spacing: var(--track-wide);
+		text-transform: uppercase;
+		font-weight: 500;
+		color: var(--olive-muted);
+		text-decoration: none;
+		transition: color 0.25s var(--ease);
+	}
+	.footer__top:hover {
+		color: var(--terracotta);
+	}
+</style>

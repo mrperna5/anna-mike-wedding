@@ -1,0 +1,95 @@
+---
+import { accommodation } from '../data/accommodation';
+---
+
+<section id="stay" class="section">
+	<div class="container">
+		<header class="stay__head reveal">
+			<p class="kicker">Where to stay</p>
+			<h2 class="stay__title">Accommodation</h2>
+			<p class="measure">
+				A few places we’d happily send you to, at a range of prices. Rooms in
+				this corner of Tuscany are limited in May, so book sooner rather than
+				later — we’ll add more as we lock them in.
+			</p>
+		</header>
+
+		<ul class="stay__list">
+			{
+				accommodation.map((s) => (
+					<li class="stay__card reveal">
+						<div class="stay__top">
+							<h3 class="stay__name">{s.name}</h3>
+							<span class="stay__price">{s.priceBand}</span>
+						</div>
+						<p class="stay__kind">
+							{s.kind} · {s.distance}
+						</p>
+						<p class="stay__note">{s.note}</p>
+						{s.url && (
+							<a class="link stay__link" href={s.url}>
+								Have a look
+							</a>
+						)}
+					</li>
+				))
+			}
+		</ul>
+	</div>
+</section>
+
+<style>
+	.stay__head {
+		margin-bottom: clamp(2.5rem, 6vw, 4rem);
+	}
+	.stay__title {
+		font-size: var(--fs-h1);
+		margin: 1rem 0 1.5rem;
+	}
+	.stay__list {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: grid;
+		gap: clamp(1.25rem, 3vw, 2rem);
+	}
+	.stay__card {
+		padding: clamp(1.5rem, 3vw, 2rem);
+		background: var(--white);
+		border: 1px solid var(--hairline);
+	}
+	.stay__top {
+		display: flex;
+		justify-content: space-between;
+		align-items: baseline;
+		gap: 1rem;
+	}
+	.stay__name {
+		font-size: var(--fs-h3);
+		margin: 0;
+	}
+	.stay__price {
+		font-family: var(--font-display);
+		color: var(--olive);
+		letter-spacing: 0.1em;
+	}
+	.stay__kind {
+		font-size: var(--fs-label);
+		letter-spacing: var(--track-wide);
+		text-transform: uppercase;
+		color: var(--olive-muted);
+		margin: 0.5rem 0 1rem;
+	}
+	.stay__note {
+		font-size: var(--fs-small);
+		margin: 0 0 1.25rem;
+	}
+	.stay__link {
+		font-size: 0.68rem;
+	}
+	@media (min-width: 48rem) {
+		.stay__list {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+</style>

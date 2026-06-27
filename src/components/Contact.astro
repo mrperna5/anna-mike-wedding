@@ -1,0 +1,28 @@
+---
+import { site } from '../data/site';
+---
+
+<section id="contact" class="section section--alt">
+	<div class="container contact reveal measure">
+		<p class="kicker">Questions</p>
+		<h2 class="contact__head">Ask us anything</h2>
+		<p>
+			Planning a trip from afar can throw up a hundred small questions —
+			flights, rooms, what to pack, who else is coming. Don’t sit on them. We’d
+			genuinely rather hear from you than have you guess.
+		</p>
+		<a class="link contact__link" href={`mailto:${site.email}`}>{site.email}</a>
+	</div>
+</section>
+
+<style>
+	.contact__head {
+		font-size: var(--fs-h1);
+		margin: 1rem 0 1.5rem;
+	}
+	.contact__link {
+		display: inline-block;
+		margin-top: 1rem;
+		font-size: 0.78rem;
+	}
+</style>

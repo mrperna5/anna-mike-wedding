@@ -1,0 +1,126 @@
+---
+import { site, nav } from '../data/site';
+const monogram = `${site.couple.one[0]}${site.couple.two[0]}`;
+---
+
+<header class="nav">
+	<div class="nav__bar container">
+		<a class="nav__mono" href="#top" aria-label="Back to top">{monogram}</a>
+		<nav class="nav__links" aria-label="Sections">
+			{nav.map((item) => <a href={`#${item.id}`}>{item.label}</a>)}
+		</nav>
+		<button
+			class="nav__toggle"
+			aria-expanded="false"
+			aria-controls="nav-overlay"
+			aria-label="Open menu"
+		>
+			Menu
+		</button>
+	</div>
+
+	<div class="nav__overlay" id="nav-overlay" hidden>
+		<nav aria-label="Sections">
+			{nav.map((item) => <a href={`#${item.id}`}>{item.label}</a>)}
+		</nav>
+	</div>
+</header>
+
+<style>
+	.nav {
+		position: sticky;
+		top: 0;
+		z-index: 50;
+		background: color-mix(in srgb, var(--cream) 88%, transparent);
+		backdrop-filter: blur(8px);
+		border-bottom: 1px solid var(--hairline);
+	}
+	.nav__bar {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		min-height: 60px;
+		gap: 1rem;
+	}
+	.nav__mono {
+		font-family: var(--font-display);
+		font-size: 1.15rem;
+		letter-spacing: 0.25em;
+		color: var(--olive);
+		text-decoration: none;
+		padding-left: 0.06em;
+	}
+	.nav__links {
+		display: none;
+		gap: clamp(0.9rem, 2vw, 1.9rem);
+	}
+	.nav__links a {
+		font-size: var(--fs-label);
+		letter-spacing: var(--track-wide);
+		text-transform: uppercase;
+		font-weight: 500;
+		color: var(--ink-soft);
+		text-decoration: none;
+		transition: color 0.25s var(--ease);
+	}
+	.nav__links a:hover {
+		color: var(--terracotta);
+	}
+	.nav__toggle {
+		font-family: var(--font-sans);
+		font-size: var(--fs-label);
+		letter-spacing: var(--track-wide);
+		text-transform: uppercase;
+		font-weight: 500;
+		color: var(--ink);
+		background: none;
+		border: 0;
+		padding: 0.4rem 0;
+		cursor: pointer;
+	}
+	.nav__overlay {
+		border-top: 1px solid var(--hairline);
+		background: var(--cream);
+	}
+	.nav__overlay nav {
+		display: flex;
+		flex-direction: column;
+		padding: 0.5rem var(--gutter) 1.5rem;
+	}
+	.nav__overlay a {
+		font-family: var(--font-display);
+		font-size: 1.35rem;
+		color: var(--ink);
+		text-decoration: none;
+		padding: 0.6rem 0;
+		border-bottom: 1px solid var(--hairline);
+	}
+
+	@media (min-width: 64rem) {
+		.nav__links {
+			display: flex;
+		}
+		.nav__toggle,
+		.nav__overlay {
+			display: none;
+		}
+	}
+</style>
+
+<script>
+	const toggle = document.querySelector<HTMLButtonElement>('.nav__toggle');
+	const overlay = document.getElementById('nav-overlay');
+	if (toggle && overlay) {
+		const setOpen = (open: boolean) => {
+			overlay.hidden = !open;
+			toggle.setAttribute('aria-expanded', String(open));
+			toggle.textContent = open ? 'Close' : 'Menu';
+		};
+		toggle.addEventListener('click', () =>
+			setOpen(toggle.getAttribute('aria-expanded') !== 'true'),
+		);
+		overlay.querySelectorAll('a').forEach((a) =>
+			a.addEventListener('click', () => setOpen(false)),
+		);
+	}
+</script>

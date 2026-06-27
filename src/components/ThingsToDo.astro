@@ -1,0 +1,70 @@
+---
+import { thingsToDo } from '../data/thingsToDo';
+---
+
+<section id="pienza" class="section">
+	<div class="container">
+		<header class="todo__head reveal">
+			<p class="kicker">If you’re staying on</p>
+			<h2 class="todo__title">Around Pienza</h2>
+			<p class="measure">
+				Make a holiday of it. A few field notes from our own trips — the
+				things we’d tell a friend to do, not a guidebook’s greatest hits.
+			</p>
+		</header>
+
+		<ul class="todo__list">
+			{
+				thingsToDo.map((n) => (
+					<li class="todo__note reveal">
+						<p class="todo__place">{n.place}</p>
+						<h3 class="todo__name">{n.title}</h3>
+						<p class="todo__body">{n.body}</p>
+					</li>
+				))
+			}
+		</ul>
+	</div>
+</section>
+
+<style>
+	.todo__head {
+		margin-bottom: clamp(2.5rem, 6vw, 4rem);
+	}
+	.todo__title {
+		font-size: var(--fs-h1);
+		margin: 1rem 0 1.5rem;
+	}
+	.todo__list {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: grid;
+		gap: clamp(2rem, 5vw, 3rem);
+	}
+	.todo__note {
+		padding-top: 1.25rem;
+		border-top: 1px solid var(--hairline);
+	}
+	.todo__place {
+		font-size: var(--fs-label);
+		letter-spacing: var(--track-wide);
+		text-transform: uppercase;
+		color: var(--terracotta);
+		margin: 0 0 0.6rem;
+	}
+	.todo__name {
+		font-size: var(--fs-h3);
+		margin: 0 0 0.65rem;
+	}
+	.todo__body {
+		font-size: var(--fs-small);
+		margin: 0;
+	}
+	@media (min-width: 48rem) {
+		.todo__list {
+			grid-template-columns: repeat(2, 1fr);
+			gap: 3rem 4rem;
+		}
+	}
+</style>
