@@ -5,6 +5,6 @@ import { defineConfig } from 'astro/config';
 export default defineConfig({
 	// GitHub Pages project site. If you move to a custom domain
 	// (e.g. https://annaandmike.com) set `site` to that and DELETE `base`.
-	site: 'https://pernamichael55.github.io',
+	site: 'https://mrperna5.github.io',
 	base: '/anna-mike-wedding/',
 });
