@@ -111,17 +111,20 @@ speak only one of the two.
 
 ## Deployment & access — see `DEPLOYMENT.md`
 
-The site must be **private** (wedding details, not public). GitHub Pages has **no
-server-side auth**, so real per-guest login lives on **Cloudflare Pages +
-Cloudflare Access** (email one-time-code). `DEPLOYMENT.md` has the full runbook.
+Hosted on **Cloudflare Pages**, made private with a single **shared password**.
+**GitHub Pages is not used.** `DEPLOYMENT.md` has the full runbook.
 
-`astro.config.mjs` is host-flexible via the `GITHUB_PAGES` env var:
-- GitHub Pages build (`.github/workflows/deploy.yml` sets `GITHUB_PAGES=true`)
-  → `base: '/anna-mike-wedding/'`, public mirror only.
-- Cloudflare Pages build (no env var) → served at root, this is the private site.
-
-Custom domain (e.g. annaandmike.com): set it in Cloudflare, then you can drop the
-GitHub Pages branch in `astro.config.mjs` and hardcode `site`.
+- Privacy is a Cloudflare Pages Function: `functions/_middleware.js` gates the
+  whole site server-side against the `SITE_PASSWORD` secret (set in the Pages
+  dashboard) and serves an on-brand cream password screen until it matches. One
+  shared code for all guests — not per-person Access. The gate only runs on
+  Cloudflare; `astro dev`/`preview` are ungated.
+- Cloudflare auto-builds on push to `master` (`npm run build` → `dist`).
+- `astro.config.mjs` has **no `base`** — the site serves at the domain root.
+  A leftover `base` path is what breaks CSS on `pages.dev` (assets 404). Don't
+  re-add `base` unless you move to a sub-path host.
+- Custom domain (e.g. annaandmike.com): add it in Cloudflare, then just update
+  `site` in `astro.config.mjs`.
 
 ## Documentation
 

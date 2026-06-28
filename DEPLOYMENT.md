@@ -1,80 +1,61 @@
 # Deployment & access
 
-The site is a static Astro build. Two hosting paths are wired up:
+Static Astro site, hosted on **Cloudflare Pages**, made private with a single
+**shared password** (a Pages Function gate). GitHub Pages is not used.
 
-| | GitHub Pages | Cloudflare Pages |
-| --- | --- | --- |
-| Real login (private) | ❌ none possible | ✅ via Cloudflare Access |
-| URL | `mrperna5.github.io/anna-mike-wedding/` | `anna-mike-wedding.pages.dev` (or custom domain) |
-| Build | `.github/workflows/deploy.yml` (sets `GITHUB_PAGES=true`) | Cloudflare's own build |
-| `base` path | `/anna-mike-wedding/` | none (served at root) |
+- `astro.config.mjs` has **no `base`** — the site is served at the domain root.
+  (A leftover `base` is what broke CSS earlier.)
+- Cloudflare Pages auto-builds on every push to `master`:
+  build command `npm run build`, output dir `dist`. No env vars needed.
+- Live: <https://anna-mike-wedding.pages.dev>
 
-`astro.config.mjs` switches `base`/`site` on the `GITHUB_PAGES` env var, so the
-same repo builds correctly for either host.
-
----
-
-## Why the password requirement means leaving GitHub Pages
-
-GitHub Pages serves static files to anyone with the URL — there is **no
-server-side authentication**, so a real "guests log in" wall isn't possible
-there. The clean way to get genuine, per-person access is **Cloudflare Pages +
-Cloudflare Access** (Zero Trust). It's free for our size and sends each guest a
-one-time email code to get in. The repo is already Cloudflare-ready.
+> The occasional **"Failed to publish your Function"** error in the build log is
+> a transient Cloudflare glitch — we have no `/functions`, and "Assets
+> published" means the site is live. Just **Retry deployment** if it recurs.
 
 ---
 
-## A. Set up Cloudflare Pages + Access (the private, real-login site)
+## Make the site private with one shared password
 
-You'll do this once in the Cloudflare dashboard — I can't click through your
-account, but here's the exact path.
+The whole site sits behind a single shared password — fine for any number of
+guests, no per-person accounts, free. It's enforced by the Cloudflare Pages
+Function in `functions/_middleware.js`, which checks the password **server-side**
+before any page is sent, and shows an on-brand password screen if it's missing.
+(We do **not** use Cloudflare Access — that's per-person and caps at 50 users.)
 
-### 1. Connect the repo to Cloudflare Pages
-1. Create a free Cloudflare account, go to **Workers & Pages → Create → Pages**.
-2. **Connect to Git**, authorise GitHub, pick `mrperna5/anna-mike-wedding`.
-3. Build settings:
-   - **Framework preset:** Astro
-   - **Build command:** `npm run build`
-   - **Build output directory:** `dist`
-   - (Leave env vars empty — we do *not* set `GITHUB_PAGES`, so it builds at root.)
-4. **Save and Deploy.** You'll get `https://anna-mike-wedding.pages.dev`.
+### Set the password
+1. Cloudflare dashboard → your Pages project → **Settings → Variables and
+   Secrets** (a.k.a. *Environment variables*).
+2. Under **Production**, **Add variable**:
+   - Name: `SITE_PASSWORD`
+   - Value: the shared code you'll give guests (e.g. `ValdOrcia2027`)
+   - Click **Encrypt** so it's stored as a secret.
+3. (Optional) add the same variable under **Preview** so branch previews are
+   gated too.
+4. **Save**, then **redeploy** (Deployments → ⋯ → Retry deployment, or just push
+   a commit) so the new secret is picked up.
 
-### 2. Turn on Cloudflare Access (the login wall)
-1. In the dashboard go to **Zero Trust** (set up the free plan if prompted).
-2. **Access → Applications → Add an application → Self-hosted.**
-3. Application domain: your Pages URL (`anna-mike-wedding.pages.dev`) or your
-   custom domain.
-4. Add a **policy**:
-   - Action: **Allow**
-   - Rule: choose one —
-     - **Emails:** paste the guest list (most private; only those addresses get in), or
-     - **Emails ending in** a domain, or
-     - **Any** + **One-time PIN** (anyone with the link can request a code — easiest, least strict).
-5. Save. Now visiting the site shows a Cloudflare login → guest enters their
-   email → receives a one-time code → gets in. Sessions last as long as you set
-   (e.g. 1 month), so they're not prompted every visit.
+> ⚠️ If `SITE_PASSWORD` is not set, the site stays **locked for everyone**
+> (including you) with a "password isn't set" notice. That's the safe default —
+> just add the secret.
 
-> Tip: the **Emails** rule is the sweet spot for a wedding — collect addresses
-> with the RSVP later and paste them in.
+### Test
+Open <https://anna-mike-wedding.pages.dev> in a private window → you should see
+the cream **Anna and Mike** password screen → enter the code → you're in for 30
+days (a cookie remembers you). To change the password later, edit the secret and
+redeploy; everyone re-enters the new one.
 
-### 3. (Optional) custom domain
-Add `annaandmike.com` in Cloudflare Pages → Custom domains. Then in
-`astro.config.mjs` you can drop the GitHub Pages branch and hardcode
-`site: 'https://annaandmike.com'`.
+### Share the code
+Put the password on your invitations / save-the-dates, or send it round on
+WhatsApp. One code, everyone uses the same one.
 
 ---
 
-## B. Fix the GitHub Pages deploy (optional public/preview mirror)
+## Notes
 
-The workflow (`.github/workflows/deploy.yml`) is correct. The usual reason a
-GitHub Pages deploy "doesn't work" is the **Pages source setting**:
-
-1. GitHub repo → **Settings → Pages**.
-2. Under **Build and deployment → Source**, choose **GitHub Actions** (not
-   "Deploy from a branch").
-3. Push to `master` (or run the workflow from the **Actions** tab). The site
-   publishes at `https://mrperna5.github.io/anna-mike-wedding/`.
-
-⚠️ Note: a GitHub Pages site is **public** — anyone with the link can read it.
-Keep real details on the Cloudflare Access site; use Pages only if you want a
-public placeholder, or skip it entirely.
+- The gate only runs on Cloudflare (and `wrangler pages dev`). Local
+  `astro dev` / `npm run preview` are **not** gated — no password needed while
+  developing.
+- **Custom domain** (e.g. `annaandmike.com`): add it under the Pages project →
+  **Custom domains**, then update `site` in `astro.config.mjs`. The password gate
+  keeps working — it's domain-independent.
