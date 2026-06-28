@@ -1,24 +1,19 @@
 ---
+import { story } from '../data/copy';
+import Bi from './Bi.astro';
 ---
 
 <section id="story" class="section">
 	<div class="container story">
 		<div class="story__text reveal">
-			<p class="kicker">Our story</p>
-			<p class="lede story__lede">
-				Ten years, three cities, and one very persistent idea that we ought to
-				do this somewhere with good wine.
-			</p>
-			<p>
-				We’re saving the long version for the toasts. The short one: we met
-				young, took our time, and somewhere along the way Tuscany became the
-				place we kept coming back to. It felt right to bring everyone here.
-			</p>
+			<p class="kicker"><Bi t={story.kicker} /></p>
+			<p class="lede story__lede"><Bi t={story.lede} /></p>
+			<p><Bi t={story.p} /></p>
 		</div>
 
 		<!-- Full-bleed photographic moment — replace flat field with a photo. -->
 		<figure class="story__photo photo reveal">
-			<figcaption class="photo__cap">Us, somewhere in Italy</figcaption>
+			<figcaption class="photo__cap"><Bi t={story.caption} /></figcaption>
 		</figure>
 	</div>
 </section>

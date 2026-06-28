@@ -1,36 +1,30 @@
 ---
-import { site } from '../data/site';
-
-const facts = [
-	{ label: 'Where', value: `A private villa near ${site.location}` },
-	{ label: 'Setting', value: `Hills, vineyards, and a view across the ${site.region}` },
-	{ label: 'Getting in', value: 'A short drive from town; parking on site' },
-	{ label: 'Underfoot', value: 'Gravel, grass, and stone — choose shoes kindly' },
-];
+import { venue } from '../data/copy';
+import Bi from './Bi.astro';
 ---
 
 <section id="venue" class="section">
 	<figure class="venue__photo photo reveal">
-		<figcaption class="photo__cap">The villa, {site.region}</figcaption>
+		<figcaption class="photo__cap"><Bi t={venue.caption} /></figcaption>
 	</figure>
 
 	<div class="container venue__grid">
 		<div class="venue__intro reveal">
-			<p class="kicker">The venue</p>
-			<h2 class="venue__head">A villa in the hills</h2>
-			<p class="measure">
-				Everything happens in one place over the weekend — the ceremony on the
-				lawn, dinner under the sky, and the pool the morning after. You won’t
-				need to rush between locations.
-			</p>
+			<p class="kicker"><Bi t={venue.kicker} /></p>
+			<h2 class="venue__head"><Bi t={venue.title} /></h2>
+			<p class="measure"><Bi t={venue.intro} /></p>
 		</div>
 
 		<dl class="venue__facts reveal">
 			{
-				facts.map((f) => (
+				venue.facts.map((f) => (
 					<div class="venue__fact">
-						<dt>{f.label}</dt>
-						<dd>{f.value}</dd>
+						<dt>
+							<Bi t={f.label} />
+						</dt>
+						<dd>
+							<Bi t={f.value} />
+						</dd>
 					</div>
 				))
 			}

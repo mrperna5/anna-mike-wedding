@@ -1,10 +1,12 @@
 ---
 import { site } from '../data/site';
+import { hero } from '../data/copy';
+import Bi from './Bi.astro';
 ---
 
 <section class="hero">
 	<div class="container hero__inner">
-		<p class="kicker hero__kicker">Together with their families</p>
+		<p class="kicker hero__kicker"><Bi t={hero.kicker} /></p>
 
 		<h1 class="couple hero__names">
 			ANNA<span class="couple__and">and</span>MIKE
@@ -12,17 +14,17 @@ import { site } from '../data/site';
 
 		<hr class="rule rule--center" />
 
-		<p class="hero__sub">are to be married in {site.location}</p>
-		<p class="hero__date">{site.dateLong}</p>
+		<p class="hero__sub"><Bi t={hero.sub} /> <Bi t={site.location} /></p>
+		<p class="hero__date"><Bi t={site.dateLong} /></p>
 
-		<a class="link hero__cta" href="#overview">Explore the weekend</a>
+		<a class="link hero__cta" href="#overview"><Bi t={hero.cta} /></a>
 	</div>
 
 	<!-- Full-bleed photographic moment. Replace the flat field with a real
 	     image: drop a photo in /public/images and set it as background, or
 	     swap this block for Astro's <Image />. Caption stays. -->
 	<figure class="hero__photo photo">
-		<figcaption class="photo__cap">{site.region}, where the light goes gold</figcaption>
+		<figcaption class="photo__cap"><Bi t={hero.caption} /></figcaption>
 	</figure>
 </section>
 

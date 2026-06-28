@@ -1,17 +1,15 @@
 ---
 import { accommodation } from '../data/accommodation';
+import { stay, ui } from '../data/copy';
+import Bi from './Bi.astro';
 ---
 
 <section id="stay" class="section">
 	<div class="container">
 		<header class="stay__head reveal">
-			<p class="kicker">Where to stay</p>
-			<h2 class="stay__title">Accommodation</h2>
-			<p class="measure">
-				A few places we’d happily send you to, at a range of prices. Rooms in
-				this corner of Tuscany are limited in May, so book sooner rather than
-				later — we’ll add more as we lock them in.
-			</p>
+			<p class="kicker"><Bi t={stay.kicker} /></p>
+			<h2 class="stay__title"><Bi t={stay.title} /></h2>
+			<p class="measure"><Bi t={stay.intro} /></p>
 		</header>
 
 		<ul class="stay__list">
@@ -19,16 +17,20 @@ import { accommodation } from '../data/accommodation';
 				accommodation.map((s) => (
 					<li class="stay__card reveal">
 						<div class="stay__top">
-							<h3 class="stay__name">{s.name}</h3>
+							<h3 class="stay__name">
+								<Bi t={s.name} />
+							</h3>
 							<span class="stay__price">{s.priceBand}</span>
 						</div>
 						<p class="stay__kind">
-							{s.kind} · {s.distance}
+							<Bi t={s.kind} /> · <Bi t={s.distance} />
 						</p>
-						<p class="stay__note">{s.note}</p>
+						<p class="stay__note">
+							<Bi t={s.note} />
+						</p>
 						{s.url && (
 							<a class="link stay__link" href={s.url}>
-								Have a look
+								<Bi t={ui.haveALook} />
 							</a>
 						)}
 					</li>

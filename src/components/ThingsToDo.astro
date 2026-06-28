@@ -1,25 +1,30 @@
 ---
 import { thingsToDo } from '../data/thingsToDo';
+import { todo } from '../data/copy';
+import Bi from './Bi.astro';
 ---
 
 <section id="pienza" class="section">
 	<div class="container">
 		<header class="todo__head reveal">
-			<p class="kicker">If you’re staying on</p>
-			<h2 class="todo__title">Around Pienza</h2>
-			<p class="measure">
-				Make a holiday of it. A few field notes from our own trips — the
-				things we’d tell a friend to do, not a guidebook’s greatest hits.
-			</p>
+			<p class="kicker"><Bi t={todo.kicker} /></p>
+			<h2 class="todo__title"><Bi t={todo.title} /></h2>
+			<p class="measure"><Bi t={todo.intro} /></p>
 		</header>
 
 		<ul class="todo__list">
 			{
 				thingsToDo.map((n) => (
 					<li class="todo__note reveal">
-						<p class="todo__place">{n.place}</p>
-						<h3 class="todo__name">{n.title}</h3>
-						<p class="todo__body">{n.body}</p>
+						<p class="todo__place">
+							<Bi t={n.place} />
+						</p>
+						<h3 class="todo__name">
+							<Bi t={n.title} />
+						</h3>
+						<p class="todo__body">
+							<Bi t={n.body} />
+						</p>
 					</li>
 				))
 			}

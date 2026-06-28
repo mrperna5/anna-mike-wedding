@@ -201,6 +201,20 @@ p {
 	color: var(--terracotta);
 }
 
+/* --- bilingual EN/DE toggle ---------------------------------------- */
+/* Both languages render into the DOM; show only the active one. The
+   `.bi` class keeps these rules off the <html> element itself. Default
+   (no/`en` data-lang) shows English. */
+.bi[data-lang='de'] {
+	display: none;
+}
+html[data-lang='de'] .bi[data-lang='en'] {
+	display: none;
+}
+html[data-lang='de'] .bi[data-lang='de'] {
+	display: inline;
+}
+
 /* Reveal-on-scroll (progressive enhancement; visible by default) */
 .reveal {
 	opacity: 1;

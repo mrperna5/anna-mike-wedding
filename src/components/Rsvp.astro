@@ -1,22 +1,29 @@
 ---
 import { site } from '../data/site';
+import { rsvp } from '../data/copy';
+import Bi from './Bi.astro';
 // Visual only for now — no form, no backend. When you're ready to collect
-// replies, wire this to a static-friendly service (e.g. a styled form
-// posting to Formspree/Tally). Nothing here submits yet.
+// replies, wire this to your chosen service. Nothing here submits yet.
 ---
 
 <section id="rsvp" class="section">
 	<div class="container rsvp reveal">
-		<p class="kicker rsvp__kicker">With love</p>
+		<p class="kicker rsvp__kicker"><Bi t={rsvp.kicker} /></p>
+
 		<h2 class="rsvp__head">
-			Will you<span class="couple__and rsvp__and">join</span>us?
+			<span class="bi" data-lang="en"
+				>{rsvp.headPreEn}<span class="couple__and rsvp__and">{rsvp.join.en}</span
+				>{rsvp.headPostEn}</span
+			>
+			<span class="bi" data-lang="de" lang="de"
+				>{rsvp.headPreDe}<span class="couple__and rsvp__and">{rsvp.join.de}</span
+				>{rsvp.headPostDe}</span
+			>
 		</h2>
-		<p class="rsvp__sub measure">
-			RSVPs will open right here in the new year. For now, save the dates,
-			book a bed, and tell us you’re coming when the form goes live.
-		</p>
-		<p class="rsvp__pill">RSVP opening soon</p>
-		<p class="rsvp__meta">{site.location} · {site.dateLong}</p>
+
+		<p class="rsvp__sub measure"><Bi t={rsvp.sub} /></p>
+		<p class="rsvp__pill"><Bi t={rsvp.pill} /></p>
+		<p class="rsvp__meta"><Bi t={site.location} /> · <Bi t={site.dateLong} /></p>
 	</div>
 </section>
 

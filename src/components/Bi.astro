@@ -1,0 +1,19 @@
+---
+// Bilingual text. Renders both languages inline; CSS (keyed off
+// <html data-lang>) shows only the active one. Usage:
+//   <Bi t={item.title} />           // from a localised data field
+//   <Bi en="Hello" de="Hallo" />    // inline
+import type { L } from '../data/i18n';
+
+interface Props {
+	t?: L;
+	en?: string;
+	de?: string;
+}
+
+const { t, en, de } = Astro.props;
+const e = t?.en ?? en ?? '';
+const g = t?.de ?? de ?? '';
+---
+
+<span class="bi" data-lang="en">{e}</span><span class="bi" data-lang="de" lang="de">{g}</span>

@@ -9,9 +9,11 @@ interface Props {
 	description?: string;
 }
 
+// Static meta uses English (the <title> can't live-toggle); both audiences
+// see a clear, bilingual-friendly description.
 const {
-	title = `${site.couple.one} and ${site.couple.two} — ${site.location}`,
-	description = `Join ${site.couple.one} and ${site.couple.two} in ${site.location} for a three-day wedding weekend, ${site.dateLong}.`,
+	title = `${site.couple.one} and ${site.couple.two} — ${site.location.en}`,
+	description = `Join ${site.couple.one} and ${site.couple.two} in ${site.location.en} for a three-day wedding weekend, ${site.dateLong.en}. · Feiert mit uns ein dreitägiges Hochzeitswochenende.`,
 } = Astro.props;
 ---
 
@@ -22,6 +24,27 @@ const {
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
+
+		<!-- Pick the language before first paint: saved choice wins, else
+		     German browsers get German, everyone else English. Inline so the
+		     EN/DE CSS toggle is correct on load (no flash). -->
+		<script is:inline>
+			(function () {
+				try {
+					var saved = localStorage.getItem('lang');
+					var lang =
+						saved ||
+						((navigator.language || 'en').toLowerCase().indexOf('de') === 0
+							? 'de'
+							: 'en');
+					var el = document.documentElement;
+					el.setAttribute('data-lang', lang);
+					el.setAttribute('lang', lang);
+				} catch (e) {
+					document.documentElement.setAttribute('data-lang', 'en');
+				}
+			})();
+		</script>
 
 		<title>{title}</title>
 		<meta name="description" content={description} />

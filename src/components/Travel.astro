@@ -1,41 +1,29 @@
 ---
-const steps = [
-	{
-		label: 'Fly',
-		title: 'Florence or Rome',
-		body: 'Florence (FLR) is closest — about 1h40 by car. Rome (FCO) is a larger hub roughly 2h30 away. Pisa and Perugia work too.',
-	},
-	{
-		label: 'Drive',
-		title: 'Into the Val d’Orcia',
-		body: 'Hire a car at the airport. The last stretch winds through the hills and is half the pleasure of arriving.',
-	},
-	{
-		label: 'Rail',
-		title: 'Train to Chiusi',
-		body: 'Prefer the train? Chiusi-Chianciano Terme is the nearest station, then a 40-minute drive or taxi to Pienza.',
-	},
-];
+import { travel } from '../data/copy';
+import Bi from './Bi.astro';
 ---
 
 <section id="travel" class="section section--alt">
 	<div class="container">
 		<header class="travel__head reveal">
-			<p class="kicker">Getting there</p>
-			<h2 class="travel__title">Travel</h2>
-			<p class="measure">
-				Pienza sits in southern Tuscany, between Siena and the Umbrian border.
-				However you come, you’ll want wheels once you’re here.
-			</p>
+			<p class="kicker"><Bi t={travel.kicker} /></p>
+			<h2 class="travel__title"><Bi t={travel.title} /></h2>
+			<p class="measure"><Bi t={travel.intro} /></p>
 		</header>
 
 		<ol class="travel__steps">
 			{
-				steps.map((s) => (
+				travel.steps.map((s) => (
 					<li class="travel__step reveal">
-						<p class="travel__label">{s.label}</p>
-						<h3 class="travel__name">{s.title}</h3>
-						<p class="travel__body">{s.body}</p>
+						<p class="travel__label">
+							<Bi t={s.label} />
+						</p>
+						<h3 class="travel__name">
+							<Bi t={s.title} />
+						</h3>
+						<p class="travel__body">
+							<Bi t={s.body} />
+						</p>
 					</li>
 				))
 			}

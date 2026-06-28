@@ -1,5 +1,7 @@
 ---
 import { site } from '../data/site';
+import { ui } from '../data/copy';
+import Bi from './Bi.astro';
 ---
 
 <footer class="footer">
@@ -8,9 +10,9 @@ import { site } from '../data/site';
 			{site.couple.one}<span class="couple__and">and</span>{site.couple.two}
 		</p>
 		<p class="kicker footer__meta">
-			{site.location} · {site.dateShort}
+			<Bi t={site.location} /> · {site.dateShort}
 		</p>
-		<a class="footer__top" href="#top">Back to top</a>
+		<a class="footer__top" href="#top"><Bi t={ui.backToTop} /></a>
 	</div>
 </footer>
 

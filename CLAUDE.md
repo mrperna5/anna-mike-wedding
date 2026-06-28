@@ -60,6 +60,30 @@ Bodoni Moda and the lowercase word **"and"** is the only thing in the script fac
   foil, decorative gradients, or CSS "trees". Image placeholders are flat olive fields with an
   italic caption (`.photo` / `.photo__cap`), never gradients pretending to be photos.
 
+## Bilingual (English + German)
+
+**Every guest-facing string must exist in both English and German.** Many guests
+speak only one of the two.
+
+- All copy is typed as `L = { en: string; de: string }` (see `src/data/i18n.ts`).
+  Data files (`schedule.ts`, `faq.ts`, …) and the prose/UI strings in
+  `src/data/copy.ts` hold both languages. **Never add an English-only string.**
+- Render with the `Bi.astro` helper: `<Bi t={item.title} />` (from a localised
+  field) or `<Bi en="…" de="…" />` (inline). It outputs both languages as
+  `.bi[data-lang]` spans.
+- The active language is shown via CSS keyed off `<html data-lang>` (rules in
+  `global.css`); the EN/DE toggle in `Nav.astro` flips it instantly (no reload)
+  and persists to `localStorage`. The inline script in `Layout.astro` sets the
+  initial language before first paint: saved choice → else German browsers get
+  German, everyone else English.
+- For markup that differs between languages (e.g. a heading with `<br>`, the
+  RSVP script word), render two manual `<span class="bi" data-lang="…">` blocks.
+- `:global(html[data-lang='…'])` is required when a *scoped* component style
+  targets the language state — `html` isn't inside the component, so it needs
+  `:global` (see the active-button rule in `Nav.astro`).
+- The `<title>`/meta can't live-toggle, so they stay English (with a bilingual
+  description) — that's fine.
+
 ## Structure
 
 - `src/pages/index.astro` — composes the one-page site from section components.
@@ -85,10 +109,19 @@ Bodoni Moda and the lowercase word **"and"** is the only thing in the script fac
 - **Photos:** flat-tone placeholders today; drop real images in `public/images/` and swap per
   that folder's README (prefer Astro `<Image />`).
 
-## Deployment (GitHub Pages)
+## Deployment & access — see `DEPLOYMENT.md`
 
-`astro.config.mjs` sets `site` and `base: '/anna-mike-wedding/'` for a project page. If you move
-to a **custom domain** (e.g. annaandmike.com), set `site` to that and **delete `base`**.
+The site must be **private** (wedding details, not public). GitHub Pages has **no
+server-side auth**, so real per-guest login lives on **Cloudflare Pages +
+Cloudflare Access** (email one-time-code). `DEPLOYMENT.md` has the full runbook.
+
+`astro.config.mjs` is host-flexible via the `GITHUB_PAGES` env var:
+- GitHub Pages build (`.github/workflows/deploy.yml` sets `GITHUB_PAGES=true`)
+  → `base: '/anna-mike-wedding/'`, public mirror only.
+- Cloudflare Pages build (no env var) → served at root, this is the private site.
+
+Custom domain (e.g. annaandmike.com): set it in Cloudflare, then you can drop the
+GitHub Pages branch in `astro.config.mjs` and hardcode `site`.
 
 ## Documentation
 

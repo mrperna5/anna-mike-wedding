@@ -1,27 +1,41 @@
 ---
 import { site, nav } from '../data/site';
+import { ui } from '../data/copy';
+import Bi from './Bi.astro';
 const monogram = `${site.couple.one[0]}${site.couple.two[0]}`;
 ---
 
 <header class="nav">
 	<div class="nav__bar container">
 		<a class="nav__mono" href="#top" aria-label="Back to top">{monogram}</a>
+
 		<nav class="nav__links" aria-label="Sections">
-			{nav.map((item) => <a href={`#${item.id}`}>{item.label}</a>)}
+			{nav.map((item) => (
+				<a href={`#${item.id}`}><Bi t={item.label} /></a>
+			))}
 		</nav>
-		<button
-			class="nav__toggle"
-			aria-expanded="false"
-			aria-controls="nav-overlay"
-			aria-label="Open menu"
-		>
-			Menu
-		</button>
+
+		<div class="nav__right">
+			<div class="lang" role="group" aria-label="Language / Sprache">
+				<button type="button" class="lang__btn" data-set-lang="en">EN</button>
+				<span class="lang__sep" aria-hidden="true">/</span>
+				<button type="button" class="lang__btn" data-set-lang="de">DE</button>
+			</div>
+			<button
+				class="nav__toggle"
+				aria-expanded="false"
+				aria-controls="nav-overlay"
+			>
+				<Bi t={ui.menu} />
+			</button>
+		</div>
 	</div>
 
 	<div class="nav__overlay" id="nav-overlay" hidden>
 		<nav aria-label="Sections">
-			{nav.map((item) => <a href={`#${item.id}`}>{item.label}</a>)}
+			{nav.map((item) => (
+				<a href={`#${item.id}`}><Bi t={item.label} /></a>
+			))}
 		</nav>
 	</div>
 </header>
@@ -66,6 +80,39 @@ const monogram = `${site.couple.one[0]}${site.couple.two[0]}`;
 	.nav__links a:hover {
 		color: var(--terracotta);
 	}
+	.nav__right {
+		display: flex;
+		align-items: center;
+		gap: 1.1rem;
+	}
+	.lang {
+		display: flex;
+		align-items: center;
+		gap: 0.4rem;
+	}
+	.lang__btn {
+		font-family: var(--font-sans);
+		font-size: var(--fs-label);
+		letter-spacing: var(--track-wide);
+		font-weight: 500;
+		color: var(--olive-muted);
+		background: none;
+		border: 0;
+		padding: 0.2rem 0;
+		cursor: pointer;
+		transition: color 0.25s var(--ease);
+	}
+	.lang__btn:hover {
+		color: var(--ink);
+	}
+	.lang__sep {
+		color: var(--hairline);
+		font-size: var(--fs-label);
+	}
+	:global(html[data-lang='en']) .lang__btn[data-set-lang='en'],
+	:global(html[data-lang='de']) .lang__btn[data-set-lang='de'] {
+		color: var(--terracotta);
+	}
 	.nav__toggle {
 		font-family: var(--font-sans);
 		font-size: var(--fs-label);
@@ -108,13 +155,27 @@ const monogram = `${site.couple.one[0]}${site.couple.two[0]}`;
 </style>
 
 <script>
+	// Language toggle — set <html data-lang>, persist, update lang attr.
+	document.querySelectorAll<HTMLButtonElement>('.lang__btn').forEach((btn) => {
+		btn.addEventListener('click', () => {
+			const lang = btn.dataset.setLang || 'en';
+			document.documentElement.setAttribute('data-lang', lang);
+			document.documentElement.setAttribute('lang', lang);
+			try {
+				localStorage.setItem('lang', lang);
+			} catch (e) {
+				/* ignore */
+			}
+		});
+	});
+
+	// Mobile menu overlay.
 	const toggle = document.querySelector<HTMLButtonElement>('.nav__toggle');
 	const overlay = document.getElementById('nav-overlay');
 	if (toggle && overlay) {
 		const setOpen = (open: boolean) => {
 			overlay.hidden = !open;
 			toggle.setAttribute('aria-expanded', String(open));
-			toggle.textContent = open ? 'Close' : 'Menu';
 		};
 		toggle.addEventListener('click', () =>
 			setOpen(toggle.getAttribute('aria-expanded') !== 'true'),

@@ -1,17 +1,15 @@
 ---
 import { dressCode } from '../data/dressCode';
+import { dress } from '../data/copy';
+import Bi from './Bi.astro';
 ---
 
 <section id="dress" class="section section--alt">
 	<div class="container">
 		<header class="dress__head reveal">
-			<p class="kicker">What to wear</p>
-			<h2 class="dress__title">Dress code</h2>
-			<p class="measure">
-				Three days, three moods. Lean into the palette if it helps — soft
-				creams, olive, and the occasional terracotta — but mostly just come as
-				the most comfortable version of yourself.
-			</p>
+			<p class="kicker"><Bi t={dress.kicker} /></p>
+			<h2 class="dress__title"><Bi t={dress.title} /></h2>
+			<p class="measure"><Bi t={dress.intro} /></p>
 		</header>
 
 		<div class="dress__list">
@@ -19,16 +17,26 @@ import { dressCode } from '../data/dressCode';
 				dressCode.map((d) => (
 					<article class="dress__row reveal">
 						<div class="dress__info">
-							<p class="dress__day">{d.day}</p>
-							<h3 class="dress__code">{d.code}</h3>
-							<p class="dress__event">{d.event}</p>
-							<p class="dress__note">{d.note}</p>
+							<p class="dress__day">
+								<Bi t={d.day} />
+							</p>
+							<h3 class="dress__code">
+								<Bi t={d.code} />
+							</h3>
+							<p class="dress__event">
+								<Bi t={d.event} />
+							</p>
+							<p class="dress__note">
+								<Bi t={d.note} />
+							</p>
 						</div>
 						<div class="dress__swatches" aria-hidden="true">
 							{d.swatches.map((s) => (
 								<span class="dress__swatch">
 									<span class="dress__chip" style={`background:${s.hex}`} />
-									<span class="dress__name">{s.name}</span>
+									<span class="dress__name">
+										<Bi t={s.name} />
+									</span>
 								</span>
 							))}
 						</div>

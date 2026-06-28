@@ -17,6 +17,10 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      # Tells astro.config.mjs to apply `base: '/anna-mike-wedding/'` for the
+      # GitHub Pages project URL. Cloudflare Pages builds without this.
+      GITHUB_PAGES: 'true'
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v6

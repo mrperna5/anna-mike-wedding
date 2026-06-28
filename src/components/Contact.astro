@@ -1,16 +1,14 @@
 ---
 import { site } from '../data/site';
+import { contact } from '../data/copy';
+import Bi from './Bi.astro';
 ---
 
 <section id="contact" class="section section--alt">
 	<div class="container contact reveal measure">
-		<p class="kicker">Questions</p>
-		<h2 class="contact__head">Ask us anything</h2>
-		<p>
-			Planning a trip from afar can throw up a hundred small questions —
-			flights, rooms, what to pack, who else is coming. Don’t sit on them. We’d
-			genuinely rather hear from you than have you guess.
-		</p>
+		<p class="kicker"><Bi t={contact.kicker} /></p>
+		<h2 class="contact__head"><Bi t={contact.title} /></h2>
+		<p><Bi t={contact.p} /></p>
 		<a class="link contact__link" href={`mailto:${site.email}`}>{site.email}</a>
 	</div>
 </section>

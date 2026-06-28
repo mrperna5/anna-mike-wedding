@@ -1,12 +1,14 @@
 ---
 import { faq } from '../data/faq';
+import { faqCopy } from '../data/copy';
+import Bi from './Bi.astro';
 ---
 
 <section id="faq" class="section section--alt">
 	<div class="container faq">
 		<header class="faq__head reveal">
-			<p class="kicker">Good to know</p>
-			<h2 class="faq__title">Questions</h2>
+			<p class="kicker"><Bi t={faqCopy.kicker} /></p>
+			<h2 class="faq__title"><Bi t={faqCopy.title} /></h2>
 		</header>
 
 		<div class="faq__list">
@@ -14,10 +16,14 @@ import { faq } from '../data/faq';
 				faq.map((item) => (
 					<details class="faq__item reveal">
 						<summary class="faq__q">
-							<span>{item.q}</span>
+							<span>
+								<Bi t={item.q} />
+							</span>
 							<span class="faq__icon" aria-hidden="true" />
 						</summary>
-						<p class="faq__a">{item.a}</p>
+						<p class="faq__a">
+							<Bi t={item.a} />
+						</p>
 					</details>
 				))
 			}

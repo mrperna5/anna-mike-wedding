@@ -1,12 +1,14 @@
 ---
 import { schedule } from '../data/schedule';
+import { schedule as sched, ui } from '../data/copy';
+import Bi from './Bi.astro';
 ---
 
 <section id="schedule" class="section section--alt">
 	<div class="container">
 		<header class="sched__head reveal">
-			<p class="kicker">The weekend, hour by hour</p>
-			<h2 class="sched__title">Schedule</h2>
+			<p class="kicker"><Bi t={sched.kicker} /></p>
+			<h2 class="sched__title"><Bi t={sched.title} /></h2>
 		</header>
 
 		<ol class="sched__list">
@@ -15,16 +17,26 @@ import { schedule } from '../data/schedule';
 					<li class="sched__item reveal">
 						<span class="sched__n">{e.n}</span>
 						<div class="sched__when">
-							<p class="sched__day">{e.day}</p>
-							<p class="sched__date">{e.date}</p>
+							<p class="sched__day">
+								<Bi t={e.day} />
+							</p>
+							<p class="sched__date">
+								<Bi t={e.date} />
+							</p>
 						</div>
 						<div class="sched__body">
-							<h3 class="sched__name">{e.title}</h3>
+							<h3 class="sched__name">
+								<Bi t={e.title} />
+							</h3>
 							<p class="sched__meta">
-								{e.time} · {e.place}
+								<Bi t={e.time} /> · <Bi t={e.place} />
 							</p>
-							<p class="sched__blurb">{e.blurb}</p>
-							<p class="sched__dress">Dress — {e.dress}</p>
+							<p class="sched__blurb">
+								<Bi t={e.blurb} />
+							</p>
+							<p class="sched__dress">
+								<Bi t={ui.dressLabel} /> — <Bi t={e.dress} />
+							</p>
 						</div>
 					</li>
 				))
