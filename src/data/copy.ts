@@ -169,10 +169,58 @@ export const rsvp = {
 	headPreDe: 'Bist du',
 	headPostDe: '?',
 	sub: {
-		en: 'RSVPs will open right here in the new year. For now, save the dates, book a bed, and tell us you’re coming when the form goes live.',
-		de: 'Die Zusagen öffnen wir hier im neuen Jahr. Haltet euch fürs Erste die Tage frei, bucht eine Unterkunft und sagt uns Bescheid, sobald das Formular online ist.',
+		en: 'Let us know whether you can make it — you can change your answer any time before the wedding.',
+		de: 'Sagt uns, ob ihr dabei sein könnt — ihr könnt eure Antwort bis zur Hochzeit jederzeit ändern.',
 	} as L,
-	pill: { en: 'RSVP opening soon', de: 'Zusagen bald möglich' } as L,
+};
+
+export const rsvpForm = {
+	name: {
+		label: { en: 'Your name(s)', de: 'Euer Name / eure Namen' } as L,
+		placeholder: { en: 'First and last name', de: 'Vor- und Nachname' } as L,
+	},
+	attending: {
+		label: { en: 'Will you be there?', de: 'Seid ihr dabei?' } as L,
+		yes: { en: 'Joyfully, yes', de: 'Mit Freude, ja' } as L,
+		no: { en: 'Sadly, no', de: 'Leider nein' } as L,
+	},
+	days: {
+		label: { en: 'Which days will we see you?', de: 'An welchen Tagen sehen wir euch?' } as L,
+		hint: { en: 'Tick all that apply', de: 'Alles Zutreffende ankreuzen' } as L,
+		options: [
+			{ id: 'friday', label: { en: 'Friday — welcome pizza', de: 'Freitag — Willkommens-Pizza' } as L },
+			{ id: 'saturday', label: { en: 'Saturday — ceremony & celebration', de: 'Samstag — Trauung & Feier' } as L },
+			{ id: 'sunday', label: { en: 'Sunday — pool party', de: 'Sonntag — Poolparty' } as L },
+		],
+	},
+	dietary: {
+		label: {
+			en: 'Anything we should know? (allergies, dietary needs)',
+			de: 'Sollten wir etwas wissen? (Allergien, Ernährung)',
+		} as L,
+		placeholder: { en: 'e.g. vegetarian, nut allergy', de: 'z. B. vegetarisch, Nussallergie' } as L,
+	},
+	song: {
+		label: { en: 'A song that’ll get you dancing', de: 'Ein Lied, das euch tanzen lässt' } as L,
+		placeholder: { en: 'Artist — title', de: 'Künstler — Titel' } as L,
+	},
+	message: {
+		label: { en: 'A note for us (optional)', de: 'Eine Nachricht an uns (optional)' } as L,
+		placeholder: { en: 'Say hello…', de: 'Sagt Hallo…' } as L,
+	},
+	submit: { en: 'Send RSVP', de: 'Zusage senden' } as L,
+	success: {
+		en: 'Thank you — your reply is in. Send it again any time to update it.',
+		de: 'Danke — eure Antwort ist da. Sendet sie jederzeit erneut, um sie zu ändern.',
+	} as L,
+	error: {
+		en: 'Something went wrong sending that. Please try again, or email us.',
+		de: 'Beim Senden ist etwas schiefgelaufen. Bitte versucht es erneut oder schreibt uns.',
+	} as L,
+	required: {
+		en: 'Please add your name and let us know yes or no.',
+		de: 'Bitte tragt euren Namen ein und sagt uns ja oder nein.',
+	} as L,
 };
 
 export const contact = {

@@ -1,9 +1,9 @@
 ---
 import { site } from '../data/site';
-import { rsvp } from '../data/copy';
+import { rsvp, rsvpForm } from '../data/copy';
 import Bi from './Bi.astro';
-// Visual only for now — no form, no backend. When you're ready to collect
-// replies, wire this to your chosen service. Nothing here submits yet.
+// The form POSTs JSON to the /api/rsvp Pages Function, which stores replies in
+// Cloudflare D1. Runs only on Cloudflare; see DEPLOYMENT.md for D1 setup.
 ---
 
 <section id="rsvp" class="section">
@@ -22,7 +22,96 @@ import Bi from './Bi.astro';
 		</h2>
 
 		<p class="rsvp__sub measure"><Bi t={rsvp.sub} /></p>
-		<p class="rsvp__pill"><Bi t={rsvp.pill} /></p>
+
+		<form id="rsvp-form" class="rform" novalidate>
+			<div class="rform__field">
+				<label class="rform__label" for="rsvp-name"><Bi t={rsvpForm.name.label} /></label>
+				<input
+					class="rform__input"
+					id="rsvp-name"
+					name="name"
+					type="text"
+					required
+					data-ph-en={rsvpForm.name.placeholder.en}
+					data-ph-de={rsvpForm.name.placeholder.de}
+				/>
+			</div>
+
+			<fieldset class="rform__field rform__fieldset">
+				<legend class="rform__label"><Bi t={rsvpForm.attending.label} /></legend>
+				<div class="rform__choices">
+					<label class="rform__choice">
+						<input type="radio" name="attending" value="yes" required />
+						<span><Bi t={rsvpForm.attending.yes} /></span>
+					</label>
+					<label class="rform__choice">
+						<input type="radio" name="attending" value="no" />
+						<span><Bi t={rsvpForm.attending.no} /></span>
+					</label>
+				</div>
+			</fieldset>
+
+			<fieldset class="rform__field rform__fieldset">
+				<legend class="rform__label">
+					<Bi t={rsvpForm.days.label} />
+					<span class="rform__hint"><Bi t={rsvpForm.days.hint} /></span>
+				</legend>
+				<div class="rform__checks">
+					{
+						rsvpForm.days.options.map((o) => (
+							<label class="rform__check">
+								<input type="checkbox" name="days" value={o.id} />
+								<span><Bi t={o.label} /></span>
+							</label>
+						))
+					}
+				</div>
+			</fieldset>
+
+			<div class="rform__field">
+				<label class="rform__label" for="rsvp-dietary"><Bi t={rsvpForm.dietary.label} /></label>
+				<input
+					class="rform__input"
+					id="rsvp-dietary"
+					name="dietary"
+					type="text"
+					data-ph-en={rsvpForm.dietary.placeholder.en}
+					data-ph-de={rsvpForm.dietary.placeholder.de}
+				/>
+			</div>
+
+			<div class="rform__field">
+				<label class="rform__label" for="rsvp-song"><Bi t={rsvpForm.song.label} /></label>
+				<input
+					class="rform__input"
+					id="rsvp-song"
+					name="song"
+					type="text"
+					data-ph-en={rsvpForm.song.placeholder.en}
+					data-ph-de={rsvpForm.song.placeholder.de}
+				/>
+			</div>
+
+			<div class="rform__field">
+				<label class="rform__label" for="rsvp-message"><Bi t={rsvpForm.message.label} /></label>
+				<textarea
+					class="rform__input rform__textarea"
+					id="rsvp-message"
+					name="message"
+					rows="3"
+					data-ph-en={rsvpForm.message.placeholder.en}
+					data-ph-de={rsvpForm.message.placeholder.de}></textarea>
+			</div>
+
+			<button class="rform__submit" type="submit"><Bi t={rsvpForm.submit} /></button>
+		</form>
+
+		<div class="rform__status" role="status" aria-live="polite">
+			<p class="rform__msg rform__msg--ok" hidden><Bi t={rsvpForm.success} /></p>
+			<p class="rform__msg rform__msg--err" hidden><Bi t={rsvpForm.error} /></p>
+			<p class="rform__msg rform__msg--req" hidden><Bi t={rsvpForm.required} /></p>
+		</div>
+
 		<p class="rsvp__meta"><Bi t={site.location} /> · <Bi t={site.dateLong} /></p>
 	</div>
 </section>
@@ -36,7 +125,7 @@ import Bi from './Bi.astro';
 	}
 	.rsvp__head {
 		font-size: var(--fs-h1);
-		margin: 0 0 1.75rem;
+		margin: 0 0 1.5rem;
 	}
 	.rsvp__and {
 		display: inline;
@@ -45,27 +134,195 @@ import Bi from './Bi.astro';
 		vertical-align: -0.08em;
 	}
 	.rsvp__sub {
-		margin: 0 auto 2.25rem;
+		margin: 0 auto 2.75rem;
 		font-size: var(--fs-h3);
 		line-height: 1.7;
 	}
-	.rsvp__pill {
-		display: inline-block;
+
+	/* form */
+	.rform {
+		max-width: 32rem;
+		margin: 0 auto;
+		text-align: left;
+		display: grid;
+		gap: 1.75rem;
+	}
+	.rform__field {
+		border: 0;
+		padding: 0;
+		margin: 0;
+	}
+	.rform__label {
+		display: block;
+		font-family: var(--font-sans);
+		font-size: var(--fs-label);
+		letter-spacing: var(--track-wide);
+		text-transform: uppercase;
+		font-weight: 500;
+		color: var(--olive);
+		margin-bottom: 0.6rem;
+	}
+	.rform__hint {
+		text-transform: none;
+		letter-spacing: 0.02em;
+		font-weight: 350;
+		color: var(--olive-muted);
+		margin-left: 0.5rem;
+	}
+	.rform__input {
+		width: 100%;
+		font-family: var(--font-sans);
+		font-size: 1rem;
+		color: var(--ink);
+		background: transparent;
+		border: 0;
+		border-bottom: 1px solid var(--hairline);
+		padding: 0.6rem 0.1rem;
+		transition: border-color 0.25s var(--ease);
+	}
+	.rform__input:focus {
+		outline: none;
+		border-bottom-color: var(--olive);
+	}
+	.rform__input::placeholder {
+		color: var(--olive-muted);
+	}
+	.rform__textarea {
+		border: 1px solid var(--hairline);
+		padding: 0.75rem;
+		resize: vertical;
+	}
+	.rform__choices,
+	.rform__checks {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem 1.5rem;
+	}
+	.rform__checks {
+		flex-direction: column;
+	}
+	.rform__choice,
+	.rform__check {
+		display: flex;
+		align-items: center;
+		gap: 0.6rem;
+		font-size: var(--fs-small);
+		color: var(--ink-soft);
+		cursor: pointer;
+	}
+	.rform__choice input,
+	.rform__check input {
+		accent-color: var(--olive);
+		width: 1.05rem;
+		height: 1.05rem;
+	}
+	.rform__submit {
+		justify-self: start;
+		font-family: var(--font-sans);
 		font-size: var(--fs-label);
 		letter-spacing: var(--track-label);
 		text-transform: uppercase;
 		font-weight: 500;
+		color: var(--cream);
+		background: var(--olive);
+		border: 0;
+		padding: 0.95rem 2.25rem;
+		cursor: pointer;
+		transition: background 0.25s var(--ease);
+	}
+	.rform__submit:hover {
+		background: var(--ink);
+	}
+	.rform__submit:disabled {
+		opacity: 0.6;
+		cursor: default;
+	}
+	.rform__status {
+		max-width: 32rem;
+		margin: 1.5rem auto 0;
+		text-align: left;
+	}
+	.rform__msg {
+		margin: 0;
+		font-size: var(--fs-small);
+	}
+	.rform__msg--ok {
 		color: var(--olive);
-		border: 1px solid var(--olive);
-		border-radius: 999px;
-		padding: 0.85rem 1.75rem;
-		margin: 0 0 2rem;
+	}
+	.rform__msg--err,
+	.rform__msg--req {
+		color: var(--terracotta);
 	}
 	.rsvp__meta {
+		text-align: center;
 		font-size: var(--fs-label);
 		letter-spacing: var(--track-wide);
 		text-transform: uppercase;
 		color: var(--olive-muted);
-		margin: 0;
+		margin: 2.75rem 0 0;
 	}
 </style>
+
+<script>
+	// Apply localised placeholders (they can't be bilingual-toggled in the DOM
+	// like text, so we set them from data-* per current language and on switch).
+	function applyPlaceholders() {
+		const lang = document.documentElement.getAttribute('data-lang') === 'de' ? 'de' : 'en';
+		document
+			.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>('#rsvp-form [data-ph-en]')
+			.forEach((el) => {
+				el.placeholder = el.getAttribute('data-ph-' + lang) || '';
+			});
+	}
+	applyPlaceholders();
+	document.querySelectorAll('.lang__btn').forEach((b) =>
+		b.addEventListener('click', () => setTimeout(applyPlaceholders, 0)),
+	);
+
+	const form = document.getElementById('rsvp-form') as HTMLFormElement | null;
+	if (form) {
+		const msgs = {
+			ok: document.querySelector<HTMLElement>('.rform__msg--ok'),
+			err: document.querySelector<HTMLElement>('.rform__msg--err'),
+			req: document.querySelector<HTMLElement>('.rform__msg--req'),
+		};
+		const show = (key: 'ok' | 'err' | 'req' | null) => {
+			for (const m of Object.values(msgs)) if (m) m.hidden = true;
+			if (key && msgs[key]) msgs[key]!.hidden = false;
+		};
+		const submit = form.querySelector<HTMLButtonElement>('.rform__submit');
+
+		form.addEventListener('submit', async (e) => {
+			e.preventDefault();
+			const fd = new FormData(form);
+			const name = String(fd.get('name') || '').trim();
+			const attending = String(fd.get('attending') || '');
+			if (!name || !attending) {
+				show('req');
+				return;
+			}
+			const payload = {
+				name,
+				attending,
+				days: fd.getAll('days').map(String),
+				dietary: String(fd.get('dietary') || '').trim(),
+				song: String(fd.get('song') || '').trim(),
+				message: String(fd.get('message') || '').trim(),
+			};
+			if (submit) submit.disabled = true;
+			try {
+				const res = await fetch('/api/rsvp', {
+					method: 'POST',
+					headers: { 'content-type': 'application/json' },
+					body: JSON.stringify(payload),
+				});
+				if (!res.ok) throw new Error('bad status');
+				show('ok');
+				form.hidden = true;
+			} catch {
+				show('err');
+				if (submit) submit.disabled = false;
+			}
+		});
+	}
+</script>
