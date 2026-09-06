@@ -1,15 +1,15 @@
 ---
 import { accommodation } from '../data/accommodation';
-import { stay, ui } from '../data/copy';
+import { accommodation as copy, ui } from '../data/copy';
 import Bi from './Bi.astro';
 ---
 
-<section id="stay" class="section">
+<section id="accommodation" class="section">
 	<div class="container">
 		<header class="stay__head reveal">
-			<p class="kicker"><Bi t={stay.kicker} /></p>
-			<h1 class="stay__title"><Bi t={stay.title} /></h1>
-			<p class="measure"><Bi t={stay.intro} /></p>
+			<p class="kicker"><Bi t={copy.kicker} /></p>
+			<h1 class="stay__title"><Bi t={copy.title} /></h1>
+			<p class="measure"><Bi t={copy.intro} /></p>
 		</header>
 
 		<ul class="stay__list">

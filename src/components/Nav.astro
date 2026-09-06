@@ -3,7 +3,7 @@ import { site, nav } from '../data/site';
 import { ui } from '../data/copy';
 import Bi from './Bi.astro';
 const monogram = `${site.couple.one[0]}${site.couple.two[0]}`;
-// Current route, without a trailing slash, so `/stay` and `/stay/` both mark
+// Current route, without a trailing slash, so `/venue` and `/venue/` both mark
 // the same link as current.
 const here = Astro.url.pathname.replace(/\/+$/, '') || '/';
 ---
@@ -73,11 +73,17 @@ const here = Astro.url.pathname.replace(/\/+$/, '') || '/';
 	}
 	.nav__links {
 		display: none;
-		gap: clamp(0.9rem, 2vw, 1.9rem);
+		gap: 1.25rem;
 	}
+	/* Nine items in two languages fill the bar: labels never break mid-word
+	   (that's what makes the row look ragged), the tracking is a touch
+	   tighter than --track-wide, the gap is fixed rather than fluid, and the
+	   row only appears at 72rem — the German labels, the longer set, then
+	   fit on one line at every width above it. */
 	.nav__links a {
 		font-size: var(--fs-label);
-		letter-spacing: var(--track-wide);
+		letter-spacing: 0.12em;
+		white-space: nowrap;
 		text-transform: uppercase;
 		font-weight: 500;
 		color: var(--ink-soft);
@@ -158,7 +164,7 @@ const here = Astro.url.pathname.replace(/\/+$/, '') || '/';
 		font-style: italic;
 	}
 
-	@media (min-width: 64rem) {
+	@media (min-width: 72rem) {
 		.nav__links {
 			display: flex;
 		}

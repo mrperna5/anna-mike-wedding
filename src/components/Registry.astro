@@ -1,0 +1,83 @@
+---
+import { registry } from '../data/copy';
+import Bi from './Bi.astro';
+---
+
+<section id="registry" class="section">
+	<div class="container">
+		<header class="reg__head reveal">
+			<p class="kicker"><Bi t={registry.kicker} /></p>
+			<h1 class="reg__title"><Bi t={registry.title} /></h1>
+			<p class="lede measure"><Bi t={registry.intro} /></p>
+		</header>
+
+		<ul class="reg__list">
+			{
+				registry.options.map((o) => (
+					<li class="reg__option reveal">
+						<p class="reg__label">
+							<Bi t={o.label} />
+						</p>
+						<h3 class="reg__name">
+							<Bi t={o.title} />
+						</h3>
+						<p class="reg__body">
+							<Bi t={o.body} />
+						</p>
+					</li>
+				))
+			}
+		</ul>
+
+		<p class="reg__outro measure reveal"><Bi t={registry.outro} /></p>
+	</div>
+</section>
+
+<style>
+	.reg__head {
+		margin-bottom: clamp(2.5rem, 6vw, 4rem);
+	}
+	.reg__title {
+		font-size: var(--fs-h1);
+		margin: 1rem 0 1.5rem;
+	}
+	.reg__list {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: grid;
+		gap: clamp(1.5rem, 4vw, 2.5rem);
+	}
+	.reg__option {
+		padding-top: 1.25rem;
+		border-top: 1px solid var(--hairline);
+	}
+	.reg__label {
+		font-size: var(--fs-label);
+		letter-spacing: var(--track-label);
+		text-transform: uppercase;
+		color: var(--terracotta);
+		margin: 0 0 0.75rem;
+	}
+	.reg__name {
+		font-size: var(--fs-h3);
+		margin: 0 0 0.65rem;
+	}
+	.reg__body {
+		margin: 0;
+		font-size: var(--fs-small);
+	}
+	.reg__outro {
+		margin-top: clamp(2.5rem, 6vw, 3.5rem);
+		font-family: var(--font-display);
+		font-style: italic;
+		font-size: var(--fs-h3);
+		color: var(--olive);
+	}
+	@media (min-width: 48rem) {
+		.reg__list {
+			grid-template-columns: repeat(2, 1fr);
+			gap: 3rem 4rem;
+		}
+	}
+</style>

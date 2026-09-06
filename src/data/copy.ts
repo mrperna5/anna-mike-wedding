@@ -40,23 +40,10 @@ export const overview = {
 	} as L,
 };
 
-export const story = {
-	kicker: { en: 'Our story', de: 'Unsere Geschichte' } as L,
-	title: { en: 'How we got here', de: 'Wie wir hierher kamen' } as L,
-	lede: {
-		en: 'Ten years, three cities, and one very persistent idea that we ought to do this somewhere with good wine.',
-		de: 'Zehn Jahre, drei Städte und eine sehr hartnäckige Idee: dass wir das irgendwo mit gutem Wein tun sollten.',
-	} as L,
-	p: {
-		en: 'We’re saving the long version for the toasts. The short one: we met young, took our time, and somewhere along the way Tuscany became the place we kept coming back to. It felt right to bring everyone here.',
-		de: 'Die lange Version heben wir uns für die Reden auf. Die kurze: Wir haben uns jung kennengelernt, uns Zeit gelassen, und irgendwann wurde die Toskana der Ort, an den wir immer wieder zurückkehrten. Es fühlte sich richtig an, alle hierher zu holen.',
-	} as L,
-	caption: { en: 'Us, somewhere in Italy', de: 'Wir, irgendwo in Italien' } as L,
-};
-
 export const schedule = {
-	kicker: { en: 'The weekend, hour by hour', de: 'Das Wochenende, Stunde für Stunde' } as L,
-	title: { en: 'Schedule', de: 'Programm' } as L,
+	// Sub-heading for the run of the weekend, which lives on the overview page.
+	kicker: { en: 'Hour by hour', de: 'Stunde für Stunde' } as L,
+	title: { en: 'The run of the weekend', de: 'Der Ablauf des Wochenendes' } as L,
 };
 
 export const venue = {
@@ -100,8 +87,8 @@ export const venue = {
 };
 
 export const travel = {
-	kicker: { en: 'Getting there', de: 'Anreise' } as L,
-	title: { en: 'Travel', de: 'Anreise' } as L,
+	kicker: { en: 'Getting here', de: 'Anfahrt' } as L,
+	title: { en: 'Getting there', de: 'Anreise' } as L,
 	intro: {
 		en: 'Pienza sits in southern Tuscany, between Siena and the Umbrian border. However you come, you’ll want wheels once you’re here.',
 		de: 'Pienza liegt in der südlichen Toskana, zwischen Siena und der Grenze zu Umbrien. Wie ihr auch kommt — vor Ort braucht ihr ein Auto.',
@@ -134,7 +121,7 @@ export const travel = {
 	],
 };
 
-export const stay = {
+export const accommodation = {
 	kicker: { en: 'Where to stay', de: 'Wo übernachten' } as L,
 	title: { en: 'Accommodation', de: 'Unterkunft' } as L,
 	intro: {
@@ -154,16 +141,47 @@ export const dress = {
 
 export const todo = {
 	kicker: { en: 'If you’re staying on', de: 'Wenn ihr länger bleibt' } as L,
-	title: { en: 'Around Pienza', de: 'Rund um Pienza' } as L,
+	title: { en: 'Things to do', de: 'Unternehmungen' } as L,
 	intro: {
-		en: 'Make a holiday of it. A few field notes from our own trips — the things we’d tell a friend to do, not a guidebook’s greatest hits.',
-		de: 'Macht einen Urlaub daraus. Ein paar Notizen von unseren eigenen Reisen — das, was wir Freunden empfehlen würden, nicht die Klassiker aus dem Reiseführer.',
+		en: 'Make a holiday of it. A few field notes from our own trips around Pienza and the wider Val d’Orcia — the things we’d tell a friend to do, not a guidebook’s greatest hits. We’ll keep adding to this.',
+		de: 'Macht einen Urlaub daraus. Ein paar Notizen von unseren eigenen Reisen rund um Pienza und durchs Val d’Orcia — das, was wir Freunden empfehlen würden, nicht die Klassiker aus dem Reiseführer. Wir ergänzen die Liste laufend.',
 	} as L,
 };
 
 export const faqCopy = {
 	kicker: { en: 'Good to know', de: 'Gut zu wissen' } as L,
 	title: { en: 'Questions', de: 'Fragen' } as L,
+};
+
+export const registry = {
+	kicker: { en: 'On the subject of gifts', de: 'Zum Thema Geschenke' } as L,
+	title: { en: 'Registry', de: 'Geschenke' } as L,
+	intro: {
+		en: 'The honest answer is that you flying to Tuscany for us is the present. We’ve lived together for years and the cupboards are full — please don’t feel you owe us anything.',
+		de: 'Die ehrliche Antwort: Dass ihr für uns in die Toskana fliegt, ist das Geschenk. Wir wohnen seit Jahren zusammen und die Schränke sind voll — ihr schuldet uns wirklich nichts.',
+	} as L,
+	outro: {
+		en: 'If you’d rather hand us something on the day, a card finds us just as well.',
+		de: 'Wenn ihr uns lieber am Tag selbst etwas gebt — eine Karte erreicht uns genauso gut.',
+	} as L,
+	options: [
+		{
+			label: { en: 'If you’d like to', de: 'Falls ihr möchtet' },
+			title: { en: 'The honeymoon fund', de: 'Die Flitterwochen-Kasse' },
+			body: {
+				en: 'We’re saving for a long trip after the wedding. A contribution towards a night, a dinner, or a train ticket somewhere would mean a lot. Details to follow closer to the day.',
+				de: 'Wir sparen auf eine längere Reise nach der Hochzeit. Ein Beitrag für eine Nacht, ein Abendessen oder eine Zugfahrt würde uns viel bedeuten. Die Details folgen näher am Termin.',
+			},
+		},
+		{
+			label: { en: 'Or', de: 'Oder' },
+			title: { en: 'Something for the house', de: 'Etwas fürs Zuhause' },
+			body: {
+				en: 'For anyone who’d prefer something to wrap, we’ll put a short list of things we actually need here in good time — short being the point.',
+				de: 'Wer lieber etwas einpackt: Wir stellen hier rechtzeitig eine kurze Liste mit Dingen ein, die wir wirklich brauchen — kurz ist dabei das Entscheidende.',
+			},
+		},
+	],
 };
 
 export const rsvp = {

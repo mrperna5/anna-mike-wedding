@@ -1,0 +1,14 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Registry from '../components/Registry.astro';
+import Pager from '../components/Pager.astro';
+import { site } from '../data/site';
+---
+
+<Layout
+	title={`Registry — ${site.couple.one} and ${site.couple.two}`}
+	description="You coming is the gift — but if you insist. · Dass ihr kommt, ist das Geschenk — aber falls ihr darauf besteht."
+>
+	<Registry />
+	<Pager id="registry" />
+</Layout>
