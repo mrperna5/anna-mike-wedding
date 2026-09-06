@@ -2,7 +2,11 @@
 
 import type { L } from './i18n';
 
-export type Qa = { q: L; a: L };
+/** A phone-book entry rendered under an answer — names and streets are
+ *  proper nouns, so only the note is translated. */
+export type Place = { name: string; address: string; phone: string; note?: L };
+
+export type Qa = { q: L; a: L; places?: Place[] };
 
 export const faq: Qa[] = [
 	{
@@ -32,6 +36,47 @@ export const faq: Qa[] = [
 			en: 'Mid-May in Tuscany is usually warm days and cool evenings. Bring something for your shoulders after dark and shoes that handle stone and grass.',
 			de: 'Mitte Mai sind die Tage in der Toskana meist warm und die Abende kühl. Nehmt etwas für die Schultern für später mit und Schuhe für Stein und Gras.',
 		},
+	},
+	{
+		q: {
+			en: 'Is there anywhere to get my hair done?',
+			de: 'Gibt es hier Friseure?',
+		},
+		a: {
+			en: 'A handful of small salons in Pienza and one in Monticchiello. They’re village salons rather than bridal studios, so ring ahead — May is busy in the Val d’Orcia, and the phone is the way to reach them.',
+			de: 'Ein paar kleine Salons in Pienza und einer in Monticchiello. Es sind Dorfsalons, keine Braut-Studios — ruft also frühzeitig an. Im Mai ist im Val d’Orcia viel los, und erreichbar sind sie am besten telefonisch.',
+		},
+		places: [
+			{
+				name: 'Caselli Livia Hair Salon',
+				address: 'Via San Gregorio 23, Pienza',
+				phone: '+39 0578 749057',
+			},
+			{
+				name: 'Unisex Catia',
+				address: 'Via della Madonnina 40, Pienza',
+				phone: '+39 339 888 9547',
+			},
+			{
+				name: 'Parrucchiera Garosi Carla',
+				address: 'Corso il Rossellino 44, Pienza',
+				phone: '+39 0578 748052',
+			},
+			{
+				name: 'Gocce di Bellezza',
+				address: 'Via Marconi 20, Pienza',
+				phone: '+39 335 157 5096',
+				note: {
+					en: 'A beauty salon rather than a hairdresser — the one to try for make-up.',
+					de: 'Ein Kosmetikstudio, kein Friseur — die Adresse für Make-up.',
+				},
+			},
+			{
+				name: 'Parrucchiera per Signora Paola',
+				address: 'Via Pietro Lorenzetti 1, Monticchiello',
+				phone: '+39 0578 755148',
+			},
+		],
 	},
 	{
 		q: { en: 'When should I RSVP by?', de: 'Bis wann soll ich zusagen?' },
