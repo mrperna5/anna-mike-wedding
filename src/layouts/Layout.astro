@@ -15,6 +15,9 @@ const {
 	title = `${site.couple.one} and ${site.couple.two} — ${site.location.en}`,
 	description = `Join ${site.couple.one} and ${site.couple.two} in ${site.location.en} for a three-day wedding weekend, ${site.dateLong.en}. · Feiert mit uns ein dreitägiges Hochzeitswochenende.`,
 } = Astro.props;
+
+// One canonical URL per page now that each section has its own route.
+const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url).href;
 ---
 
 <!doctype html>
@@ -51,6 +54,8 @@ const {
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
 		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonical} />
+		<link rel="canonical" href={canonical} />
 
 		<!-- Fonts. Bodoni Moda (display) + Hanken Grotesk (text) + Tangerine
 		     (placeholder for Amalfi Coast, used only on the word "and").
@@ -81,7 +86,10 @@ const {
 				const io = new IntersectionObserver(
 					(entries) => {
 						for (const e of entries) {
-							if (e.isIntersecting) {
+							// `top < 0` catches anything a fast or programmatic scroll
+							// jumped clean past — it would never intersect, and would
+							// stay invisible.
+							if (e.isIntersecting || e.boundingClientRect.top < 0) {
 								e.target.classList.add('is-in');
 								io.unobserve(e.target);
 							}

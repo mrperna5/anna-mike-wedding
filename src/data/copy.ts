@@ -10,6 +10,10 @@ export const ui = {
 	backToTop: { en: 'Back to top', de: 'Nach oben' } as L,
 	dressLabel: { en: 'Dress', de: 'Outfit' } as L,
 	haveALook: { en: 'Have a look', de: 'Ansehen' } as L,
+	prev: { en: 'Previous', de: 'Zurück' } as L,
+	next: { en: 'Next', de: 'Weiter' } as L,
+	home: { en: 'Home', de: 'Startseite' } as L,
+	indexKicker: { en: 'Everything you need', de: 'Alles Wichtige' } as L,
 };
 
 export const hero = {
@@ -31,13 +35,14 @@ export const overview = {
 		de: 'Wir wollten keine Hochzeit, die nach einem Abend vorbei ist. Darum bitten wir die Menschen, die wir lieben, sich ein langes Wochenende im Val d’Orcia frei zu halten — um in Ruhe zu essen, lange wach zu bleiben und an einem schönen Ort zusammen zu sein.',
 	} as L,
 	p2: {
-		en: 'Pizza on Friday, vows on Saturday, and nowhere to be on Sunday. Everything below is here to help you plan the trip.',
-		de: 'Pizza am Freitag, das Ja-Wort am Samstag und nichts vor am Sonntag. Alles Weitere unten hilft euch bei der Reiseplanung.',
+		en: 'Pizza on Friday, vows on Saturday, and nowhere to be on Sunday. The rest of these pages are here to help you plan the trip.',
+		de: 'Pizza am Freitag, das Ja-Wort am Samstag und nichts vor am Sonntag. Die übrigen Seiten helfen euch bei der Reiseplanung.',
 	} as L,
 };
 
 export const story = {
 	kicker: { en: 'Our story', de: 'Unsere Geschichte' } as L,
+	title: { en: 'How we got here', de: 'Wie wir hierher kamen' } as L,
 	lede: {
 		en: 'Ten years, three cities, and one very persistent idea that we ought to do this somewhere with good wine.',
 		de: 'Zehn Jahre, drei Städte und eine sehr hartnäckige Idee: dass wir das irgendwo mit gutem Wein tun sollten.',

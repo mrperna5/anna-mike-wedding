@@ -14,16 +14,24 @@ export const site = {
 	email: 'hello@annaandmike.com',
 };
 
-// Slim section index used by the nav. `id` must match each section's anchor.
-export const nav: { id: string; label: L }[] = [
-	{ id: 'overview', label: { en: 'The weekend', de: 'Das Wochenende' } },
-	{ id: 'story', label: { en: 'Our story', de: 'Unsere Geschichte' } },
-	{ id: 'schedule', label: { en: 'Schedule', de: 'Programm' } },
-	{ id: 'venue', label: { en: 'Venue', de: 'Location' } },
-	{ id: 'travel', label: { en: 'Travel', de: 'Anreise' } },
-	{ id: 'stay', label: { en: 'Stay', de: 'Unterkunft' } },
-	{ id: 'dress', label: { en: 'Dress code', de: 'Dresscode' } },
-	{ id: 'pienza', label: { en: 'Pienza', de: 'Pienza' } },
-	{ id: 'faq', label: { en: 'FAQ', de: 'FAQ' } },
-	{ id: 'rsvp', label: { en: 'RSVP', de: 'Zusagen' } },
+// The site is one page per section. `href` is the route; `id` matches the
+// section anchor inside each page's component. Order here is the order of the
+// nav, the home-page index, and the prev/next pager — change it in one place.
+export type PageDef = { id: string; href: string; label: L; inNav?: boolean };
+
+export const pages: PageDef[] = [
+	{ id: 'overview', href: '/overview', label: { en: 'The weekend', de: 'Das Wochenende' } },
+	{ id: 'story', href: '/story', label: { en: 'Our story', de: 'Unsere Geschichte' } },
+	{ id: 'schedule', href: '/schedule', label: { en: 'Schedule', de: 'Programm' } },
+	{ id: 'venue', href: '/venue', label: { en: 'Venue', de: 'Location' } },
+	{ id: 'travel', href: '/travel', label: { en: 'Travel', de: 'Anreise' } },
+	{ id: 'stay', href: '/stay', label: { en: 'Stay', de: 'Unterkunft' } },
+	{ id: 'dress', href: '/dress', label: { en: 'Dress code', de: 'Dresscode' } },
+	{ id: 'pienza', href: '/pienza', label: { en: 'Pienza', de: 'Pienza' } },
+	{ id: 'faq', href: '/faq', label: { en: 'FAQ', de: 'FAQ' } },
+	{ id: 'rsvp', href: '/rsvp', label: { en: 'RSVP', de: 'Zusagen' } },
+	// Reachable from the footer and the pager, but kept out of the top nav.
+	{ id: 'contact', href: '/contact', label: { en: 'Contact', de: 'Kontakt' }, inNav: false },
 ];
+
+export const nav = pages.filter((p) => p.inNav !== false);

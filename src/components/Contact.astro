@@ -4,10 +4,10 @@ import { contact } from '../data/copy';
 import Bi from './Bi.astro';
 ---
 
-<section id="contact" class="section section--alt">
+<section id="contact" class="section">
 	<div class="container contact reveal measure">
 		<p class="kicker"><Bi t={contact.kicker} /></p>
-		<h2 class="contact__head"><Bi t={contact.title} /></h2>
+		<h1 class="contact__head"><Bi t={contact.title} /></h1>
 		<p><Bi t={contact.p} /></p>
 		<a class="link contact__link" href={`mailto:${site.email}`}>{site.email}</a>
 	</div>

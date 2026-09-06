@@ -1,0 +1,14 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Overview from '../components/Overview.astro';
+import Pager from '../components/Pager.astro';
+import { site } from '../data/site';
+---
+
+<Layout
+	title={`The weekend — ${site.couple.one} and ${site.couple.two}`}
+	description="Three days in the Val d’Orcia — what the weekend looks like. · Drei Tage im Val d’Orcia — so sieht das Wochenende aus."
+>
+	<Overview />
+	<Pager id="overview" />
+</Layout>

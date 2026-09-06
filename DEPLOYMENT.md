@@ -51,6 +51,47 @@ WhatsApp. One code, everyone uses the same one.
 
 ---
 
+## RSVP storage (Cloudflare D1)
+
+The RSVP form POSTs to `functions/api/rsvp.js`, which writes each reply to a
+Cloudflare **D1** database (free for our size). Do this once, all in the
+dashboard.
+
+### 1. Create the database
+Workers & Pages → **D1 SQL Database → Create** → name it `anna-mike-rsvp`.
+
+### 2. Create the table
+Open the database → **Console** tab → paste the contents of
+[`db/schema.sql`](db/schema.sql) → **Execute**.
+(CLI alternative: `npx wrangler d1 execute anna-mike-rsvp --remote --file=./db/schema.sql`)
+
+### 3. Bind it to the site
+Your Pages project → **Settings → Bindings** (a.k.a. Functions → D1 bindings) →
+**Add → D1 database**:
+- Variable name: `DB`  ← must be exactly this
+- D1 database: `anna-mike-rsvp`
+
+### 4. Add the admin key
+Pages project → **Settings → Variables and Secrets** → add:
+- `RSVP_ADMIN_KEY` = a long random string only you know (**Encrypt**).
+
+### 5. Redeploy
+Deployments → ⋯ → **Retry deployment** (or push a commit) so the binding + secret
+take effect.
+
+### Seeing the replies
+- **Dashboard:** D1 → `anna-mike-rsvp` → Console → `SELECT * FROM rsvps ORDER BY created_at DESC;`
+- **Spreadsheet:** visit `…/rsvp-admin?key=YOUR_RSVP_ADMIN_KEY` (you'll pass the
+  site password first) to download a CSV of everyone's replies.
+
+### Testing a submission
+- Local `astro dev` shows the form but **can't save** (Functions/D1 don't run there).
+- Real test: after the steps above, open the live site, fill in the RSVP, submit,
+  then check the D1 console. Or run `npx wrangler pages dev dist` with a D1 binding
+  to test end-to-end locally.
+
+---
+
 ## Notes
 
 - The gate only runs on Cloudflare (and `wrangler pages dev`). Local

@@ -1,0 +1,14 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Story from '../components/Story.astro';
+import Pager from '../components/Pager.astro';
+import { site } from '../data/site';
+---
+
+<Layout
+	title={`Our story — ${site.couple.one} and ${site.couple.two}`}
+	description="How Anna and Mike got here. · Wie Anna und Mike hierher kamen."
+>
+	<Story />
+	<Pager id="story" />
+</Layout>

@@ -86,15 +86,34 @@ speak only one of the two.
 
 ## Structure
 
-- `src/pages/index.astro` — composes the one-page site from section components.
-- `src/layouts/Layout.astro` — head/meta/OG, font links, `global.css`, `Nav`, `Footer`, and a
-  small reveal-on-scroll script (progressive enhancement; content is visible without JS).
+**One page per menu entry** — the site is multi-page, not a single scroller.
+
+- `src/pages/index.astro` — the home page: `Hero` (the invitation) + `PageIndex`
+  (a numbered contents list of every page).
+- `src/pages/<id>.astro` — one file per section page (`overview`, `story`, `schedule`, `venue`,
+  `travel`, `stay`, `dress`, `pienza`, `faq`, `rsvp`, `contact`). Each is the same three lines:
+  `Layout` (with its own `title`/`description`) → the section component → `<Pager id="…" />`.
+  Routes are extensionless (`/stay`); Astro emits `stay/index.html`.
+- `src/layouts/Layout.astro` — head/meta/OG, canonical URL, font links, `global.css`, `Nav`,
+  `Footer`, and a small reveal-on-scroll script (progressive enhancement; content is visible
+  without JS).
 - `src/components/*.astro` — one component per section (Hero, Overview, Story, Schedule, Venue,
-  Travel, Accommodation, DressCode, ThingsToDo, Faq, Rsvp, Contact) plus Nav/Footer. Component-
-  specific CSS lives in scoped `<style>` blocks; shared tokens/primitives live in `global.css`.
+  Travel, Accommodation, DressCode, ThingsToDo, Faq, Rsvp, Contact) plus Nav/Footer/Pager/
+  PageIndex. Component-specific CSS lives in scoped `<style>` blocks; shared tokens/primitives
+  live in `global.css`.
 - `src/data/*.ts` — **all editable copy lives here** (site facts, schedule, accommodation, faq,
-  thingsToDo, dressCode). Change content here, not in markup. `site.ts` also drives the nav index;
-  each `nav.id` must match a section's anchor `id`.
+  thingsToDo, dressCode). Change content here, not in markup.
+
+**Adding or reordering a page:** edit the `pages` array in `src/data/site.ts` — it drives the
+nav, the home-page index, and the prev/next pager in one place — then add the matching
+`src/pages/<id>.astro`. `href` is the route; `id` is both the page file's name and the section's
+anchor `id`. `inNav: false` keeps a page out of the top nav (Contact does this; it's reachable
+from the footer and the pager).
+
+**Headings:** each section component's main heading is the page's single `<h1>`; everything below
+it is `<h3>`/`<h2>`. Sections no longer alternate backgrounds — one section per page left
+`section--alt` with nothing to alternate against. The class stays in `global.css` as a primitive;
+the only cream-deep band on a page today is the pager.
 
 ## Conventions
 

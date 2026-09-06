@@ -1,0 +1,14 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Contact from '../components/Contact.astro';
+import Pager from '../components/Pager.astro';
+import { site } from '../data/site';
+---
+
+<Layout
+	title={`Contact — ${site.couple.one} and ${site.couple.two}`}
+	description="Ask us anything — we’d rather you asked. · Fragt uns alles — lieber fragen als rätseln."
+>
+	<Contact />
+	<Pager id="contact" />
+</Layout>

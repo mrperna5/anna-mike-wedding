@@ -1,0 +1,14 @@
+---
+import Layout from '../layouts/Layout.astro';
+import DressCode from '../components/DressCode.astro';
+import Pager from '../components/Pager.astro';
+import { site } from '../data/site';
+---
+
+<Layout
+	title={`Dress code — ${site.couple.one} and ${site.couple.two}`}
+	description="What to wear on each of the three days. · Was ihr an den drei Tagen tragt."
+>
+	<DressCode />
+	<Pager id="dress" />
+</Layout>

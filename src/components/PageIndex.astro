@@ -1,0 +1,67 @@
+---
+// Home-page contents list — the whole site in one glance, which matters on a
+// phone where the nav is behind a Menu button. Reads from `pages`.
+import { pages } from '../data/site';
+import { ui } from '../data/copy';
+import Bi from './Bi.astro';
+---
+
+<section class="section index">
+	<div class="container">
+		<p class="kicker reveal"><Bi t={ui.indexKicker} /></p>
+
+		<ol class="index__list">
+			{
+				pages.map((p, i) => (
+					<li class="index__item reveal">
+						<a class="index__link" href={p.href}>
+							<span class="index__n">{String(i + 1).padStart(2, '0')}</span>
+							<span class="index__label">
+								<Bi t={p.label} />
+							</span>
+						</a>
+					</li>
+				))
+			}
+		</ol>
+	</div>
+</section>
+
+<style>
+	.index__list {
+		list-style: none;
+		margin: clamp(1.5rem, 4vw, 2.5rem) 0 0;
+		padding: 0;
+		border-top: 1px solid var(--hairline);
+	}
+	.index__item {
+		border-bottom: 1px solid var(--hairline);
+	}
+	.index__link {
+		display: flex;
+		align-items: baseline;
+		gap: clamp(1rem, 4vw, 2.5rem);
+		padding-block: clamp(0.9rem, 2.5vw, 1.4rem);
+		text-decoration: none;
+	}
+	.index__n {
+		font-family: var(--font-sans);
+		font-size: var(--fs-label);
+		letter-spacing: var(--track-wide);
+		font-weight: 500;
+		color: var(--olive-muted);
+		transition: color 0.25s var(--ease);
+	}
+	.index__label {
+		font-family: var(--font-display);
+		font-size: var(--fs-h3);
+		color: var(--ink);
+		transition: color 0.25s var(--ease);
+	}
+	.index__link:hover .index__label {
+		color: var(--terracotta);
+	}
+	.index__link:hover .index__n {
+		color: var(--terracotta);
+	}
+</style>

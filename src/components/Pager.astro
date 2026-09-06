@@ -1,0 +1,96 @@
+---
+// Page-to-page navigation at the foot of every section page. Order comes from
+// `pages` in src/data/site.ts, so adding a page there wires the pager up too.
+import { pages } from '../data/site';
+import { ui } from '../data/copy';
+import Bi from './Bi.astro';
+
+interface Props {
+	/** `id` of the current page, as listed in `pages`. */
+	id: string;
+}
+
+const { id } = Astro.props;
+const i = pages.findIndex((p) => p.id === id);
+const prev = i > 0 ? pages[i - 1] : null;
+const next = i >= 0 && i < pages.length - 1 ? pages[i + 1] : null;
+---
+
+<nav class="pager" aria-label="Pages">
+	<div class="container pager__inner">
+		{
+			prev ? (
+				<a class="pager__link pager__link--prev" href={prev.href} rel="prev">
+					<span class="pager__dir">
+						<Bi t={ui.prev} />
+					</span>
+					<span class="pager__label">
+						<Bi t={prev.label} />
+					</span>
+				</a>
+			) : (
+				<a class="pager__link pager__link--prev" href="/">
+					<span class="pager__dir">
+						<Bi t={ui.prev} />
+					</span>
+					<span class="pager__label">
+						<Bi t={ui.home} />
+					</span>
+				</a>
+			)
+		}
+
+		{
+			next && (
+				<a class="pager__link pager__link--next" href={next.href} rel="next">
+					<span class="pager__dir">
+						<Bi t={ui.next} />
+					</span>
+					<span class="pager__label">
+						<Bi t={next.label} />
+					</span>
+				</a>
+			)
+		}
+	</div>
+</nav>
+
+<style>
+	.pager {
+		background: var(--cream-deep);
+		border-top: 1px solid var(--hairline);
+	}
+	.pager__inner {
+		display: flex;
+		justify-content: space-between;
+		gap: 1.5rem;
+		padding-block: clamp(2rem, 5vw, 3rem);
+	}
+	.pager__link {
+		display: grid;
+		gap: 0.5rem;
+		text-decoration: none;
+		max-width: 48%;
+	}
+	.pager__link--next {
+		text-align: right;
+		margin-left: auto;
+	}
+	.pager__dir {
+		font-family: var(--font-sans);
+		font-size: var(--fs-label);
+		letter-spacing: var(--track-label);
+		text-transform: uppercase;
+		font-weight: 500;
+		color: var(--olive-muted);
+	}
+	.pager__label {
+		font-family: var(--font-display);
+		font-size: var(--fs-h3);
+		color: var(--ink);
+		transition: color 0.25s var(--ease);
+	}
+	.pager__link:hover .pager__label {
+		color: var(--terracotta);
+	}
+</style>

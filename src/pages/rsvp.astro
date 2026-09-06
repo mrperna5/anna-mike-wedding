@@ -1,0 +1,14 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Rsvp from '../components/Rsvp.astro';
+import Pager from '../components/Pager.astro';
+import { site } from '../data/site';
+---
+
+<Layout
+	title={`RSVP — ${site.couple.one} and ${site.couple.two}`}
+	description="Let us know if you can come. · Sagt uns Bescheid, ob ihr kommt."
+>
+	<Rsvp />
+	<Pager id="rsvp" />
+</Layout>

@@ -1,17 +1,31 @@
 ---
-import { site } from '../data/site';
+import { site, pages } from '../data/site';
 import { ui } from '../data/copy';
 import Bi from './Bi.astro';
+// The nav lives at the top; down here we only surface the pages guests come
+// back to.
+const footerLinks = pages.filter((p) => ['rsvp', 'faq', 'contact'].includes(p.id));
 ---
 
 <footer class="footer">
 	<div class="container footer__inner">
-		<p class="couple footer__names">
-			{site.couple.one}<span class="couple__and">and</span>{site.couple.two}
-		</p>
+		<a class="footer__home" href="/">
+			<p class="couple footer__names">
+				{site.couple.one}<span class="couple__and">and</span>{site.couple.two}
+			</p>
+		</a>
 		<p class="kicker footer__meta">
 			<Bi t={site.location} /> · {site.dateShort}
 		</p>
+
+		<nav class="footer__links" aria-label="More">
+			{footerLinks.map((p) => (
+				<a href={p.href}>
+					<Bi t={p.label} />
+				</a>
+			))}
+		</nav>
+
 		<a class="footer__top" href="#top"><Bi t={ui.backToTop} /></a>
 	</div>
 </footer>
@@ -26,8 +40,31 @@ import Bi from './Bi.astro';
 		--fs-display: clamp(2.5rem, 8vw, 4rem);
 		margin: 0 0 1.25rem;
 	}
+	.footer__home {
+		text-decoration: none;
+		display: block;
+	}
 	.footer__meta {
 		margin: 0 0 1.75rem;
+	}
+	.footer__links {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 0.6rem 1.5rem;
+		margin-bottom: 1.75rem;
+	}
+	.footer__links a {
+		font-size: var(--fs-label);
+		letter-spacing: var(--track-wide);
+		text-transform: uppercase;
+		font-weight: 500;
+		color: var(--ink-soft);
+		text-decoration: none;
+		transition: color 0.25s var(--ease);
+	}
+	.footer__links a:hover {
+		color: var(--terracotta);
 	}
 	.footer__top {
 		font-size: var(--fs-label);

@@ -1,0 +1,14 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ThingsToDo from '../components/ThingsToDo.astro';
+import Pager from '../components/Pager.astro';
+import { site } from '../data/site';
+---
+
+<Layout
+	title={`Pienza — ${site.couple.one} and ${site.couple.two}`}
+	description="What to see, eat, and drink while you’re here. · Was ihr hier sehen, essen und trinken solltet."
+>
+	<ThingsToDo />
+	<Pager id="pienza" />
+</Layout>

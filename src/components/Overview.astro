@@ -3,13 +3,13 @@ import { overview } from '../data/copy';
 import Bi from './Bi.astro';
 ---
 
-<section id="overview" class="section section--alt">
+<section id="overview" class="section">
 	<div class="container overview reveal">
 		<p class="kicker"><Bi t={overview.kicker} /></p>
-		<h2 class="overview__head">
+		<h1 class="overview__head">
 			<span class="bi" data-lang="en" set:html={overview.headEn} />
 			<span class="bi" data-lang="de" lang="de" set:html={overview.headDe} />
-		</h2>
+		</h1>
 		<div class="overview__body measure">
 			<p><Bi t={overview.p1} /></p>
 			<p><Bi t={overview.p2} /></p>
