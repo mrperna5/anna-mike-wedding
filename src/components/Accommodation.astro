@@ -1,7 +1,9 @@
 ---
-import { accommodation } from '../data/accommodation';
+import { stayGroups, stayVocab, metaLine, distanceLabel } from '../data/accommodation';
 import { accommodation as copy, ui } from '../data/copy';
 import Bi from './Bi.astro';
+
+const n = (i: number) => String(i + 1).padStart(2, '0');
 ---
 
 <section id="accommodation" class="section">
@@ -10,88 +12,369 @@ import Bi from './Bi.astro';
 			<p class="kicker"><Bi t={copy.kicker} /></p>
 			<h1 class="stay__title"><Bi t={copy.title} /></h1>
 			<p class="measure"><Bi t={copy.intro} /></p>
+
+			<nav class="stay__jump" aria-labelledby="stay-jump-label">
+				<p class="kicker" id="stay-jump-label"><Bi t={copy.jump} /></p>
+				<ul>
+					{
+						stayGroups.map((g, i) => (
+							<li>
+								<a href={`#stay-${g.id}`}>
+									<span class="stay__n" aria-hidden="true">
+										{n(i)}
+									</span>
+									<Bi t={g.name} />
+								</a>
+							</li>
+						))
+					}
+				</ul>
+			</nav>
 		</header>
 
-		<ul class="stay__list">
-			{
-				accommodation.map((s) => (
-					<li class="stay__card reveal">
-						<div class="stay__top">
-							<h3 class="stay__name">
-								<Bi t={s.name} />
-							</h3>
-							<span class="stay__price">{s.priceBand}</span>
+		{
+			stayGroups.map((g, i) => (
+				<section class="stay__group" id={`stay-${g.id}`} aria-labelledby={`stay-h-${g.id}`}>
+					<div class="stay__rail">
+						{/* Its own box so it can go sticky on mobile, where the whole
+						    rail would be too tall to pin. Deliberately not `reveal`:
+						    this is wayfinding, and a bar that fades in while it is
+						    already pinned reads as a glitch. */}
+						<div class="stay__rail-head">
+							<p class="stay__n" aria-hidden="true">
+								{n(i)}
+							</p>
+							<h2 class="stay__group-name" id={`stay-h-${g.id}`}>
+								<Bi t={g.name} />
+							</h2>
 						</div>
-						<p class="stay__kind">
-							<Bi t={s.kind} /> · <Bi t={s.distance} />
+						<p class="stay__tagline">
+							<Bi t={g.tagline} />
 						</p>
-						<p class="stay__note">
-							<Bi t={s.note} />
-						</p>
-						{s.url && (
-							<a class="link stay__link" href={s.url}>
-								<Bi t={ui.haveALook} />
-							</a>
+						{g.distance && (
+							<p class="stay__group-dist">
+								<Bi t={distanceLabel(g.distance, true)} />
+							</p>
 						)}
-					</li>
-				))
-			}
-		</ul>
+					</div>
+
+					<div class="stay__rows">
+						{g.note && (
+							<p class="stay__gnote reveal">
+								<Bi t={g.note} />
+							</p>
+						)}
+
+						{g.stays.map((s) => (
+							<article class="stay__row">
+								{s.reserved && (
+									<p class="stay__flag">
+										<Bi t={stayVocab.reserved} />
+									</p>
+								)}
+								<h3 class="stay__name">{s.name}</h3>
+								<p class="stay__meta">
+									<Bi t={metaLine(s)} />
+								</p>
+								<p class="stay__blurb">
+									<Bi t={s.blurb} />
+								</p>
+								{s.caveat && (
+									<p class="stay__caveat">
+										<Bi t={s.caveat} />
+									</p>
+								)}
+								{(s.url || s.askUs || s.email || s.phone) && (
+									<p class="stay__actions">
+										{s.url && (
+											<a class="link stay__link" href={s.url} target="_blank" rel="noopener noreferrer">
+												<Bi t={ui.haveALook} />
+												<span class="visually-hidden">
+													{' — '}
+													{s.name} (<Bi t={ui.newTab} />)
+												</span>
+											</a>
+										)}
+										{s.askUs && (
+											<a class="link stay__link" href="/contact">
+												<Bi t={stayVocab.askUs} />
+												<span class="visually-hidden">
+													{' — '}
+													{s.name}
+												</span>
+											</a>
+										)}
+										{s.email && (
+											<a class="link stay__link" href={`mailto:${s.email}`}>
+												{s.email}
+											</a>
+										)}
+										{s.phone && (
+											<a class="link stay__link" href={`tel:${s.phone.replace(/\s/g, '')}`}>
+												{s.phone}
+											</a>
+										)}
+									</p>
+								)}
+							</article>
+						))}
+
+						{g.link && (
+							<p class="stay__more reveal">
+								<a class="link" href={g.link.url} target="_blank" rel="noopener noreferrer">
+									<Bi t={g.link.label} />
+									<span class="visually-hidden">
+										{' ('}
+										<Bi t={ui.newTab} />)
+									</span>
+								</a>
+							</p>
+						)}
+					</div>
+				</section>
+			))
+		}
+
+		<p class="stay__outro measure reveal"><Bi t={copy.bookEarly} /></p>
 	</div>
 </section>
 
 <style>
 	.stay__head {
-		margin-bottom: clamp(2.5rem, 6vw, 4rem);
+		margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
 	}
 	.stay__title {
 		font-size: var(--fs-h1);
 		margin: 1rem 0 1.5rem;
 	}
-	.stay__list {
+
+	/* --- jump nav ---------------------------------------------------- */
+	.stay__jump {
+		border-top: 1px solid var(--hairline);
+		border-bottom: 1px solid var(--hairline);
+		margin-top: clamp(1.5rem, 4vw, 2.5rem);
+		padding-block: 1.1rem;
+	}
+	.stay__jump ul {
 		list-style: none;
-		margin: 0;
-		padding: 0;
-		display: grid;
-		gap: clamp(1.25rem, 3vw, 2rem);
-	}
-	.stay__card {
-		padding: clamp(1.5rem, 3vw, 2rem);
-		background: var(--white);
-		border: 1px solid var(--hairline);
-	}
-	.stay__top {
+		margin: 0.75rem 0 0;
+		padding: 0 0 0.15rem;
 		display: flex;
-		justify-content: space-between;
-		align-items: baseline;
-		gap: 1rem;
+		flex-wrap: nowrap;
+		gap: 1.25rem;
+		overflow-x: auto;
+		scrollbar-width: none;
 	}
-	.stay__name {
+	.stay__jump ul::-webkit-scrollbar {
+		display: none;
+	}
+	.stay__jump li {
+		flex: 0 0 auto;
+	}
+	.stay__jump a {
+		display: inline-flex;
+		align-items: baseline;
+		gap: 0.6rem;
+		text-decoration: none;
+		font-family: var(--font-display);
+		font-size: var(--fs-body);
+		color: var(--ink);
+		transition: color 0.3s var(--ease);
+	}
+	.stay__jump a:hover,
+	.stay__jump a:focus-visible,
+	.stay__jump a:hover .stay__n,
+	.stay__jump a:focus-visible .stay__n {
+		color: var(--terracotta);
+	}
+	.stay__n {
+		font-family: var(--font-sans);
+		font-size: var(--fs-label);
+		letter-spacing: var(--track-wide);
+		font-weight: 500;
+		color: var(--olive-muted);
+		transition: color 0.3s var(--ease);
+	}
+
+	/* --- groups ------------------------------------------------------ */
+	.stay__group {
+		padding-block: clamp(2.5rem, 7vw, 4.5rem);
+		/* The group's top padding is empty, so it can sit under the sticky nav;
+		   this lands the h2 just below it rather than a screenful down. */
+		scroll-margin-top: 2rem;
+	}
+	/* The jump nav's own border already separates it from the first group. */
+	.stay__group:first-of-type {
+		padding-top: clamp(1.25rem, 3vw, 2rem);
+	}
+	/* `display: contents` hands the head, tagline and distance straight to
+	   .stay__group, so the head's sticky containing block is the whole group
+	   and it can pin while you thumb through eleven agriturismi. The rail
+	   becomes a real box again at 48rem, where it is a grid cell. */
+	.stay__rail {
+		display: contents;
+	}
+	.stay__rail-head {
+		position: sticky;
+		top: 3.75rem;
+		z-index: 1;
+		display: flex;
+		align-items: baseline;
+		gap: 0.75rem;
+		padding-block: 0.7rem;
+		background: var(--cream);
+		border-bottom: 1px solid var(--hairline);
+	}
+	.stay__rail .stay__n {
+		margin: 0;
+	}
+	.stay__group-name {
 		font-size: var(--fs-h3);
 		margin: 0;
 	}
-	.stay__price {
+	.stay__tagline {
 		font-family: var(--font-display);
+		font-style: italic;
 		color: var(--olive);
-		letter-spacing: 0.1em;
+		margin: 0.9rem 0 0.4rem;
 	}
-	.stay__kind {
+	.stay__group-dist,
+	.stay__meta {
 		font-size: var(--fs-label);
 		letter-spacing: var(--track-wide);
 		text-transform: uppercase;
 		color: var(--olive-muted);
-		margin: 0.5rem 0 1rem;
 	}
-	.stay__note {
+	.stay__group-dist {
+		margin: 0;
+	}
+	.stay__gnote {
 		font-size: var(--fs-small);
-		margin: 0 0 1.25rem;
+		max-width: var(--measure);
+		margin: 1.5rem 0 0;
+		padding-bottom: 1.75rem;
 	}
+
+	/* --- one listing -------------------------------------------------- */
+	.stay__row {
+		padding-top: 1.4rem;
+		padding-bottom: 0.4rem;
+		border-top: 1px solid var(--hairline);
+	}
+	.stay__name {
+		font-size: var(--fs-h3);
+		margin: 0 0 0.4rem;
+	}
+	.stay__meta {
+		margin: 0 0 0.6rem;
+	}
+	.stay__blurb {
+		font-size: var(--fs-small);
+		max-width: var(--measure);
+		margin: 0 0 0.9rem;
+	}
+	.stay__caveat {
+		font-family: var(--font-display);
+		font-style: italic;
+		font-size: var(--fs-small);
+		color: var(--olive);
+		margin: -0.4rem 0 0.9rem;
+	}
+	.stay__actions {
+		margin: 0;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.9rem 1.5rem;
+	}
+
+	/* The page's one loud accent: a single listing wears it. */
+	.stay__flag {
+		font-size: var(--fs-label);
+		letter-spacing: var(--track-label);
+		text-transform: uppercase;
+		font-weight: 500;
+		color: var(--terracotta);
+		margin: 0 0 0.5rem;
+	}
+
+	/* 27 terracotta underlines at rest would blow the palette budget, so the
+		 listing links sit on a hairline and earn the accent on hover/focus. */
 	.stay__link {
-		font-size: 0.68rem;
+		font-size: 0.78rem;
+		text-transform: none;
+		letter-spacing: 0.08em;
+		border-bottom-color: var(--hairline);
 	}
+	.stay__link:hover,
+	.stay__link:focus-visible {
+		border-bottom-color: var(--terracotta);
+	}
+
+	.stay__more {
+		margin: 0;
+		padding-top: 1.4rem;
+		border-top: 1px solid var(--hairline);
+	}
+
+	.stay__outro {
+		font-size: var(--fs-small);
+		margin-top: clamp(1.5rem, 4vw, 2.5rem);
+		padding-top: clamp(1.5rem, 4vw, 2.5rem);
+		border-top: 1px solid var(--hairline);
+	}
+
 	@media (min-width: 48rem) {
-		.stay__list {
-			grid-template-columns: repeat(3, 1fr);
+		.stay__group {
+			display: grid;
+			grid-template-columns: 16rem 1fr;
+			gap: 3rem;
+			align-items: start;
+		}
+		.stay__rail {
+			display: block;
+			position: sticky;
+			top: 5rem;
+		}
+		.stay__rail-head {
+			position: static;
+			display: block;
+			padding-block: 0;
+			background: none;
+			border-bottom: 0;
+		}
+		.stay__group-name {
+			font-size: var(--fs-h2);
+			margin: 0.5rem 0 0.35rem;
+		}
+		.stay__tagline {
+			margin: 0 0 0.5rem;
+		}
+		.stay__jump a {
+			font-size: var(--fs-h3);
+		}
+		.stay__jump ul {
+			flex-wrap: wrap;
+			gap: 0.6rem 1.75rem;
+			overflow-x: visible;
+			padding-bottom: 0;
+		}
+		.stay__link {
+			font-size: 0.68rem;
+		}
+		.stay__gnote {
+			margin-top: 0;
+		}
+	}
+
+	@media (min-width: 64rem) {
+		.stay__rows {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			column-gap: 3rem;
+		}
+		.stay__gnote,
+		.stay__more {
+			grid-column: 1 / -1;
 		}
 	}
 </style>

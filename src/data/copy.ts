@@ -10,6 +10,7 @@ export const ui = {
 	backToTop: { en: 'Back to top', de: 'Nach oben' } as L,
 	dressLabel: { en: 'Dress', de: 'Outfit' } as L,
 	haveALook: { en: 'Have a look', de: 'Ansehen' } as L,
+	newTab: { en: 'opens in a new tab', de: 'öffnet in neuem Tab' } as L,
 	prev: { en: 'Previous', de: 'Zurück' } as L,
 	next: { en: 'Next', de: 'Weiter' } as L,
 	home: { en: 'Home', de: 'Startseite' } as L,
@@ -125,8 +126,13 @@ export const accommodation = {
 	kicker: { en: 'Where to stay', de: 'Wo übernachten' } as L,
 	title: { en: 'Accommodation', de: 'Unterkunft' } as L,
 	intro: {
-		en: 'A few places we’d happily send you to, at a range of prices. Rooms in this corner of Tuscany are limited in May, so book sooner rather than later — we’ll add more as we lock them in.',
-		de: 'Ein paar Orte, die wir euch guten Gewissens empfehlen, in unterschiedlichen Preisklassen. Zimmer sind in diesem Teil der Toskana im Mai knapp — bucht lieber früher als später. Wir ergänzen die Liste laufend.',
+		en: 'Twenty-seven places we’d happily send you to, in five pockets of the Val d’Orcia — a town, a village, the open countryside, a wishlist, and something a little indulgent. Everything here is within about twenty minutes of the villa.',
+		de: 'Siebenundzwanzig Orte, die wir euch guten Gewissens empfehlen, in fünf Ecken des Val d’Orcia — eine Stadt, ein Dorf, das offene Land, eine Wunschliste und etwas zum Verwöhnen. Alles liegt rund zwanzig Autominuten von der Villa entfernt.',
+	} as L,
+	jump: { en: 'Jump to', de: 'Direkt zu' } as L,
+	bookEarly: {
+		en: 'Our wedding falls in the Italian holiday season and around a public holiday, so please sort your room sooner rather than later — several of these are already well booked and down to single rooms for our weekend. What matters to us is that everyone finds something that suits them, whether that’s the middle of a small town, the quiet of the countryside, or a pool and a good dinner. We hope you enjoy not just our weekend, but a beautiful stretch of time in Tuscany.',
+		de: 'Da unsere Hochzeit in die Ferienzeit und rund um einen Feiertag fällt, kümmert euch am besten früh um eure Unterkunft — einige Häuser sind bereits gut gebucht und haben für unser Wochenende nur noch einzelne Zimmer frei. Uns ist wichtig, dass jede und jeder von euch etwas findet, das zu den eigenen Vorstellungen passt: mitten im Städtchen, in der Ruhe der Landschaft oder mit Pool und gutem Essen. Wir hoffen, dass ihr nicht nur unser Hochzeitswochenende mit uns genießt, sondern auch eine wunderschöne Zeit in der Toskana habt.',
 	} as L,
 };
 
