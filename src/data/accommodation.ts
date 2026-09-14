@@ -270,21 +270,21 @@ export const stayGroups: StayGroup[] = [
 	},
 
 	{
-		id: 'agriturismi',
-		name: bi('Agriturismi around the villa', 'Agriturismi rund um die Villa'),
+		id: 'agriturismo',
+		name: bi('Agriturismo', 'Agriturismo'),
 		tagline: bi(
 			'For quiet, nature and the real Tuscany',
 			'Für Ruhe, Natur und echtes Toskana-Gefühl',
 		),
 		note: bi(
-			'If you do not need restaurants at the door or a town around you, and would rather switch off and look at the landscape, take one of the agriturismi nearby. We have picked out a few we like, spread around Villa Apparita and towards Pienza and Monticchiello. You wake up in the middle of the countryside, with vineyards, olive groves and the hills of the Val d’Orcia in front of you. And do not be put off by the word: agriturismo translates as farm, but in Italy it mostly means the place grows some of what it serves — its own olive oil at breakfast, say.',
-			'Wenn ihr weder Restaurants direkt vor der Tür noch ein Städtchen um euch herum braucht, sondern lieber einfach abschalten und die Landschaft genießen möchtet, empfehlen wir euch eines der vielen Agriturismi in der Umgebung. Wir haben einige schöne herausgesucht, die rund um die Villa Apparita sowie in Richtung Pienza und Monticchiello liegen. Hier wacht ihr mitten in der Natur auf, mit Weinbergen, Olivenhainen und den Hügeln des Val d’Orcia direkt vor der Tür. Und bitte nicht falsch verstehen: Agriturismo wird zwar mit Bauernhof übersetzt, bedeutet in Italien aber vor allem, dass die Unterkunft eigene Produkte anbietet oder im Frühstück verwendet — zum Beispiel das eigene Olivenöl.',
+			'If you do not need restaurants at the door or a town around you, and would rather switch off and look at the landscape, take one of the agriturismo nearby. We have picked out a few we like, spread around Villa Apparita and towards Pienza and Monticchiello. You wake up in the middle of the countryside, with vineyards, olive groves and the hills of the Val d’Orcia in front of you. And do not be put off by the word: agriturismo translates as farm, but in Italy it mostly means the place grows some of what it serves — its own olive oil at breakfast, say.',
+			'Wenn ihr weder Restaurants direkt vor der Tür noch ein Städtchen um euch herum braucht, sondern lieber einfach abschalten und die Landschaft genießen möchtet, empfehlen wir euch eines der vielen agriturismo in der Umgebung. Wir haben einige schöne herausgesucht, die rund um die Villa Apparita sowie in Richtung Pienza und Monticchiello liegen. Hier wacht ihr mitten in der Natur auf, mit Weinbergen, Olivenhainen und den Hügeln des Val d’Orcia direkt vor der Tür. Und bitte nicht falsch verstehen: Agriturismo wird zwar mit Bauernhof übersetzt, bedeutet in Italien aber vor allem, dass die Unterkunft eigene Produkte anbietet oder im Frühstück verwendet — zum Beispiel das eigene Olivenöl.',
 		),
 		link: {
 			url: 'https://www.agriturismo.it/',
 			label: bi(
-				'An even bigger selection of agriturismi',
-				'Eine noch größere Auswahl an Agriturismi',
+				'An even bigger selection of agriturismo',
+				'Eine noch größere Auswahl an agriturismo',
 			),
 		},
 		stays: [

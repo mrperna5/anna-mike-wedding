@@ -10,58 +10,55 @@ export type Event = {
 	time: L;
 	place: L;
 	blurb: L;
-	dress: L;
+	dress?: L;
 };
 
 export const schedule: Event[] = [
 	{
-		n: '01',
-		day: { en: 'Friday', de: 'Freitag' },
-		date: { en: '14 May', de: '14. Mai' },
-		title: { en: 'Welcome pizza party', de: 'Willkommens-Pizzaparty' },
-		time: { en: 'From 7:00 in the evening', de: 'Ab 19:00 Uhr abends' },
-		place: { en: 'A courtyard near Pienza', de: 'Ein Innenhof bei Pienza' },
+		n: '14',
+		day: { en: 'May', de: 'Mai' },
+		date: { en: 'Friday', de: 'Freitag' },
+		title: { en: 'Get together', de: 'Get together' },
+		time: { en: '6-10 pm', de: '18-22 Uhr' },
+		place: { en: 'Biancacamica, Pienza', de: 'Biancacamicia, Pienza' },
 		blurb: {
-			en: 'Wood-fired pizza, Tuscan wine, and the whole weekend ahead of us. Come hungry — this is where everyone meets everyone.',
-			de: 'Pizza aus dem Holzofen, toskanischer Wein und das ganze Wochenende vor uns. Kommt hungrig — hier lernen sich alle kennen.',
-		},
-		dress: {
-			en: 'Relaxed — linen and good shoes for cobblestones',
-			de: 'Leger — Leinen und gute Schuhe fürs Kopfsteinpflaster',
-		},
+			en: 'Join us as we kick-off our wedding weekend with a relaxed evening of Tuscan finger food, good wine, and even better company.',
+			de: 'xxx.',
+		}
 	},
 	{
-		n: '02',
-		day: { en: 'Saturday', de: 'Samstag' },
-		date: { en: '15 May', de: '15. Mai' },
-		title: { en: 'Ceremony & celebration', de: 'Trauung & Feier' },
+		n: '15',
+		day: { en: 'May', de: 'Mai' },
+		date: { en: 'Saturday', de: 'Samstag' },
+		title: { en: 'Wedding Day', de: 'Hochzeitstag' },
 		time: {
-			en: 'Ceremony at 4:30, dinner and dancing to follow',
-			de: 'Trauung um 16:30 Uhr, anschließend Dinner und Tanz',
+			en: '4:30 pm-1:30 am',
+			de: '16:30-1:30 Uhr',
 		},
-		place: { en: 'The villa, Val d’Orcia', de: 'Die Villa, Val d’Orcia' },
+		place: { en: 'Villa Apparita, Monticchiello', de: 'Villa Apparita, Monticchiello' },
 		blurb: {
-			en: 'We say our vows as the afternoon light comes off the hills, then eat and dance long into the Tuscan night.',
-			de: 'Wir geben uns das Ja-Wort im Licht des späten Nachmittags und feiern dann bis tief in die toskanische Nacht.',
+			en: '\n' +
+				'We can‘t wait to celebrate our love with you and share one of the most meaningful moments of our lives with the people we love most.  Followed by delicious Tuscan food and drinks, we’ll dance the night away and create unforgettable memories together.',
+			de: 'xxx.',
 		},
 		dress: {
 			en: 'Formal — black tie optional',
-			de: 'Festlich — Black Tie optional',
+			de: 'xxx',
 		},
 	},
 	{
-		n: '03',
-		day: { en: 'Sunday', de: 'Sonntag' },
-		date: { en: '16 May', de: '16. Mai' },
+		n: '16',
+		day: { en: 'May', de: 'Mai' },
+		date: { en: 'Sunday', de: 'Sonntag' },
 		title: { en: 'Pool party & recovery', de: 'Poolparty & Erholung' },
 		time: {
-			en: 'Late morning, drifting into the afternoon',
-			de: 'Später Vormittag, gemütlich in den Nachmittag hinein',
+			en: '2-5 pm',
+			de: '14-17 Uhr',
 		},
-		place: { en: 'Poolside at the villa', de: 'Am Pool der Villa' },
+		place: { en: 'Poolside at the villa', de: 'Pool - Villa Apparita' },
 		blurb: {
-			en: 'No schedule, no speeches. Swim, nap in the shade, pick at leftovers, and say a slow goodbye before everyone scatters.',
-			de: 'Kein Programm, keine Reden. Schwimmen, im Schatten dösen, Reste naschen und sich in Ruhe verabschieden, bevor alle weiterziehen.',
+			en: 'If you’re not continuing your travels just yet, come and relax with us by the pool, soak up Tuscan sun and enjoy a cozy afternoon together after the big day.',
+			de: 'xxx.',
 		},
 		dress: {
 			en: 'Swimwear and something easy to throw over it',
