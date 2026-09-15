@@ -149,7 +149,7 @@ function gatePage({ redirect = '/', error = '' } = {}) {
 </head>
 <body>
   <main class="gate">
-    <h1 class="couple">Anna<span class="amp">and</span>Mike</h1>
+    <h1 class="couple">ANNA<span class="amp">and</span>MIKE</h1>
     <hr class="rule" />
     <form method="POST" action="/__auth">
       <input type="hidden" name="redirect" value="${escapeHtml(redirect)}" />
