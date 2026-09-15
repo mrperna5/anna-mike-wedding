@@ -35,7 +35,7 @@ import Bi from './Bi.astro';
 		>
 			<source src="/videos/hero.mp4" type="video/mp4" />
 		</video>
-		<figcaption class="photo__cap"><Bi t={hero.caption} /></figcaption>
+		<!--<figcaption class="photo__cap"><Bi t={hero.caption} /></figcaption>-->
 	</figure>
 </section>
 
@@ -82,8 +82,14 @@ import Bi from './Bi.astro';
 		display: inline-block;
 		margin-top: clamp(2.25rem, 5vw, 3.25rem);
 	}
+	/* Mobile: a fixed aspect ratio (not a height keyed to vw) keeps the same
+	   relative crop of the video on every phone, regardless of screen width —
+	   a height-from-vw approach hits its clamp floor on most phones, so two
+	   phones with different widths but the same floor height end up with
+	   different band aspect ratios and crop the couple differently. */
 	.hero__photo {
-		height: clamp(16rem, 48vw, 30rem);
+		aspect-ratio: 8 / 5;
+		height: auto;
 		margin: 0;
 		/* Subtle tonal variation reads as light across the field, not a
 		   decorative gradient. Fallback while the video loads / if it can't
@@ -101,5 +107,14 @@ import Bi from './Bi.astro';
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
+		object-position: center;
+	}
+	/* Tablet/desktop: the full-bleed band gets very wide, so an 8:5 ratio
+	   would make it absurdly tall — go back to a height-based cap instead. */
+	@media (min-width: 48rem) {
+		.hero__photo {
+			aspect-ratio: unset;
+			height: clamp(20rem, 40vw, 32rem);
+		}
 	}
 </style>
