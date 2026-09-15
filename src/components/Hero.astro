@@ -9,13 +9,13 @@ import Bi from './Bi.astro';
 		<p class="kicker hero__kicker"><Bi t={hero.kicker} /></p>
 
 		<h1 class="couple hero__names">
-			ANNA<span class="couple__and">and</span>MIKE
+			ANNA<span class="couple__and"><Bi t={hero.and} /></span>MIKE
 		</h1>
 
 		<hr class="rule rule--center" />
 
-		<p class="hero__sub"><Bi t={hero.sub} /> <Bi t={site.location} /></p>
-		<p class="hero__date"><Bi t={site.dateLong} /></p>
+		<!--<p class="hero__sub"><Bi t={hero.sub} /> </p>-->
+		<p class="hero__date"><Bi t={site.dateLong} /> <br> <Bi t={site.city} /> | <Bi t={site.country} /></p>
 
 		<a class="link hero__cta" href="/overview"><Bi t={hero.cta} /></a>
 	</div>

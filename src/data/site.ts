@@ -8,7 +8,10 @@ export const site = {
 	dateLong: { en: '14 – 16 May 2027', de: '14.–16. Mai 2027' } as L,
 	dateShort: '14–16 . 05 . 27',
 	year: '2027',
-	location: { en: 'Pienza, Tuscany', de: 'Pienza, Toskana' } as L,
+	city: { en: 'Pienza', de: 'Pienza' } as L,
+	location: { en: 'Tuscany', de: 'Toskana' } as L,
+	country: { en: 'Italy', de: 'Italien' } as L,
+	venue: 'Villa Apparita',
 	region: "Val d'Orcia",
 	// Placeholder — replace with the address you want guests to see.
 	email: 'hello@annaandmike.com',

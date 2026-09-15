@@ -18,13 +18,14 @@ export const ui = {
 };
 
 export const hero = {
-	kicker: { en: 'Together with their families', de: 'Gemeinsam mit ihren Familien' } as L,
-	sub: { en: 'are to be married in', de: 'geben sich das Ja-Wort in' } as L,
-	cta: { en: 'Explore the weekend', de: 'Das Wochenende entdecken' } as L,
+	kicker: { en: 'It\'s finally happening', de: 'Endlich ist es soweit' } as L,
+	sub: { en: 'We are celebrating our marriage', de: 'geben sich das Ja-Wort in' } as L,
+	cta: { en: 'Our wedding weekend', de: 'Unser HochzeitsWochenende' } as L,
 	caption: {
 		en: 'Val d’Orcia, where the light goes gold',
 		de: 'Val d’Orcia, wo das Licht golden wird',
 	} as L,
+	and: { en: 'and', de: 'und' } as L,
 };
 
 export const overview = {
