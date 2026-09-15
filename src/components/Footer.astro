@@ -7,29 +7,6 @@ import Bi from './Bi.astro';
 const footerLinks = pages.filter((p) => ['rsvp', 'faq', 'contact'].includes(p.id));
 ---
 
-<footer class="footer">
-	<div class="container footer__inner">
-		<a class="footer__home" href="/">
-			<p class="couple footer__names">
-				{site.couple.one}<span class="couple__and">and</span>{site.couple.two}
-			</p>
-		</a>
-		<p class="kicker footer__meta">
-			<Bi t={site.location} /> · {site.dateShort}
-		</p>
-
-		<nav class="footer__links" aria-label="More">
-			{footerLinks.map((p) => (
-				<a href={p.href}>
-					<Bi t={p.label} />
-				</a>
-			))}
-		</nav>
-
-		<a class="footer__top" href="#top"><Bi t={ui.backToTop} /></a>
-	</div>
-</footer>
-
 <style>
 	.footer {
 		border-top: 1px solid var(--hairline);

@@ -6,27 +6,6 @@ import { ui } from '../data/copy';
 import Bi from './Bi.astro';
 ---
 
-<section class="section index">
-	<div class="container">
-		<p class="kicker reveal"><Bi t={ui.indexKicker} /></p>
-
-		<ol class="index__list">
-			{
-				pages.map((p, i) => (
-					<li class="index__item reveal">
-						<a class="index__link" href={p.href}>
-							<span class="index__n">{String(i + 1).padStart(2, '0')}</span>
-							<span class="index__label">
-								<Bi t={p.label} />
-							</span>
-						</a>
-					</li>
-				))
-			}
-		</ol>
-	</div>
-</section>
-
 <style>
 	.index__list {
 		list-style: none;

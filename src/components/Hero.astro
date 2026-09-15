@@ -20,13 +20,33 @@ import Bi from './Bi.astro';
 		<a class="link hero__cta" href="/overview"><Bi t={hero.cta} /></a>
 	</div>
 
-	<!-- Full-bleed photographic moment. Replace the flat field with a real
-	     image: drop a photo in /public/images and set it as background, or
-	     swap this block for Astro's <Image />. Caption stays. -->
+	<!-- Full-bleed photographic moment. A real clip now stands in for the
+	     flat placeholder field; the gradient stays as a fallback background
+	     while the video loads (or if it can't play). Caption stays. -->
 	<figure class="hero__photo photo">
+		<video
+			class="hero__photo-video"
+			muted
+			loop
+			playsinline
+			preload="auto"
+			poster="/images/hero-poster.jpg"
+			aria-hidden="true"
+		>
+			<source src="/videos/hero.mp4" type="video/mp4" />
+		</video>
 		<figcaption class="photo__cap"><Bi t={hero.caption} /></figcaption>
 	</figure>
 </section>
+
+<script>
+	// Respect reduced-motion preference: leave the poster frame static
+	// instead of autoplaying the loop.
+	const video = document.querySelector('.hero__photo-video');
+	if (video && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+		video.play().catch(() => {});
+	}
+</script>
 
 <style>
 	.hero__inner {
@@ -66,12 +86,20 @@ import Bi from './Bi.astro';
 		height: clamp(16rem, 48vw, 30rem);
 		margin: 0;
 		/* Subtle tonal variation reads as light across the field, not a
-		   decorative gradient. Replace with a real photograph. */
+		   decorative gradient. Fallback while the video loads / if it can't
+		   play — .photo already sets position:relative + overflow:hidden. */
 		background-image: linear-gradient(
 			180deg,
 			color-mix(in srgb, var(--olive) 82%, #fff) 0%,
 			var(--olive) 60%,
 			color-mix(in srgb, var(--olive) 88%, #000) 100%
 		);
+	}
+	.hero__photo-video {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
 	}
 </style>
