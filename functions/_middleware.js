@@ -153,7 +153,7 @@ function gatePage({ redirect = '/', error = '' } = {}) {
 <body>
   <main class="gate">
     <p class="kicker">Pienza · 2027</p>
-    <h1 class="couple">Anna<span class="amp">and</span>Mike</h1>
+    <h1 class="couple">ANNA<span class="amp">and</span>MIKE</h1>
     <hr class="rule" />
     <p class="intro">
       A private invitation — please enter the password
