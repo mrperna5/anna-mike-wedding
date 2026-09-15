@@ -30,7 +30,7 @@ export const schedule: Event[] = [
 		n: '15',
 		day: { en: 'May', de: 'Mai' },
 		date: { en: 'Saturday', de: 'Samstag' },
-		title: { en: 'Wedding Day', de: 'Hochzeitstag' },
+		title: { en: 'Wedding Day', de: 'Hochzeit' },
 		time: {
 			en: '4:30 pm-1:30 am',
 			de: '16:30-1:30 Uhr',
@@ -50,7 +50,7 @@ export const schedule: Event[] = [
 		n: '16',
 		day: { en: 'May', de: 'Mai' },
 		date: { en: 'Sunday', de: 'Sonntag' },
-		title: { en: 'Pool party & recovery', de: 'Poolparty & Erholung' },
+		title: { en: 'Sip, Swim, & Recover', de: 'Sonne, Spritz, & Pool' },
 		time: {
 			en: '2-5 pm',
 			de: '14-17 Uhr',

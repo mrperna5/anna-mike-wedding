@@ -5,7 +5,7 @@ import type { L } from './i18n';
 
 export const site = {
 	couple: { one: 'Anna', two: 'Mike' },
-	dateLong: { en: '14 – 16 May 2027', de: '14.–16. Mai 2027' } as L,
+	dateLong: { en: 'May 14 – 16 2027', de: '14 – 16 Mai 2027' } as L,
 	dateShort: '14–16 . 05 . 27',
 	year: '2027',
 	city: { en: 'Pienza', de: 'Pienza' } as L,
@@ -23,7 +23,7 @@ export const site = {
 export type PageDef = { id: string; href: string; label: L; inNav?: boolean };
 
 export const pages: PageDef[] = [
-	{ id: 'overview', href: '/overview', label: { en: 'The weekend', de: 'Das Wochenende' } },
+	{ id: 'overview', href: '/overview', label: { en: 'Our weekend', de: 'Unser Wochenende' } },
 	{ id: 'venue', href: '/venue', label: { en: 'Venue', de: 'Location' } },
 	{ id: 'travel', href: '/travel', label: { en: 'Getting there', de: 'Anreise' } },
 	{ id: 'accommodation', href: '/accommodation', label: { en: 'Accommodation', de: 'Unterkunft' } },

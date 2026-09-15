@@ -2,7 +2,7 @@
 import { site, nav } from '../data/site';
 import { ui } from '../data/copy';
 import Bi from './Bi.astro';
-const monogram = `${site.couple.one[0]}${site.couple.two[0]}`;
+const monogram = `${site.couple.one[0]}|${site.couple.two[0]}`;
 // Current route, without a trailing slash, so `/venue` and `/venue/` both mark
 // the same link as current.
 const here = Astro.url.pathname.replace(/\/+$/, '') || '/';

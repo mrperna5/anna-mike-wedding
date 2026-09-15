@@ -29,23 +29,27 @@ export const hero = {
 };
 
 export const overview = {
-	kicker: { en: 'The weekend', de: 'Das Wochenende' } as L,
-	headEn: 'Three days among<br>the cypresses',
+	kicker: { en: 'Our weekend', de: 'Unser Wochenende' } as L,
+	headEn: 'The weekend we\'ve been dreaming of',
 	headDe: 'Drei Tage zwischen<br>den Zypressen',
 	p1: {
-		en: 'We didn’t want a wedding that was over in an evening. So we’re asking the people we love to set aside a long weekend in the Val d’Orcia — to eat slowly, stay up late, and be together somewhere beautiful.',
+		en: 'When we first imagined our wedding it was never about a particular place, style, or venue.',
 		de: 'Wir wollten keine Hochzeit, die nach einem Abend vorbei ist. Darum bitten wir die Menschen, die wir lieben, sich ein langes Wochenende im Val d’Orcia frei zu halten — um in Ruhe zu essen, lange wach zu bleiben und an einem schönen Ort zusammen zu sein.',
 	} as L,
 	p2: {
-		en: 'Pizza on Friday, vows on Saturday, and nowhere to be on Sunday. The rest of these pages are here to help you plan the trip.',
+		en: 'From the very beginning, we knew we wanted to celebrate with the people we love, in a beautiful place, with plenty of time for long conversations with everyone, enjoying the time together, delicious food, a nice glass of wine (or two, or three, or more), and dancing until the morning comes.',
+		de: 'Pizza am Freitag, das Ja-Wort am Samstag und nichts vor am Sonntag. Die übrigen Seiten helfen euch bei der Reiseplanung.',
+	} as L,
+	p3: {
+		en: 'And we couldn\'t be happier to say our dream is finally coming true.',
 		de: 'Pizza am Freitag, das Ja-Wort am Samstag und nichts vor am Sonntag. Die übrigen Seiten helfen euch bei der Reiseplanung.',
 	} as L,
 };
 
 export const schedule = {
 	// Sub-heading for the run of the weekend, which lives on the overview page.
-	kicker: { en: 'Hour by hour', de: 'Stunde für Stunde' } as L,
-	title: { en: 'The run of the weekend', de: 'Der Ablauf des Wochenendes' } as L,
+	kicker: { en: 'Three days together', de: 'Stunde für Stunde' } as L,
+	title: { en: 'The weekend ahead', de: 'Der Ablauf des Wochenendes' } as L,
 };
 
 export const venue = {
@@ -89,18 +93,18 @@ export const venue = {
 };
 
 export const travel = {
-	kicker: { en: 'Getting here', de: 'Anfahrt' } as L,
+	kicker: { en: 'Arrival', de: 'Anfahrt' } as L,
 	title: { en: 'Getting there', de: 'Anreise' } as L,
 	intro: {
-		en: 'Pienza sits in southern Tuscany, between Siena and the Umbrian border. However you come, you’ll want wheels once you’re here.',
+		en: 'We definitely found our favorite place in Tuscany and can\'t believe we are actually getting married here. Pienza and Monticchiello sit in southern Tuscany, between Siena and the Umbrian border. Once you\'re here, having a car is the easiest way to explore the rolling hills, cypress alleys, quaint villages, and everything that makes this part of Tuscany so special.',
 		de: 'Pienza liegt in der südlichen Toskana, zwischen Siena und der Grenze zu Umbrien. Wie ihr auch kommt — vor Ort braucht ihr ein Auto.',
 	} as L,
 	steps: [
 		{
 			label: { en: 'Fly', de: 'Fliegen' },
-			title: { en: 'Florence or Rome', de: 'Florenz oder Rom' },
+			title: { en: 'Florence, Pisa, or Rome', de: 'Florenz oder Rom' },
 			body: {
-				en: 'Florence (FLR) is closest — about 1h40 by car. Rome (FCO) is a larger hub roughly 2h30 away. Pisa and Perugia work too.',
+				en: 'Florence (FLR) is closest at about 1h40 by car. Rome (FCO) is a larger hub, roughly 2h30 away, while Pisa (PSA) and Bologna (BLQ) are also great options.',
 				de: 'Florenz (FLR) ist am nächsten — etwa 1 Std. 40 mit dem Auto. Rom (FCO) ist ein größerer Hub, rund 2 Std. 30 entfernt. Pisa und Perugia gehen auch.',
 			},
 		},
@@ -108,16 +112,8 @@ export const travel = {
 			label: { en: 'Drive', de: 'Fahren' },
 			title: { en: 'Into the Val d’Orcia', de: 'Ins Val d’Orcia' },
 			body: {
-				en: 'Hire a car at the airport. The last stretch winds through the hills and is half the pleasure of arriving.',
+				en: 'Pick up a car at the airport and enjoy the drive into the Val d’Orcia. The last stretch winds through the Tuscan hills, and we promise it already is a great start into the wedding weekend.',
 				de: 'Mietet am Flughafen ein Auto. Das letzte Stück windet sich durch die Hügel und ist die halbe Freude an der Ankunft.',
-			},
-		},
-		{
-			label: { en: 'Rail', de: 'Bahn' },
-			title: { en: 'Train to Chiusi', de: 'Zug nach Chiusi' },
-			body: {
-				en: 'Prefer the train? Chiusi-Chianciano Terme is the nearest station, then a 40-minute drive or taxi to Pienza.',
-				de: 'Lieber mit dem Zug? Chiusi-Chianciano Terme ist der nächste Bahnhof, dann 40 Minuten mit Auto oder Taxi nach Pienza.',
 			},
 		},
 	],
