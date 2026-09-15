@@ -131,14 +131,11 @@ function gatePage({ redirect = '/', error = '' } = {}) {
     font-family:var(--sans);font-weight:350;display:flex;align-items:center;justify-content:center;padding:2rem;
     background-image:url('/images/auth-bg.jpg');background-size:cover;background-position:center;background-repeat:no-repeat}
   .gate{width:100%;max-width:26rem;text-align:center}
-  .kicker{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;font-weight:500;color:var(--olive-muted);margin:0 0 2.25rem}
   .couple{font-family:var(--display);color:var(--ink);font-weight:400;line-height:.95;
     font-size:clamp(3rem,16vw,4.5rem);margin:0;letter-spacing:.01em}
   .amp{display:block;font-family:var(--script);font-weight:700;color:var(--terracotta);
     font-size:.62em;line-height:.5;margin:.05em 0;text-transform:lowercase}
-  .rule{width:32px;height:1px;background:var(--terracotta);border:0;margin:2rem auto 1.75rem}
-  .intro{font-family:var(--display);font-style:italic;font-size:1.05rem;line-height:1.5;color:var(--ink-soft);margin:0 0 2rem}
-  .intro .de{display:block;font-style:normal;font-family:var(--sans);font-size:.9rem;color:var(--olive-muted);margin-top:.5rem}
+  .rule{width:32px;height:1px;background:var(--terracotta);border:0;margin:2rem auto 2.25rem}
   form{display:flex;flex-direction:column;gap:.75rem}
   input{font-family:var(--sans);font-size:1rem;text-align:center;color:var(--ink);background:var(--cream);
     border:0;border-bottom:1px solid var(--hairline);padding:.85rem .5rem;outline:none;transition:border-color .25s}
@@ -152,13 +149,8 @@ function gatePage({ redirect = '/', error = '' } = {}) {
 </head>
 <body>
   <main class="gate">
-    <p class="kicker">Pienza · 2027</p>
-    <h1 class="couple">ANNA<span class="amp">and</span>MIKE</h1>
+    <h1 class="couple">Anna<span class="amp">and</span>Mike</h1>
     <hr class="rule" />
-    <p class="intro">
-      A private invitation — please enter the password
-      <span class="de">Eine private Einladung — bitte gib das Passwort ein</span>
-    </p>
     <form method="POST" action="/__auth">
       <input type="hidden" name="redirect" value="${escapeHtml(redirect)}" />
       <input type="password" name="password" placeholder="Password · Passwort" aria-label="Password / Passwort" autofocus required />
