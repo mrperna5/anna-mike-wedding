@@ -127,8 +127,9 @@ function gatePage({ redirect = '/', error = '' } = {}) {
     --display:'Bodoni Moda',serif;--sans:'Hanken Grotesk',system-ui,sans-serif;--script:'Tangerine',cursive;
   }
   *{box-sizing:border-box}
-  body{margin:0;min-height:100vh;background:var(--cream);color:var(--ink-soft);
-    font-family:var(--sans);font-weight:350;display:flex;align-items:center;justify-content:center;padding:2rem}
+  body{margin:0;min-height:100vh;background-color:var(--cream);color:var(--ink-soft);
+    font-family:var(--sans);font-weight:350;display:flex;align-items:center;justify-content:center;padding:2rem;
+    background-image:url('/images/auth-bg.jpg');background-size:cover;background-position:center;background-repeat:no-repeat}
   .gate{width:100%;max-width:26rem;text-align:center}
   .kicker{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;font-weight:500;color:var(--olive-muted);margin:0 0 2.25rem}
   .couple{font-family:var(--display);color:var(--ink);font-weight:400;line-height:.95;
