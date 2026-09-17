@@ -110,7 +110,14 @@ import Bi from './Bi.astro';
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
-		object-position: center;
+		/* The couple's heads sit in the upper third of the source clip
+		   (1280x720), not dead center. On wide/short bands (see the
+		   desktop height clamp below), a centered crop removes more off
+		   the top than there is headroom for and clips them. Anchoring
+		   toward the top of the frame keeps their heads in view and lets
+		   the crop eat into the grass/field at the bottom instead, which
+		   has plenty of room to spare. */
+		object-position: center 20%;
 	}
 	/* Tablet/desktop: the full-bleed band gets very wide, so an 8:5 ratio
 	   would make it absurdly tall — go back to a height-based cap instead. */

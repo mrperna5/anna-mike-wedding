@@ -9,7 +9,7 @@ export const ui = {
 	close: { en: 'Close', de: 'Schließen' } as L,
 	backToTop: { en: 'Back to top', de: 'Nach oben' } as L,
 	dressLabel: { en: 'Dress', de: 'Outfit' } as L,
-	haveALook: { en: 'Have a look', de: 'Ansehen' } as L,
+	haveALook: { en: 'Have a look', de: 'Kleiner Einblick' } as L,
 	newTab: { en: 'opens in a new tab', de: 'öffnet in neuem Tab' } as L,
 	prev: { en: 'Previous', de: 'Zurück' } as L,
 	next: { en: 'Next', de: 'Weiter' } as L,
@@ -31,25 +31,25 @@ export const hero = {
 export const overview = {
 	kicker: { en: 'Our weekend', de: 'Unser Wochenende' } as L,
 	headEn: 'The weekend we\'ve been dreaming of',
-	headDe: 'Drei Tage zwischen<br>den Zypressen',
+	headDe: 'Eine Vision. Ein Gefühl. Ein Ort. <br> Unser Hochzeitswochenende.',
 	p1: {
-		en: 'When we first imagined our wedding it was never about a particular place, style, or venue.',
-		de: 'Wir wollten keine Hochzeit, die nach einem Abend vorbei ist. Darum bitten wir die Menschen, die wir lieben, sich ein langes Wochenende im Val d’Orcia frei zu halten — um in Ruhe zu essen, lange wach zu bleiben und an einem schönen Ort zusammen zu sein.',
+		en: 'When we first imagined our wedding it was never about a particular place, a specific style, or a certain venue.',
+		de: 'Als wir uns das erste Mal unsere Hochzeit ausgemalt haben, hatten wir nie einen konkreten Ort, einen besonderen Stil oder eine bestimmte Location im Sinn.',
 	} as L,
 	p2: {
-		en: 'From the very beginning, we knew we wanted to celebrate with the people we love, in a beautiful place, with plenty of time for long conversations with everyone, enjoying the time together, delicious food, a nice glass of wine (or two, or three, or more), and dancing until the morning comes.',
-		de: 'Pizza am Freitag, das Ja-Wort am Samstag und nichts vor am Sonntag. Die übrigen Seiten helfen euch bei der Reiseplanung.',
+		en: 'From the very beginning, there was one thing we knew for certain: we wanted to celebrate this special day with the people who mean the most to us. In a beautiful place, enjoying plenty of time together with long conversations, lots of laughter, delicious food, a good glass of wine (or two, or three … maybe a few more 😇), and dancing until the morning comes. <br> Simply celebrating our love together with all of you.',
+		de: 'Von Anfang an wussten wir nur eines ganz genau: Wir möchten diesen besonderen Tag mit den Menschen verbringen, die uns am wichtigsten sind. An einem wunderschönen Ort, mit ganz viel Zeit füreinander – für lange Gespräche, gemeinsames Lachen, gutes Essen genießen, ein schönes Glas Wein (oder zwei, drei … vielleicht auch ein paar mehr 😇), und Tanzen bis tief in die Nacht. <br> Einfach unsere Liebe feiern – gemeinsam mit euch.',
 	} as L,
 	p3: {
 		en: 'And we couldn\'t be happier to say our dream is finally coming true.',
-		de: 'Pizza am Freitag, das Ja-Wort am Samstag und nichts vor am Sonntag. Die übrigen Seiten helfen euch bei der Reiseplanung.',
+		de: 'Und wir können es immer noch kaum glauben und sind überglücklich heute sagen zu können, dass dieser Traum nun endlich Wirklichkeit wird.',
 	} as L,
 };
 
 export const schedule = {
 	// Sub-heading for the run of the weekend, which lives on the overview page.
-	kicker: { en: 'Three days together', de: 'Stunde für Stunde' } as L,
-	title: { en: 'The weekend ahead', de: 'Der Ablauf des Wochenendes' } as L,
+	kicker: { en: 'Three days together', de: 'DREI TAGE. WIR & IHR ' } as L,
+	title: { en: 'Our wedding weekend', de: 'Unser Hochzeitswochenende' } as L,
 };
 
 export const venue = {
@@ -90,30 +90,62 @@ export const venue = {
 			},
 		},
 	],
+	// The two named properties, shown side by side below the facts. Proper
+	// nouns and URLs aren't translated (same convention as `name`/`url` in
+	// accommodation.ts) — plain strings, not `L`. The address IS bilingual,
+	// since only the country name changes between languages (Italy/Italien).
+	locations: [
+		{
+			name: 'Biancacamica',
+			address: {
+				en: 'Strada Provinciale del Monte Amiata, 53026 Pienza SI, Italy',
+				de: 'Strada Provinciale del Monte Amiata, 53026 Pienza SI, Italien',
+			} as L,
+			website: 'https://www.biancacamicia.it',
+			photo: '/images/venue-biancacamica.jpg',
+			// Horizontal focal point for the cover-cropped photo (the table
+			// and the gazebo arch sit left of center in the source image).
+			photoFocus: '35%',
+		},
+		{
+			name: 'Villa Apparita',
+			address: {
+				en: 'Podere Apparita, 40, Pienza SI, Italy',
+				de: 'Podere Apparita, 40, Pienza SI, Italien',
+			} as L,
+			website: 'https://www.villaapparita.it',
+			photo: '/images/venue-villa-apparita.jpg',
+			// The house sits left of center in the source image.
+			photoFocus: '25%',
+		},
+	],
 };
 
 export const travel = {
 	kicker: { en: 'Arrival', de: 'Anfahrt' } as L,
 	title: { en: 'Getting there', de: 'Anreise' } as L,
+	month: { en: 'May', de: 'Mai' } as L,
 	intro: {
 		en: 'We definitely found our favorite place in Tuscany and can\'t believe we are actually getting married here. Pienza and Monticchiello sit in southern Tuscany, between Siena and the Umbrian border. Once you\'re here, having a car is the easiest way to explore the rolling hills, cypress alleys, quaint villages, and everything that makes this part of Tuscany so special.',
-		de: 'Pienza liegt in der südlichen Toskana, zwischen Siena und der Grenze zu Umbrien. Wie ihr auch kommt — vor Ort braucht ihr ein Auto.',
+		de: 'Wir haben definitiv unseren absoluten Lieblingsort in der Toskana gefunden und können selbst noch kaum glauben, dass wir genau hier heiraten werden.\n' +
+			'Pienza und Monticchiello liegen im Süden der Toskana, zwischen Siena und der Grenze zu Umbrien. Wir würden euch empfehlen, dass ihr mit dem Auto kommt, oder euch einen Mietwagen nehmt. So könnt ihr am besten die wunderschöne Gegend erkunden: klassische toskanische Zypressen Alleen, Hügel rauf und runter fahren, dazwischen kurze Stopps in kleinen Dörfern mit unzähligen verwinkelten Gassen und Läden an jeder Ecke und all die kleinen besonderen Orte, die diese Ecke der Toskana so unglaublich schön machen.',
 	} as L,
 	steps: [
 		{
 			label: { en: 'Fly', de: 'Fliegen' },
-			title: { en: 'Florence, Pisa, or Rome', de: 'Florenz oder Rom' },
+			title: { en: 'Florence, Pisa, Bologna or Rome', de: 'Florenz, Pisa, Bologna oder Rom' },
 			body: {
 				en: 'Florence (FLR) is closest at about 1h40 by car. Rome (FCO) is a larger hub, roughly 2h30 away, while Pisa (PSA) and Bologna (BLQ) are also great options.',
-				de: 'Florenz (FLR) ist am nächsten — etwa 1 Std. 40 mit dem Auto. Rom (FCO) ist ein größerer Hub, rund 2 Std. 30 entfernt. Pisa und Perugia gehen auch.',
+				de: 'Am nächsten liegt Florenz (FLR) – von dort seid ihr mit dem Auto in etwa 1 Stunde 40 Minuten bei uns. Rom (FCO) ist als großer internationaler Flughafen ebenfalls eine super Option und liegt ungefähr 2 Stunden 30 Minuten entfernt. Auch Pisa (PSA) und Bologna (BLQ) wäre eine gute Alternative. Danach nehmt ihr euch am besten einen Mietwagen und erkundet bereits bei der Anfahrt die wunderschöne toskanische Landschaft.',
 			},
 		},
 		{
 			label: { en: 'Drive', de: 'Fahren' },
-			title: { en: 'Into the Val d’Orcia', de: 'Ins Val d’Orcia' },
+			title: { en: 'Val d’Orcia Roadtrip', de: 'Toskana Roadtrip' },
 			body: {
-				en: 'Pick up a car at the airport and enjoy the drive into the Val d’Orcia. The last stretch winds through the Tuscan hills, and we promise it already is a great start into the wedding weekend.',
-				de: 'Mietet am Flughafen ein Auto. Das letzte Stück windet sich durch die Hügel und ist die halbe Freude an der Ankunft.',
+				en: 'Pick up a car at the airport and enjoy the drive into the Val d’Orcia. The last stretch winds through the Tuscan hills, and we promise it already is a great start into the wedding weekend. One little tip (or lets be honest from personal experience): at the Italian toll booths, better don’t take the lane that looks like “we have an annual pass, so we don’t have to pay.” This will get expensive 😉.',
+				de: 'Wenn ihr aus Deutschland mit dem Auto anreist, beginnt das Hochzeitswochenende eigentlich schon unterwegs. Für alle, die die Fahrt ganz entspannt angehen möchten, bietet sich ein Zwischenstopp am Gardasee perfekt an und am nächsten Morgen weiter Richtung Toskana.\n' +
+					'Sobald ihr die Alpen hinter euch lasst und euch dem Val d’Orcia nähert, werden die Straßen kleiner und hügeliger und die Aussicht immer schöner. Hier kommt ganz automatisch Urlaubs- und Hochzeitsstimmung auf. Noch ein Tipp am Rande aka aus eigener Erfahrung: bei den italienischen Passkontrollen auf der Autobahn bitte nicht die „wir haben ein Jahresticket und müssen nicht zahlen“ Spur nehmen. Wird teuer 😉',
 			},
 		},
 	],

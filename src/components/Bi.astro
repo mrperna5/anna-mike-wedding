@@ -3,6 +3,11 @@
 // <html data-lang>) shows only the active one. Usage:
 //   <Bi t={item.title} />           // from a localised data field
 //   <Bi en="Hello" de="Hallo" />    // inline
+//
+// set:html (not plain {e}/{g}) so markup authored directly in the copy
+// strings — e.g. a `<br>` for a manual line break — actually renders
+// instead of showing up as literal "<br>" text. All copy comes from us,
+// not user input, so this is safe.
 import type { L } from '../data/i18n';
 
 interface Props {
@@ -16,4 +21,4 @@ const e = t?.en ?? en ?? '';
 const g = t?.de ?? de ?? '';
 ---
 
-<span class="bi" data-lang="en">{e}</span><span class="bi" data-lang="de" lang="de">{g}</span>
+<span class="bi" data-lang="en" set:html={e} /><span class="bi" data-lang="de" lang="de" set:html={g} />
