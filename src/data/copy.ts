@@ -209,7 +209,7 @@ export const registry = {
 		de: 'Wenn ihr uns lieber am Tag selbst etwas gebt — eine Karte erreicht uns genauso gut.',
 	} as L,
 	// The call to action on every card.
-	cta: { en: 'Contribute', de: 'Dazu beitragen' } as L,
+	cta: { en: 'Contribute', de: 'Klingt gut' } as L,
 
 	// The switch inside each popup, and the account details it reveals.
 	// Same convention as `name`/`url` in accommodation.ts: the account
@@ -252,6 +252,15 @@ export const registry = {
 	// string a guest copies in, not prose.
 	items: [
 		{
+			id: 'honeymoon',
+			title: { en: 'Honeymoon bonus', de: 'Hochzeitsreise-Bonus' } as L,
+			reaction: {
+				en: 'WE LOVE YOU! <br>We’ll send you pictures!',
+				de: 'WIR LIEBEN EUCH! <br>Fotos gibt\'s natürlich als Beweis!',
+			} as L,
+			reference: 'Happy Mr. & Mrs. Perna',
+		},
+		{
 			id: 'thermomix',
 			title: {
 				en: 'Anna’s long-awaited Thermomix dream finally comes true',
@@ -274,15 +283,6 @@ export const registry = {
 				de: 'AUSGEZEICHNETE WAHL! <br>Jetzt muss Anna wohl mit zum campen.',
 			} as L,
 			reference: 'Happy Mike',
-		},
-		{
-			id: 'honeymoon',
-			title: { en: 'Honeymoon bonus', de: 'Hochzeitsreise-Bonus' } as L,
-			reaction: {
-				en: 'WE LOVE YOU! <br>We’ll send you pictures!',
-				de: 'WIR LIEBEN EUCH! <br>Fotos gibt\'s natürlich als Beweis!',
-			} as L,
-			reference: 'Happy Mr. & Mrs. Perna',
 		},
 		{
 			id: 'malm',
@@ -324,35 +324,43 @@ export const registry = {
 };
 
 export const rsvp = {
-	kicker: { en: 'With love', de: 'In Liebe' } as L,
+	kicker: { en: 'With much excitement', de: 'Mit ganz viel Vorfreude' } as L,
 	join: { en: 'join', de: 'dabei' } as L,
 	headPreEn: 'Will you',
 	headPostEn: 'us?',
 	headPreDe: 'Bist du',
 	headPostDe: '?',
 	sub: {
-		en: 'Let us know whether you can make it — you can change your answer any time before the wedding.',
-		de: 'Sagt uns, ob ihr dabei sein könnt — ihr könnt eure Antwort bis zur Hochzeit jederzeit ändern.',
+		en: 'We’d be so incredibly happy to have you with us in Tuscany. 🧡 Please let us know by December 20th if you’ll be able to spend this special weekend with us.',
+		de: 'Wir würden uns riesig freuen, euch in der Toskana dabei zu haben. 🧡Gebt uns bitte bis zum 20.12. Bescheid, ob ihr dieses Wochenende mit uns verbringen könnt.',
 	} as L,
 };
 
 export const rsvpForm = {
 	name: {
-		label: { en: 'Your name(s)', de: 'Euer Name / eure Namen' } as L,
+		label: { en: 'Your name (Please fill out each name individually)', de: 'Name (bitte jeder einzeln ausfüllen)' } as L,
 		placeholder: { en: 'First and last name', de: 'Vor- und Nachname' } as L,
 	},
+	email: {
+		label: { en: 'Your email', de: 'Deine E-Mail-Adresse' } as L,
+		placeholder: { en: 'you@example.com', de: 'dir@beispiel.de' } as L,
+		hint: {
+			en: 'So we can send a confirmation and the details',
+			de: 'Damit wir dir eine Bestätigung mit allen Infos schicken können',
+		} as L,
+	},
 	attending: {
-		label: { en: 'Will you be there?', de: 'Seid ihr dabei?' } as L,
-		yes: { en: 'Joyfully, yes', de: 'Mit Freude, ja' } as L,
+		label: { en: 'Will you be there?', de: 'Bist du dabei?' } as L,
+		yes: { en: 'Yes, of course', de: 'Aber natürlich' } as L,
 		no: { en: 'Sadly, no', de: 'Leider nein' } as L,
 	},
 	days: {
-		label: { en: 'Which days will we see you?', de: 'An welchen Tagen sehen wir euch?' } as L,
+		label: { en: 'Which days will we see you?', de: 'An welchen Tagen dürfen wir uns auf dich freuen?' } as L,
 		hint: { en: 'Tick all that apply', de: 'Alles Zutreffende ankreuzen' } as L,
 		options: [
-			{ id: 'friday', label: { en: 'Friday — welcome pizza', de: 'Freitag — Willkommens-Pizza' } as L },
-			{ id: 'saturday', label: { en: 'Saturday — ceremony & celebration', de: 'Samstag — Trauung & Feier' } as L },
-			{ id: 'sunday', label: { en: 'Sunday — pool party', de: 'Sonntag — Poolparty' } as L },
+			{ id: 'friday', label: { en: 'Friday - Get Together', de: 'Freitag - Get Together' } as L },
+			{ id: 'saturday', label: { en: 'Saturday - Wedding day', de: 'Samstag - Trauung & Hochzeitfeier' } as L },
+			{ id: 'sunday', label: { en: 'Sunday - Sip, Swim & Recover', de: 'Sonntag - Sonne, Spritz & Pool' } as L },
 		],
 	},
 	dietary: {
@@ -363,25 +371,29 @@ export const rsvpForm = {
 		placeholder: { en: 'e.g. vegetarian, nut allergy', de: 'z. B. vegetarisch, Nussallergie' } as L,
 	},
 	song: {
-		label: { en: 'A song that’ll get you dancing', de: 'Ein Lied, das euch tanzen lässt' } as L,
+		label: { en: 'A song that’ll get you dancing', de: 'Ein Lied, das bei der Party auf keinen Fall fehlen darf' } as L,
 		placeholder: { en: 'Artist — title', de: 'Künstler — Titel' } as L,
 	},
 	message: {
 		label: { en: 'A note for us (optional)', de: 'Eine Nachricht an uns (optional)' } as L,
 		placeholder: { en: 'Say hello…', de: 'Sagt Hallo…' } as L,
 	},
-	submit: { en: 'Send RSVP', de: 'Zusage senden' } as L,
+	submit: { en: 'Send RSVP', de: 'Rückmeldung senden' } as L,
 	success: {
-		en: 'Thank you — your reply is in. Send it again any time to update it.',
-		de: 'Danke — eure Antwort ist da. Sendet sie jederzeit erneut, um sie zu ändern.',
+		en: 'Thank you - your reply is in, and a confirmation is on its way to your inbox.',
+		de: 'Danke - deine Antwort ist da, eine Bestätigung ist unterwegs in dein Postfach.',
 	} as L,
 	error: {
 		en: 'Something went wrong sending that. Please try again, or email us.',
-		de: 'Beim Senden ist etwas schiefgelaufen. Bitte versucht es erneut oder schreibt uns.',
+		de: 'Beim Senden ist etwas schiefgelaufen. Bitte versuch es erneut oder schreib uns.',
 	} as L,
 	required: {
-		en: 'Please add your name and let us know yes or no.',
-		de: 'Bitte tragt euren Namen ein und sagt uns ja oder nein.',
+		en: 'Please add your name, a valid email.',
+		de: 'Bitte trag deine Namen, eine gültige E-Mail-Adresse ein.',
+	} as L,
+	note: {
+		en: 'We\'re already very excited to see you!',
+		de: 'Wir freuen uns schon jetzt wahnsinnig auf dich!'
 	} as L,
 };
 

@@ -21,11 +21,22 @@ export async function onRequest(context) {
 	}
 
 	const { results } = await env.DB.prepare(
-		`SELECT id, created_at, name, attending, days, dietary, song, message
+		`SELECT id, created_at, name, email, attending, days, dietary, song, message, email_sent_at
 		 FROM rsvps ORDER BY created_at DESC`,
 	).all();
 
-	const cols = ['id', 'created_at', 'name', 'attending', 'days', 'dietary', 'song', 'message'];
+	const cols = [
+		'id',
+		'created_at',
+		'name',
+		'email',
+		'attending',
+		'days',
+		'dietary',
+		'song',
+		'message',
+		'email_sent_at',
+	];
 	const lines = [cols.join(',')];
 	for (const row of results || []) {
 		lines.push(cols.map((c) => csv(row[c])).join(','));

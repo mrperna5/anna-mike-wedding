@@ -14,7 +14,6 @@ import Bi from './Bi.astro';
 				<span class="bi" data-lang="en" set:html={overview.headEn} />
 				<span class="bi" data-lang="de" lang="de" set:html={overview.headDe} />
 			</h1>
-			<!--TODO: change the size of the paragraph to fill -->
 			<div class="overview__body measure">
 				<p><Bi t={overview.p1} /></p>
 				<p><Bi t={overview.p2} /></p>
@@ -62,10 +61,6 @@ import Bi from './Bi.astro';
 	.overview__head {
 		font-size: var(--fs-h1);
 		margin: 1.25rem 0 2rem;
-	}
-	.overview__body {
-		font-size: var(--fs-h3);
-		line-height: 1.7;
 	}
 	.overview__body p {
 		margin-bottom: 1.5rem;

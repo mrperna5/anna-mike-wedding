@@ -39,7 +39,7 @@ export const dressCode: DressDay[] = [
 	},
 	{
 		day: { en: 'Saturday', de: 'Samstag' },
-		event: { en: 'Wedding day', de: 'Hochzeit' },
+		event: { en: 'Wedding day', de: 'Trauung und Hochzeitsfeier' },
 		code: {
 			en: 'Elegant · Formal',
 			de: 'Herausgeputzt',

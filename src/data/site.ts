@@ -13,8 +13,8 @@ export const site = {
 	country: { en: 'Italy', de: 'Italien' } as L,
 	venue: 'Villa Apparita',
 	region: "Val d'Orcia",
-	// Placeholder — replace with the address you want guests to see.
-	email: 'hello@annaandmike.com',
+	// "hello@" is a placeholder local part — swap it for whatever address you want guests to see.
+	email: 'hello@anna-mike-wedding.com',
 };
 
 // The site is one page per section. `href` is the route; `id` matches the
@@ -29,7 +29,7 @@ export const pages: PageDef[] = [
 	{ id: 'accommodation', href: '/accommodation', label: { en: 'Accommodation', de: 'Unterkunft' } },
 	{ id: 'dress', href: '/dress', label: { en: 'Dress code', de: 'Dresscode' } },
 	{ id: 'registry', href: '/registry', label: { en: 'Registry', de: 'Wünsche' } },
-	{ id: 'rsvp', href: '/rsvp', label: { en: 'RSVP', de: 'Zusagen' } },
+	{ id: 'rsvp', href: '/rsvp', label: { en: 'RSVP', de: 'Rückmeldung' } },
 	// Things to do — parked for now, maybe later. Uncomment to bring it back
 	// into the nav, home-page index, and pager.
 	// { id: 'things-to-do', href: '/things-to-do', label: { en: 'Things to do', de: 'Unternehmungen' } },

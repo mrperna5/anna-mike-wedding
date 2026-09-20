@@ -123,8 +123,11 @@ the only cream-deep band on a page today is the pager.
   respected, decorative elements `aria-hidden`.
 - **Performance.** Near-zero JS by design. TODO: self-host fonts as woff2 (`public/fonts/`) and
   drop the Google Fonts `<link>`.
-- **RSVP is visual-only for now** — no form, no backend. Wire to a static-friendly service
-  (Formspree/Tally) later; see `src/components/Rsvp.astro`.
+- **RSVP is live.** The form in `src/components/Rsvp.astro` POSTs to
+  `functions/api/rsvp.js`, which saves each reply (including the guest's email) to
+  Cloudflare D1 and sends a bilingual confirmation + reminder email via Resend
+  (`functions/lib/rsvp-email.js`). Runs only on Cloudflare — see `DEPLOYMENT.md`
+  for D1 and Resend setup, and for `rsvp-admin` (CSV export of replies).
 - **Photos:** flat-tone placeholders today; drop real images in `public/images/` and swap per
   that folder's README (prefer Astro `<Image />`).
 

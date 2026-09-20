@@ -3,7 +3,8 @@ import { site } from '../data/site';
 import { rsvp, rsvpForm } from '../data/copy';
 import Bi from './Bi.astro';
 // The form POSTs JSON to the /api/rsvp Pages Function, which stores replies in
-// Cloudflare D1. Runs only on Cloudflare; see DEPLOYMENT.md for D1 setup.
+// Cloudflare D1 and emails the guest a confirmation + reminder via Resend.
+// Runs only on Cloudflare; see DEPLOYMENT.md for D1 and Resend setup.
 ---
 
 <section id="rsvp" class="section">
@@ -34,6 +35,24 @@ import Bi from './Bi.astro';
 					required
 					data-ph-en={rsvpForm.name.placeholder.en}
 					data-ph-de={rsvpForm.name.placeholder.de}
+				/>
+			</div>
+
+			<div class="rform__field">
+				<label class="rform__label" for="rsvp-email">
+					<Bi t={rsvpForm.email.label} />
+					<span class="rform__hint"><Bi t={rsvpForm.email.hint} /></span>
+				</label>
+				<input
+					class="rform__input"
+					id="rsvp-email"
+					name="email"
+					type="email"
+					inputmode="email"
+					autocomplete="email"
+					required
+					data-ph-en={rsvpForm.email.placeholder.en}
+					data-ph-de={rsvpForm.email.placeholder.de}
 				/>
 			</div>
 
@@ -103,6 +122,8 @@ import Bi from './Bi.astro';
 					data-ph-de={rsvpForm.message.placeholder.de}></textarea>
 			</div>
 
+			<p class="rform__note"><Bi t={rsvpForm.note} /></p>
+
 			<button class="rform__submit" type="submit"><Bi t={rsvpForm.submit} /></button>
 		</form>
 
@@ -135,8 +156,6 @@ import Bi from './Bi.astro';
 	}
 	.rsvp__sub {
 		margin: 0 auto 2.75rem;
-		font-size: var(--fs-h3);
-		line-height: 1.7;
 	}
 
 	/* form */
@@ -296,13 +315,16 @@ import Bi from './Bi.astro';
 			e.preventDefault();
 			const fd = new FormData(form);
 			const name = String(fd.get('name') || '').trim();
+			const email = String(fd.get('email') || '').trim();
 			const attending = String(fd.get('attending') || '');
-			if (!name || !attending) {
+			const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+			if (!name || !emailOk || !attending) {
 				show('req');
 				return;
 			}
 			const payload = {
 				name,
+				email,
 				attending,
 				days: fd.getAll('days').map(String),
 				dietary: String(fd.get('dietary') || '').trim(),
