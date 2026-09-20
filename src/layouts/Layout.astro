@@ -57,7 +57,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url).href;
 		<meta property="og:url" content={canonical} />
 		<link rel="canonical" href={canonical} />
 
-		<!-- Fonts. Bodoni Moda (display) + Hanken Grotesk (text) + Tangerine
+		<!-- Fonts. Playfair Display (display) + Hanken Grotesk (text) + Tangerine
 		     (placeholder for Amalfi Coast, used only on the word "and").
 		     TODO: self-host these as woff2 in /public/fonts for performance,
 		     and drop in the real Amalfi Coast via @font-face — then point
@@ -65,7 +65,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url).href;
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
-			href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400;1,6..96,500&family=Hanken+Grotesk:wght@300;400;500&family=Tangerine:wght@400;700&display=swap"
+			href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Hanken+Grotesk:wght@300;400;500&family=Tangerine:wght@400;700&display=swap"
 			rel="stylesheet"
 		/>
 	</head>

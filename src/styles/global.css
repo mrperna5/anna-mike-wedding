@@ -1,6 +1,6 @@
 /* =====================================================================
    Anna & Mike — design system
-   Refined, editorial, Tuscan. Bodoni Moda is the voice; Amalfi Coast
+   Refined, editorial, Tuscan. Playfair Display is the voice; Amalfi Coast
    (via --font-script) appears only on the word "and". Whitespace and
    hairlines do the luxury work. Terracotta is a rare accent, never a theme.
    ===================================================================== */
@@ -18,7 +18,7 @@
 	--hairline: #cfc7b5;
 
 	/* --- type families ---------------------------------------------- */
-	--font-display: 'Bodoni Moda', 'Times New Roman', serif;
+	--font-display: 'Playfair Display', 'Times New Roman', serif;
 	--font-sans: 'Hanken Grotesk', system-ui, -apple-system, sans-serif;
 	/* Placeholder for Amalfi Coast. When the woff2 is added to
 	   /public/fonts and @font-face'd below, change ONLY this line. */

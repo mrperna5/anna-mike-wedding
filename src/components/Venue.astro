@@ -22,7 +22,7 @@ const n = (i: number) => String(i + 14);
 					<hr class="rule" />
 					<a
 						class="venue__location-address"
-						href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(loc.address.en)}`}
+						href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(loc.coordinates ?? loc.address.en)}`}
 						target="_blank"
 						rel="noopener noreferrer"
 					>

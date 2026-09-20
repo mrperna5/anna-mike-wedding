@@ -1,6 +1,6 @@
 # Self-hosted fonts (TODO)
 
-Right now Bodoni Moda, Hanken Grotesk, and a Tangerine **placeholder** load from
+Right now Playfair Display, Hanken Grotesk, and a Tangerine **placeholder** load from
 Google Fonts (see the `<link>` in `src/layouts/Layout.astro`).
 
 When you're ready to finalise:
@@ -13,5 +13,5 @@ When you're ready to finalise:
    ```
    The script face is used **only** on the word "and" in the couple lockup, so nothing
    else is affected.
-3. Optionally self-host Bodoni Moda + Hanken Grotesk here too for performance, and remove
+3. Optionally self-host Playfair Display + Hanken Grotesk here too for performance, and remove
    the Google Fonts `<link>`.

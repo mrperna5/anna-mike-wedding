@@ -106,6 +106,10 @@ export const venue = {
 			// Horizontal focal point for the cover-cropped photo (the table
 			// and the gazebo arch sit left of center in the source image).
 			photoFocus: '35%',
+			// Exact pin for the "open in Google Maps" link — the street
+			// address above geocodes imprecisely, so the map link uses these
+			// coordinates instead while the address text stays human-readable.
+			coordinates: '43.05783848553118,11.684370247538835',
 		},
 		{
 			name: 'Villa Apparita',
@@ -117,6 +121,7 @@ export const venue = {
 			photo: '/images/venue-villa-apparita.jpg',
 			// The house sits left of center in the source image.
 			photoFocus: '25%',
+			coordinates: undefined as string | undefined,
 		},
 	],
 };

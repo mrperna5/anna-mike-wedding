@@ -42,7 +42,7 @@ template.** Whitespace and hairlines do the luxury work. The single source of tr
 | `--hairline` | `#cfc7b5` | thin dividers |
 
 **Type**
-- `--font-display` → **Bodoni Moda** (display serif): all headings and the names. Used large and
+- `--font-display` → **Playfair Display** (display serif): all headings and the names. Used large and
   sparingly.
 - `--font-sans` → **Hanken Grotesk**: body copy, nav, and the uppercase tracked `.kicker` labels.
 - `--font-script` → **Amalfi Coast** (currently a **Tangerine placeholder** — see
@@ -50,7 +50,7 @@ template.** Whitespace and hairlines do the luxury work. The single source of tr
   couple lockup.
 
 **The names rule (important):** it's `Anna` + `and` + `Mike`, where "Anna" and "Mike" are in
-Bodoni Moda and the lowercase word **"and"** is the only thing in the script face. It is the
+Playfair Display and the lowercase word **"and"** is the only thing in the script face. It is the
 **word "and", not an ampersand**, and the script never touches the names. The lockup lives in the
 `.couple` / `.couple__and` classes — reuse them, don't reinvent.
 
