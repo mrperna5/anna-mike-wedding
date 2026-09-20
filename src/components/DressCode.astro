@@ -2,6 +2,7 @@
 import { dressCode } from '../data/dressCode';
 import { dress } from '../data/copy';
 import Bi from './Bi.astro';
+import DressIcon from './DressIcon.astro';
 ---
 
 <section id="dress" class="section">
@@ -30,11 +31,11 @@ import Bi from './Bi.astro';
 								<Bi t={d.note} />
 							</p>
 						</div>
-						<div class="dress__swatches" aria-hidden="true">
-							{d.swatches.map((s) => (
+						<div class="dress__swatches">
+							{d.icons.map((s) => (
 								<span class="dress__swatch">
-									<span class="dress__chip" style={`background:${s.hex}`} />
-									<span class="dress__name">
+									<DressIcon name={s.icon} />
+									<span class="visually-hidden">
 										<Bi t={s.name} />
 									</span>
 								</span>
@@ -88,25 +89,20 @@ import Bi from './Bi.astro';
 	}
 	.dress__swatches {
 		display: flex;
+		align-items: center;
 		gap: 1.5rem;
 	}
 	.dress__swatch {
 		display: flex;
-		flex-direction: column;
-		gap: 0.5rem;
-		align-items: center;
 	}
-	.dress__chip {
-		width: 2.75rem;
-		height: 2.75rem;
-		border-radius: 50%;
-		border: 1px solid var(--hairline);
+	.dress__swatch :global(.dress-icon) {
+		width: 2.25rem;
+		height: 2.25rem;
+		color: var(--olive);
+		transition: color 0.3s var(--ease);
 	}
-	.dress__name {
-		font-size: 0.7rem;
-		letter-spacing: 0.08em;
-		text-transform: uppercase;
-		color: var(--olive-muted);
+	.dress__swatch:hover :global(.dress-icon) {
+		color: var(--terracotta);
 	}
 	@media (min-width: 48rem) {
 		.dress__row {

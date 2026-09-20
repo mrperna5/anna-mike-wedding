@@ -173,11 +173,11 @@ export const accommodation = {
 };
 
 export const dress = {
-	kicker: { en: 'What to wear', de: 'Was anziehen' } as L,
+	kicker: { en: 'The question of all questions', de: 'Die Frage aller Fragen' } as L,
 	title: { en: 'Dress code', de: 'Dresscode' } as L,
 	intro: {
 		en: 'Three days, three different moods. Honestly we just want you to feel amazing and comfortable in anything you wear. Nicest thing you can wear is a smile 🧡',
-		de: 'Drei Tage, drei Stimmungen. Orientiert euch ruhig an der Farbpalette — sanftes Creme, Oliv und ab und zu Terrakotta — kommt aber vor allem als die bequemste Version von euch selbst.',
+		de: 'Drei Tage, drei verschiedene Vibes. Am wichtigsten ist uns einfach, dass ihr euch in eurem Outfit richtig gut und wohlfühlt. Und das Schönste, was ihr tragen könnt, ist ein Lächeln 🧡',
 	} as L,
 };
 
@@ -196,11 +196,13 @@ export const faqCopy = {
 };
 
 export const registry = {
-	kicker: { en: 'On the subject of gifts', de: 'Zum Thema Geschenke' } as L,
-	title: { en: 'Registry', de: 'Geschenke' } as L,
+	kicker: { en: 'Just in case you were wondering ...', de: 'Falls ihr euch fragt ...' } as L,
+	title: { en: 'Registry', de: 'Wünsche' } as L,
 	intro: {
-		en: 'The honest answer is that you flying to Tuscany for us is the present. We’ve lived together for years and the cupboards are full — please don’t feel you owe us anything.',
-		de: 'Die ehrliche Antwort: Dass ihr für uns in die Toskana fliegt, ist das Geschenk. Wir wohnen seit Jahren zusammen und die Schränke sind voll — ihr schuldet uns wirklich nichts.',
+		en: 'For us, the greatest gift is already getting to spend this special weekend with you in Tuscany. We’re happy, healthy, living in our favorite city in a dream apartment, and honestly have pretty much everything we need. Even our kitchen is fully equipped – from a crêpe maker all the way to an espuma siphon ☺️.\n' +
+			'If you’d still really like to give us a little something, we’ve put together a few ideas below. 🧡',
+		de: 'Für uns ist es eigentlich schon das schönste Geschenk, dieses besondere Wochenende mit euch in der Toskana verbringen zu können. Wir sind gesund und glücklich, leben in unserer Lieblingsstadt in einer Traumwohnung und haben eigentlich alles, was wir brauchen. Auch unser Haushalt ist komplett ausgestattet – vom Crêpes-Maker bis hin zum Espuma-Siphon ☺️.\n' +
+			'Wenn ihr uns trotzdem gerne eine kleine Freude machen möchtet, haben wir euch unten ein paar Ideen zusammengestellt. 🧡',
 	} as L,
 	outro: {
 		en: 'If you’d rather hand us something on the day, a card finds us just as well.',
