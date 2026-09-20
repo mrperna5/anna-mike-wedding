@@ -200,30 +200,125 @@ export const registry = {
 	title: { en: 'Registry', de: 'Wünsche' } as L,
 	intro: {
 		en: 'For us, the greatest gift is already getting to spend this special weekend with you in Tuscany. We’re happy, healthy, living in our favorite city in a dream apartment, and honestly have pretty much everything we need. Even our kitchen is fully equipped – from a crêpe maker all the way to an espuma siphon ☺️.\n' +
-			'If you’d still really like to give us a little something, we’ve put together a few ideas below. 🧡',
+			'If you’d still really like to give us a little something, tap one of the ideas below — each one comes with the account details for wherever you’re sending from. 🧡',
 		de: 'Für uns ist es eigentlich schon das schönste Geschenk, dieses besondere Wochenende mit euch in der Toskana verbringen zu können. Wir sind gesund und glücklich, leben in unserer Lieblingsstadt in einer Traumwohnung und haben eigentlich alles, was wir brauchen. Auch unser Haushalt ist komplett ausgestattet – vom Crêpes-Maker bis hin zum Espuma-Siphon ☺️.\n' +
-			'Wenn ihr uns trotzdem gerne eine kleine Freude machen möchtet, haben wir euch unten ein paar Ideen zusammengestellt. 🧡',
+			'Wenn ihr uns trotzdem gerne eine kleine Freude machen möchtet, tippt unten auf eine der Ideen — jede zeigt euch die passenden Kontodaten, egal von wo ihr überweist. 🧡',
 	} as L,
 	outro: {
 		en: 'If you’d rather hand us something on the day, a card finds us just as well.',
 		de: 'Wenn ihr uns lieber am Tag selbst etwas gebt — eine Karte erreicht uns genauso gut.',
 	} as L,
-	options: [
+	// The call to action on every card.
+	cta: { en: 'Contribute', de: 'Dazu beitragen' } as L,
+
+	// The switch inside each popup, and the account details it reveals.
+	// Same convention as `name`/`url` in accommodation.ts: the account
+	// data itself (names, numbers, the payment reference) is proper nouns
+	// and literal strings a guest types in, not prose — so it isn't
+	// translated. Only the copy around it is.
+	bank: {
+		switchLegend: {
+			en: 'Choose where you’re sending from',
+			de: 'Wählt, von wo ihr überweist',
+		} as L,
+		reference: { en: 'Reference', de: 'Verwendungszweck' } as L,
+		qrCaption: {
+			en: 'Scan to fill this in automatically',
+			de: 'Scannen, um es automatisch auszufüllen',
+		} as L,
+		eu: {
+			label: { en: 'Sending from Europe', de: 'Überweisung aus Europa' } as L,
+			holder: 'Michael Raul Perna',
+			lines: {
+				en: 'IBAN: BE67 9679 6922 6487<br>SWIFT/BIC: TRWIBEB1XXX',
+				de: 'IBAN: BE67 9679 6922 6487<br>SWIFT/BIC: TRWIBEB1XXX',
+			} as L,
+			qr: '/images/registry-bank-eu-qr.svg',
+		},
+		us: {
+			label: { en: 'Sending from the US', de: 'Überweisung aus den USA' } as L,
+			holder: 'Michael Raul Perna',
+			lines: {
+				en: 'Account type: Checking<br>Routing number: 026073150 — for wire and ACH<br>Account number: 822000803798<br>SWIFT/BIC: CMFGUS33',
+				de: 'Kontoart: Checking<br>Routing-Nummer: 026073150 — für Wire und ACH<br>Kontonummer: 822000803798<br>SWIFT/BIC: CMFGUS33',
+			} as L,
+			qr: '/images/registry-bank-us-qr.svg',
+		},
+	},
+
+	// Each option is its own little popup: a title, the couple's reaction
+	// once you tap it, and the payment reference to write in the transfer.
+	// `reference` isn't translated — like the account data, it's a literal
+	// string a guest copies in, not prose.
+	items: [
 		{
-			label: { en: 'If you’d like to', de: 'Falls ihr möchtet' },
-			title: { en: 'The honeymoon fund', de: 'Die Flitterwochen-Kasse' },
-			body: {
-				en: 'We’re saving for a long trip after the wedding. A contribution towards a night, a dinner, or a train ticket somewhere would mean a lot. Details to follow closer to the day.',
-				de: 'Wir sparen auf eine längere Reise nach der Hochzeit. Ein Beitrag für eine Nacht, ein Abendessen oder eine Zugfahrt würde uns viel bedeuten. Die Details folgen näher am Termin.',
-			},
+			id: 'thermomix',
+			title: {
+				en: 'Anna’s long-awaited Thermomix dream finally comes true',
+				de: 'Annas lang ersehnter Thermomix-Traum wird wahr',
+			} as L,
+			reaction: {
+				en: 'GREAT CHOICE! <br>Happy wife, happy life.',
+				de: 'GROSSARTIGE WAHL! <br>Happy wife, happy life.',
+			} as L,
+			reference: 'Happy Anna',
 		},
 		{
-			label: { en: 'Or', de: 'Oder' },
-			title: { en: 'Something for the house', de: 'Etwas fürs Zuhause' },
-			body: {
-				en: 'For anyone who’d prefer something to wrap, we’ll put a short list of things we actually need here in good time — short being the point.',
-				de: 'Wer lieber etwas einpackt: Wir stellen hier rechtzeitig eine kurze Liste mit Dingen ein, die wir wirklich brauchen — kurz ist dabei das Entscheidende.',
-			},
+			id: 'camping',
+			title: {
+				en: 'Mike’s camping & fishing gear gets an upgrade',
+				de: 'Mikes Camping und Angelausrüstung bekommt ein upgrade',
+			} as L,
+			reaction: {
+				en: 'EXCELLENT CHOICE! <br>Anna has to go camping now.',
+				de: 'AUSGEZEICHNETE WAHL! <br>Jetzt muss Anna wohl mit zum campen.',
+			} as L,
+			reference: 'Happy Mike',
+		},
+		{
+			id: 'honeymoon',
+			title: { en: 'Honeymoon bonus', de: 'Hochzeitsreise-Bonus' } as L,
+			reaction: {
+				en: 'WE LOVE YOU! <br>We’ll send you pictures!',
+				de: 'WIR LIEBEN EUCH! <br>Fotos gibt\'s natürlich als Beweis!',
+			} as L,
+			reference: 'Happy Mr. & Mrs. Perna',
+		},
+		{
+			id: 'malm',
+			title: {
+				en: 'IKEA MALM was so yesterday - over-30s backs need comfort',
+				de: 'IKEA MALM war gestern - Ü30 Rücken brauchen Komfort',
+			} as L,
+			reaction: {
+				en: 'OUR BACKS WILL THANK YOU! <br>Sleep just got serious.',
+				de: 'UNSERE RÜCKEN WERDEN ES EUCH DANKEN! <br>Schlafen wird jetzt ernst genommen.',
+			} as L,
+			reference: 'RIP MALM',
+		},
+		{
+			id: 'legroom',
+			title: {
+				en: 'Anything for more legroom - flight upgrade for the honeymoon',
+				de: 'Alles für mehr Beinfreiheit - Flugupgrade für die Flitterwochen',
+			} as L,
+			reaction: {
+				en: 'OUR LEGS ARE ALREADY CELEBRATING! <br>One step closer to stretching out.',
+				de: 'UNSERE BEINE FEIERN SCHON! <br>Mehr Platz über den Wolken.',
+			} as L,
+			reference: 'Legroom fund',
+		},
+		{
+			id: 'surprise',
+			title: {
+				en: 'You know us best - free choice for your best idea',
+				de: 'Ihr kennt uns am besten - überrascht uns einfach',
+			} as L,
+			reaction: {
+				en: 'SURPRISE US! <br>We’re curious what you come up with.',
+				de: 'ÜBERRASCHT UNS! <br>Wir sind gespannt, was euch einfällt.',
+			} as L,
+			reference: 'tbd by you',
 		},
 	],
 };

@@ -1,6 +1,8 @@
 ---
-import { registry } from '../data/copy';
+import { registry, ui } from '../data/copy';
 import Bi from './Bi.astro';
+
+const num = (i: number) => String(i + 1).padStart(2, '0');
 ---
 
 <section id="registry" class="section">
@@ -11,19 +13,111 @@ import Bi from './Bi.astro';
 			<p class="measure"><Bi t={registry.intro} /></p>
 		</header>
 
-		<ul class="reg__list">
+		<ul class="reg__grid">
 			{
-				registry.options.map((o) => (
-					<li class="reg__option reveal">
-						<p class="reg__label">
-							<Bi t={o.label} />
+				registry.items.map((item, i) => (
+					<li class="reg__card reveal">
+						<p class="reg__num" aria-hidden="true">
+							{num(i)}
 						</p>
-						<h3 class="reg__name">
-							<Bi t={o.title} />
+						<h3 class="reg__name" id={`reg-name-${item.id}`}>
+							<Bi t={item.title} />
 						</h3>
-						<p class="reg__body">
-							<Bi t={o.body} />
-						</p>
+
+						<button
+							type="button"
+							class="reg__trigger"
+							popovertarget={`reg-pop-${item.id}`}
+							aria-labelledby={`reg-name-${item.id} reg-cta-${item.id}`}
+						>
+							<span class="reg__trigger-visible" id={`reg-cta-${item.id}`}>
+								<Bi t={registry.cta} /> <span aria-hidden="true">→</span>
+							</span>
+						</button>
+
+						<div
+							id={`reg-pop-${item.id}`}
+							popover
+							class="reg__pop"
+							role="dialog"
+							aria-labelledby={`reg-pop-reaction-${item.id}`}
+						>
+							<button
+								type="button"
+								class="reg__pop-close"
+								popovertarget={`reg-pop-${item.id}`}
+								popovertargetaction="hide"
+							>
+								<span aria-hidden="true">×</span>
+								<span class="visually-hidden"><Bi t={ui.close} /></span>
+							</button>
+
+							<p id={`reg-pop-reaction-${item.id}`} class="reg__pop-reaction">
+								<Bi t={item.reaction} />
+							</p>
+
+							<fieldset class="reg__switch">
+								<legend class="visually-hidden">
+									<Bi t={registry.bank.switchLegend} />
+								</legend>
+								<input
+									type="radio"
+									id={`reg-eu-${item.id}`}
+									name={`reg-region-${item.id}`}
+									class="reg__switch-input reg__switch-input--eu"
+									checked
+								/>
+								<label for={`reg-eu-${item.id}`} class="reg__switch-label">
+									<Bi t={registry.bank.eu.label} />
+								</label>
+								<input
+									type="radio"
+									id={`reg-us-${item.id}`}
+									name={`reg-region-${item.id}`}
+									class="reg__switch-input reg__switch-input--us"
+								/>
+								<label for={`reg-us-${item.id}`} class="reg__switch-label">
+									<Bi t={registry.bank.us.label} />
+								</label>
+							</fieldset>
+
+							<div class="reg__panel reg__panel--eu">
+								<div class="reg__account">
+									<p class="reg__account-holder">{registry.bank.eu.holder}</p>
+									<p class="reg__account-lines">
+										<Bi t={registry.bank.eu.lines} />
+									</p>
+									<p class="reg__ref">
+										<span class="reg__ref-label">
+											<Bi t={registry.bank.reference} />:
+										</span>{' '}
+										{item.reference}
+									</p>
+								</div>
+								<figure class="reg__qr">
+									<img src={registry.bank.eu.qr} alt="" width="108" height="108" loading="lazy" />
+									<figcaption><Bi t={registry.bank.qrCaption} /></figcaption>
+								</figure>
+							</div>
+							<div class="reg__panel reg__panel--us">
+								<div class="reg__account">
+									<p class="reg__account-holder">{registry.bank.us.holder}</p>
+									<p class="reg__account-lines">
+										<Bi t={registry.bank.us.lines} />
+									</p>
+									<p class="reg__ref">
+										<span class="reg__ref-label">
+											<Bi t={registry.bank.reference} />:
+										</span>{' '}
+										{item.reference}
+									</p>
+								</div>
+								<figure class="reg__qr">
+									<img src={registry.bank.us.qr} alt="" width="108" height="108" loading="lazy" />
+									<figcaption><Bi t={registry.bank.qrCaption} /></figcaption>
+								</figure>
+							</div>
+						</div>
 					</li>
 				))
 			}
@@ -41,18 +135,26 @@ import Bi from './Bi.astro';
 		font-size: var(--fs-h1);
 		margin: 1rem 0 1.5rem;
 	}
-	.reg__list {
+
+	/* --- card grid ---------------------------------------------------- */
+	.reg__grid {
 		list-style: none;
 		margin: 0;
 		padding: 0;
 		display: grid;
 		gap: clamp(1.5rem, 4vw, 2.5rem);
 	}
-	.reg__option {
-		padding-top: 1.25rem;
+	.reg__card {
+		position: relative;
+		padding: 1.25rem 0 3.25rem;
 		border-top: 1px solid var(--hairline);
+		transition: border-color 0.3s var(--ease);
 	}
-	.reg__label {
+	.reg__card:hover {
+		border-color: var(--terracotta);
+	}
+	.reg__num {
+		font-family: var(--font-sans);
 		font-size: var(--fs-label);
 		letter-spacing: var(--track-label);
 		text-transform: uppercase;
@@ -61,12 +163,41 @@ import Bi from './Bi.astro';
 	}
 	.reg__name {
 		font-size: var(--fs-h3);
-		margin: 0 0 0.65rem;
-	}
-	.reg__body {
 		margin: 0;
-		font-size: var(--fs-small);
 	}
+
+	/* The whole card is the hit target: a transparent button laid over
+	   everything, with only its own small "Chip in →" label painted. Its
+	   accessible name borrows the heading so a screen reader announces
+	   what you're actually choosing, not just "Chip in". */
+	.reg__trigger {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		margin: 0;
+		padding: 0;
+		background: transparent;
+		border: 0;
+		cursor: pointer;
+		display: flex;
+		align-items: flex-end;
+	}
+	.reg__trigger-visible {
+		font-family: var(--font-sans);
+		font-size: var(--fs-label);
+		letter-spacing: var(--track-wide);
+		text-transform: uppercase;
+		font-weight: 500;
+		color: var(--ink);
+		padding-bottom: 5px;
+		border-bottom: 1px solid var(--terracotta);
+		transition: color 0.3s var(--ease);
+	}
+	.reg__card:hover .reg__trigger-visible {
+		color: var(--terracotta);
+	}
+
 	.reg__outro {
 		margin-top: clamp(2.5rem, 6vw, 3.5rem);
 		font-family: var(--font-display);
@@ -74,10 +205,210 @@ import Bi from './Bi.astro';
 		font-size: var(--fs-h3);
 		color: var(--olive);
 	}
+
 	@media (min-width: 48rem) {
-		.reg__list {
+		.reg__grid {
 			grid-template-columns: repeat(2, 1fr);
 			gap: 3rem 4rem;
+		}
+	}
+	@media (min-width: 64rem) {
+		.reg__grid {
+			grid-template-columns: repeat(3, 1fr);
+		}
+	}
+
+	/* --- the popup ------------------------------------------------------
+	   Native Popover API: opens/closes/light-dismisses/traps focus with
+	   zero JS, so it fits the site's near-zero-JS approach. The EU/US
+	   switch below is a plain radio pair, shown/hidden with :has() — also
+	   zero JS. */
+	.reg__pop {
+		position: fixed;
+		inset: 0;
+		margin: auto;
+		width: min(92vw, 30rem);
+		max-height: 85vh;
+		overflow-y: auto;
+		border: 1px solid var(--hairline);
+		border-radius: 3px;
+		background: var(--cream);
+		color: var(--ink-soft);
+		padding: clamp(1.5rem, 5vw, 2.25rem);
+		box-shadow: 0 25px 60px rgba(38, 37, 31, 0.2);
+		opacity: 0;
+		transform: translateY(10px) scale(0.98);
+		transition:
+			opacity 0.25s var(--ease),
+			transform 0.25s var(--ease),
+			overlay 0.25s allow-discrete,
+			display 0.25s allow-discrete;
+	}
+	.reg__pop:popover-open {
+		opacity: 1;
+		transform: none;
+	}
+	@starting-style {
+		.reg__pop:popover-open {
+			opacity: 0;
+			transform: translateY(10px) scale(0.98);
+		}
+	}
+	.reg__pop::backdrop {
+		background: rgba(38, 37, 31, 0);
+		transition:
+			background-color 0.25s var(--ease),
+			overlay 0.25s allow-discrete,
+			display 0.25s allow-discrete;
+	}
+	.reg__pop:popover-open::backdrop {
+		background: rgba(38, 37, 31, 0.55);
+	}
+	@starting-style {
+		.reg__pop:popover-open::backdrop {
+			background: rgba(38, 37, 31, 0);
+		}
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.reg__pop,
+		.reg__pop::backdrop {
+			transition: none;
+		}
+	}
+
+	.reg__pop-close {
+		position: absolute;
+		top: 0.6rem;
+		right: 0.6rem;
+		width: 2.25rem;
+		height: 2.25rem;
+		border: 0;
+		background: transparent;
+		color: var(--olive-muted);
+		font-size: 1.5rem;
+		line-height: 1;
+		cursor: pointer;
+		transition: color 0.3s var(--ease);
+	}
+	.reg__pop-close:hover {
+		color: var(--terracotta);
+	}
+
+	.reg__pop-reaction {
+		font-family: var(--font-display);
+		font-style: italic;
+		font-size: var(--fs-h3);
+		color: var(--ink);
+		margin: 0 0 1.5rem;
+		padding-right: 1.75rem;
+	}
+
+	/* Segmented EU/US switch — plain radios, :checked + label styling,
+	   no JS. */
+	.reg__switch {
+		display: flex;
+		gap: 0.25rem;
+		margin: 0 0 1.5rem;
+		padding: 0.25rem;
+		border: 1px solid var(--hairline);
+		border-radius: 999px;
+	}
+	.reg__switch-input {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		opacity: 0;
+	}
+	.reg__switch-label {
+		flex: 1;
+		text-align: center;
+		font-family: var(--font-sans);
+		font-size: var(--fs-label);
+		letter-spacing: var(--track-wide);
+		text-transform: uppercase;
+		font-weight: 500;
+		color: var(--olive-muted);
+		padding: 0.5rem 0.5rem;
+		border-radius: 999px;
+		cursor: pointer;
+		transition:
+			background 0.25s var(--ease),
+			color 0.25s var(--ease);
+	}
+	.reg__switch-input:checked + .reg__switch-label {
+		background: var(--olive);
+		color: var(--cream);
+	}
+	.reg__switch-input:focus-visible + .reg__switch-label {
+		outline: 2px solid var(--olive);
+		outline-offset: 2px;
+	}
+
+	.reg__panel {
+		display: flex;
+		flex-direction: column;
+		gap: 1.25rem;
+	}
+	.reg__panel--us {
+		display: none;
+	}
+	.reg__pop:has(.reg__switch-input--us:checked) .reg__panel--eu {
+		display: none;
+	}
+	.reg__pop:has(.reg__switch-input--us:checked) .reg__panel--us {
+		display: flex;
+	}
+
+	.reg__account-holder {
+		font-family: var(--font-display);
+		font-size: var(--fs-h3);
+		margin: 0 0 0.5rem;
+		color: var(--ink);
+	}
+	.reg__account-lines {
+		font-size: var(--fs-small);
+		line-height: 1.65;
+		margin: 0 0 1rem;
+	}
+	.reg__ref {
+		margin: 0;
+		font-size: var(--fs-small);
+		padding: 0.6rem 0.85rem;
+		background: var(--cream-deep);
+		border-radius: 2px;
+	}
+	.reg__ref-label {
+		font-weight: 500;
+		color: var(--olive);
+		text-transform: uppercase;
+		letter-spacing: var(--track-wide);
+		font-size: 0.7rem;
+	}
+
+	.reg__qr {
+		margin: 0;
+		flex-shrink: 0;
+		text-align: center;
+	}
+	.reg__qr img {
+		width: 96px;
+		height: 96px;
+		padding: 6px;
+		background: var(--white);
+		border: 1px solid var(--hairline);
+	}
+	.reg__qr figcaption {
+		margin-top: 0.5rem;
+		max-width: 108px;
+		font-size: 0.7rem;
+		color: var(--olive-muted);
+	}
+
+	@media (min-width: 30rem) {
+		.reg__panel {
+			flex-direction: row;
+			align-items: flex-start;
+			justify-content: space-between;
 		}
 	}
 </style>
