@@ -13,7 +13,7 @@ export type DressDay = {
 export const dressCode: DressDay[] = [
 	{
 		day: { en: 'Friday', de: 'Freitag' },
-		event: { en: 'Welcome pizza party', de: 'Willkommens-Pizzaparty' },
+		event: { en: 'Get together', de: 'Get together' },
 		code: { en: 'Relaxed', de: 'Leger' },
 		note: {
 			en: 'Linen, loose tailoring, sandals you can walk cobblestones in. Nothing fussy.',
@@ -27,14 +27,14 @@ export const dressCode: DressDay[] = [
 	},
 	{
 		day: { en: 'Saturday', de: 'Samstag' },
-		event: { en: 'Ceremony & celebration', de: 'Trauung & Feier' },
+		event: { en: 'Wedding day', de: 'Hochzeit' },
 		code: {
 			en: 'Formal · black tie optional',
 			de: 'Festlich · Black Tie optional',
 		},
 		note: {
-			en: 'Long dresses and dark suits. The ground is grass and stone, so plan your heels accordingly.',
-			de: 'Lange Kleider und dunkle Anzüge. Der Boden ist Gras und Stein — plant eure Absätze entsprechend.',
+			en: 'As this day is a very special one for us, it would be nice of you to dress up a little more elegant and festive. Something that feels perfect for a wedding in Tuscany, but still comfortable enough to celebrate, eat and dance with us all night.',
+			de: 'Da dieser Tag für uns etwas ganz Besonderes ist, würden wir uns freuen, wenn ihr euch ein bisschen schicker machen würdet. Passend zu einer Hochzeit in der Toskana, aber trotzdem so, dass ihr euch den ganzen Tag wohlfühlt und abends mit uns bis spät in die Nacht feiern könnt.',
 		},
 		swatches: [
 			{ name: { en: 'Ink', de: 'Tinte' }, hex: '#26251f' },
@@ -44,11 +44,11 @@ export const dressCode: DressDay[] = [
 	},
 	{
 		day: { en: 'Sunday', de: 'Sonntag' },
-		event: { en: 'Pool party & recovery', de: 'Poolparty & Erholung' },
+		event: { en: 'Sip, Swim & recovery', de: 'Sonne, Spritz & Pool' },
 		code: { en: 'Swim & ease', de: 'Baden & entspannen' },
 		note: {
-			en: 'Swimwear, a kaftan or shirt over the top, and sunglasses. That is the whole brief.',
-			de: 'Badesachen, ein Kaftan oder Hemd darüber und eine Sonnenbrille. Mehr braucht es nicht.',
+			en: 'Easy. Bikini, swimsuit, swim shorts, sunglasses and straight into the pool. This day is all about slowing down, soaking up the sun and spending one last lazy afternoon together.',
+			de: 'Easy: Bikini, Badeanzug oder Badehose an, Sonnenbrille auf und ab in den Pool. An diesem Tag heißt es nur noch: Sonne tanken, runterkommen, stets einen Aperol in der Hand und einen letzten wunderbar entspannten Nachmittag zusammen verbringen.',
 		},
 		swatches: [
 			{ name: { en: 'White', de: 'Weiß' }, hex: '#ffffff' },

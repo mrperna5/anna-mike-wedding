@@ -123,7 +123,7 @@ export const venue = {
 
 export const travel = {
 	kicker: { en: 'Arrival', de: 'Anfahrt' } as L,
-	title: { en: 'Getting there', de: 'Anreise' } as L,
+	title: { en: 'Getting there', de: 'Next Stop: Toskana' } as L,
 	month: { en: 'May', de: 'Mai' } as L,
 	intro: {
 		en: 'We definitely found our favorite place in Tuscany and can\'t believe we are actually getting married here. Pienza and Monticchiello sit in southern Tuscany, between Siena and the Umbrian border. Once you\'re here, having a car is the easiest way to explore the rolling hills, cypress alleys, quaint villages, and everything that makes this part of Tuscany so special.',
@@ -169,7 +169,7 @@ export const dress = {
 	kicker: { en: 'What to wear', de: 'Was anziehen' } as L,
 	title: { en: 'Dress code', de: 'Dresscode' } as L,
 	intro: {
-		en: 'Three days, three moods. Lean into the palette if it helps — soft creams, olive, and the occasional terracotta — but mostly just come as the most comfortable version of yourself.',
+		en: 'Three days, three different moods. Honestly we just want you to feel amazing and comfortable in anything you wear. Nicest thing you can wear is a smile 🧡',
 		de: 'Drei Tage, drei Stimmungen. Orientiert euch ruhig an der Farbpalette — sanftes Creme, Oliv und ab und zu Terrakotta — kommt aber vor allem als die bequemste Version von euch selbst.',
 	} as L,
 };
