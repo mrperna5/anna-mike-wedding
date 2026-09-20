@@ -25,6 +25,9 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url).href;
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!-- Prevent mobile browsers from turning the wedding date into a
+		     telephone link. Intentional tel: links elsewhere still work. -->
+		<meta name="format-detection" content="telephone=no" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 
