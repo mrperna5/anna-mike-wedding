@@ -170,7 +170,6 @@ export const stayGroups: StayGroup[] = [
 				name: 'Fonte Senesi Country House',
 				url: 'https://www.fontesenesi.com',
 				distance: { minutes: 7 },
-				sleeps: 12,
 				amenities: ['pool'],
 				caveat: bi('Minimum stay: one week', 'Mindestaufenthalt: eine Woche'),
 				blurb: bi(
@@ -234,7 +233,7 @@ export const stayGroups: StayGroup[] = [
 	{
 		id: 'monticchiello',
 		name: bi('Monticchiello', 'Monticchiello'),
-		tagline: bi('Small, authentic and a little quieter', 'Klein, authentisch und etwas ruhiger'),
+		tagline: bi('Tiny, charming and full of Tuscan character.', 'Klein, authentisch und etwas ruhiger'),
 		distance: { km: 1, minutes: 3 },
 		note: bi(
 			'Monticchiello is our other favourite village in the Val d’Orcia. The same beautiful lanes and old stone houses, exactly the Tuscany you picture — only quieter, smaller and far less touristy, a walled medieval village. You will not eat badly for it: there are several genuinely good restaurants, one of them Michelin-listed, and a few small cafés for breakfast, cappuccino and the obligatory espresso. Right for anyone who wants village life and good food without the bustle.',
@@ -244,7 +243,6 @@ export const stayGroups: StayGroup[] = [
 			{
 				name: 'Deb’s Home',
 				url: 'https://www.booking-engine.it/Scripts/group.pl?group_id=16&lang=en',
-				sleeps: 8,
 				amenities: ['breakfast'],
 				blurb: bi(
 					'Four houses in the village — Casa La Vittoria, Villa Emma, Il Torrino Suite and Villa Il Giardino del Cardinale. From a double room up to a villa for eight.',
@@ -318,7 +316,7 @@ export const stayGroups: StayGroup[] = [
 		id: 'pienza',
 		name: bi('Pienza', 'Pienza'),
 		tagline: bi(
-			'For those who want to be in the middle of it',
+			'Right in the heart of Val d\'Orcia, with everything just a few steps away',
 			'Für alle, die mittendrin sein möchten',
 		),
 		distance: { km: 9, minutes: 15 },
@@ -357,9 +355,9 @@ export const stayGroups: StayGroup[] = [
 			{
 				name: 'Agriturismo Podere San Gregorio',
 				url: 'https://www.poderesangregorio.it/de/ospitalita/',
-				amenities: ['kitchen'],
+				amenities: ['kitchen', 'animals'],
 				blurb: bi(
-					'Classic Tuscan style with breakfast — countryside, and still close enough to walk into town.',
+					'Classic Tuscan style with breakfast on the countryside, and still close enough to walk into town.',
 					'Klassischer Toskana-Stil mit Frühstück — Natur und trotzdem zu Fuß in der Stadt.',
 				),
 			},
@@ -378,7 +376,7 @@ export const stayGroups: StayGroup[] = [
 	{
 		id: 'airbnb',
 		name: bi('Airbnb', 'Airbnb'),
-		tagline: bi('A wishlist we put together', 'Eine Wunschliste von uns'),
+		tagline: bi('Our little selection of Airbnb favorites', 'Eine Wunschliste von uns'),
 		note: bi(
 			'We have also put together a small Airbnb wishlist of places we like near Villa Apparita. Most are in Monticchiello, with two more in San Quirico — another small, lovely Tuscan village. Have a look and see whether anything suits.',
 			'Außerdem haben wir eine kleine Airbnb-Wunschliste angelegt und ein paar schöne Unterkünfte in der Nähe der Villa Apparita herausgesucht. Die meisten liegen in Monticchiello, zwei weitere in San Quirico — ebenfalls ein kleines, süßes Toskana-Dorf. Schaut gerne mal rein, ob etwas Passendes dabei ist.',
