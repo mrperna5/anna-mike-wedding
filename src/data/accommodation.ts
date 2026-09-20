@@ -390,7 +390,7 @@ export const stayGroups: StayGroup[] = [
 
 	{
 		id: 'special',
-		name: bi('Something special', 'Etwas Besonderes'),
+		name: bi('A little luxury', 'Ein bisschen Luxus'),
 		tagline: bi(
 			'For anyone who fancies a little luxury',
 			'Für alle, die sich ein bisschen Luxus gönnen möchten',
