@@ -98,6 +98,229 @@ export type StayGroup = {
 
 export const stayGroups: StayGroup[] = [
 	{
+		id: 'agriturismo',
+		name: bi('Agriturismo', 'Agriturismo'),
+		tagline: bi(
+			'For quiet, nature and the real Tuscany',
+			'Für Ruhe, Natur und echtes Toskana-Gefühl',
+		),
+		note: bi(
+			'If you do not need restaurants at the door or a town around you, and would rather switch off and look at the landscape, take one of the agriturismo nearby. We have picked out a few we like, spread around Villa Apparita and towards Pienza and Monticchiello. You wake up in the middle of the countryside, with vineyards, olive groves and the hills of the Val d’Orcia in front of you. And do not be put off by the word: agriturismo translates as farm, but in Italy it mostly means the place grows some of what it serves — its own olive oil at breakfast, say.',
+			'Wenn ihr weder Restaurants direkt vor der Tür noch ein Städtchen um euch herum braucht, sondern lieber einfach abschalten und die Landschaft genießen möchtet, empfehlen wir euch eines der vielen agriturismo in der Umgebung. Wir haben einige schöne herausgesucht, die rund um die Villa Apparita sowie in Richtung Pienza und Monticchiello liegen. Hier wacht ihr mitten in der Natur auf, mit Weinbergen, Olivenhainen und den Hügeln des Val d’Orcia direkt vor der Tür. Und bitte nicht falsch verstehen: Agriturismo wird zwar mit Bauernhof übersetzt, bedeutet in Italien aber vor allem, dass die Unterkunft eigene Produkte anbietet oder im Frühstück verwendet — zum Beispiel das eigene Olivenöl.',
+		),
+		link: {
+			url: 'https://www.agriturismo.it/',
+			label: bi(
+				'An even bigger selection of agriturismo',
+				'Eine noch größere Auswahl an agriturismo',
+			),
+		},
+		stays: [
+			{
+				name: 'Agriturismo Campo alla Piana',
+				url: 'https://www.campoallapiana.com',
+				distance: { minutes: 1 },
+				amenities: ['breakfast'],
+				blurb: bi(
+					'Nothing but countryside, and rooms done up with real care. Booking goes direct, by email or phone.',
+					'Natur pur und mit Liebe hergerichtete Zimmer. Gebucht wird direkt per Mail oder Telefon.',
+				),
+			},
+			{
+				name: 'Agriturismo La Casellina',
+				url: 'https://www.agriturismolacasellina.it/en/home-english/',
+				distance: { minutes: 5 },
+				amenities: ['pool', 'breakfast', 'kitchen'],
+				blurb: bi(
+					'Lovely doubles with breakfast and a pool; the family rooms come with their own kitchen.',
+					'Sehr schöne Doppelzimmer mit Frühstück und Pool; die Familienzimmer haben eine eigene Küche.',
+				),
+			},
+			{
+				name: 'Agriturismo Marinello',
+				url: 'https://www.agriturismomarinello.it/it',
+				distance: { minutes: 9 },
+				amenities: ['pool', 'restaurant'],
+				blurb: bi(
+					'A pool and a restaurant of its own, doubles and family rooms.',
+					'Mit Pool und eigenem Restaurant, Doppel- und Familienzimmer.',
+				),
+			},
+			{
+				name: 'Le Sorbelle d’Orcia',
+				url: 'https://www.lesorbelle.it/en/home-en/',
+				distance: { minutes: 11 },
+				amenities: ['pool', 'breakfast', 'kitchen'],
+				blurb: bi(
+					'A peaceful Tuscan countryside retreat with charming apartments, quietly set above the Val d’Orcia.',
+					'Doppel- und Familienzimmer, ruhig gelegen über dem Val d’Orcia.',
+				),
+			},
+			{
+				name: 'Posarelli Villas',
+				url: 'https://www.posarellivillas.de/italien/toskana/monticchiello/1611',
+				distance: { minutes: 8 },
+				amenities: ['pool', 'kitchen'],
+				blurb: bi(
+					'Three self-contained apartments with a pool, in the classic Tuscan style.',
+					'Drei eigene Ferienwohnungen mit Pool, im klassischen toskanischen Stil.',
+				),
+			},
+			{
+				name: 'Fonte Senesi Country House',
+				url: 'https://www.fontesenesi.com',
+				distance: { minutes: 7 },
+				sleeps: 12,
+				amenities: ['pool'],
+				caveat: bi('Minimum stay: one week', 'Mindestaufenthalt: eine Woche'),
+				blurb: bi(
+					'The whole villa for up to twelve, with a pool the one to take if a group of you travels together.',
+					'Die ganze Villa für bis zu zwölf Personen, mit Pool — das Richtige, wenn ihr als Gruppe reist.',
+				),
+			},
+			{
+				name: 'Agriturismo Lunadoro',
+				url: 'https://www.agriturismolunadoro.it/GB/Rooms',
+				distance: { minutes: 6 },
+				amenities: ['pool', 'breakfast', 'kitchen'],
+				blurb: bi(
+					'Classic Tuscan, good rooms, a pool and breakfast; the family rooms have a kitchen.',
+					'Klassisch toskanisch, schöne Zimmer, Pool und Frühstück; die Familienzimmer haben eine Küche.',
+				),
+			},
+			{
+				name: 'Agriturismo Palazzi del Papa',
+				url: 'https://www.palazzidelpapa.it/de/',
+				distance: { minutes: 14 },
+				amenities: ['pool', 'kitchen', 'animals'],
+				blurb: bi(
+					'Five apartments with kitchens, done in a thoroughly classic Tuscan style, plus a pool and animals. Breakfast can be added.',
+					'Fünf Ferienwohnungen mit Küche in ganz klassischem Toskana-Stil, dazu Pool und Tiere. Frühstück lässt sich dazubuchen.',
+				),
+			},
+			{
+				name: 'Podere Spedalone',
+				url: 'https://poderespedalone.it/home/?lang=en',
+				distance: { minutes: 17 },
+				amenities: ['pool', 'breakfast', 'restaurant'],
+				blurb: bi(
+					'Sixteen rooms plus a villa, with breakfast, a restaurant and a pool. The largest place on this list.',
+					'Sechzehn Zimmer und dazu eine Villa, mit Frühstück, Restaurant und Pool. Das größte Haus auf dieser Liste.',
+				),
+			},
+			{
+				name: 'Agriturismo Barbi',
+				url: 'http://www.agriturismobarbi.it/agriturismoing.html',
+				distance: { minutes: 2 },
+				amenities: ['kitchen'],
+				blurb: bi(
+					'Four doubles, self-catering with a kitchen — kept very simple.',
+					'Vier Doppelzimmer, Selbstverpflegung mit Küche — sehr einfach gehalten.',
+				),
+			},
+			{
+				name: 'Valdorcia Belvedere',
+				url: 'https://www.valdorciabelvedere.it/en/bed-and-breakfast.php',
+				distance: { minutes: 10 },
+				amenities: ['breakfast'],
+				blurb: bi(
+					'Small, simple and quiet, with breakfast.',
+					'Klein, einfach und ruhig, mit Frühstück.',
+				),
+			},
+		],
+	},
+
+	{
+		id: 'monticchiello',
+		name: bi('Monticchiello', 'Monticchiello'),
+		tagline: bi('Small, authentic and a little quieter', 'Klein, authentisch und etwas ruhiger'),
+		distance: { km: 1, minutes: 3 },
+		note: bi(
+			'Monticchiello is our other favourite village in the Val d’Orcia. The same beautiful lanes and old stone houses, exactly the Tuscany you picture — only quieter, smaller and far less touristy, a walled medieval village. You will not eat badly for it: there are several genuinely good restaurants, one of them Michelin-listed, and a few small cafés for breakfast, cappuccino and the obligatory espresso. Right for anyone who wants village life and good food without the bustle.',
+			'Monticchiello ist unser zweiter kleiner Lieblingsort im Val d’Orcia. Auch hier erwarten euch wunderschöne Gassen, alte Steinhäuser und genau das Toskana-Gefühl, das man sich vorstellt — nur deutlich ruhiger, kleiner und weniger touristisch, ein malerisches Mittelalterdorf. Auf gutes Essen müsst ihr trotzdem nicht verzichten: Im Ort gibt es mehrere richtig gute Restaurants, sogar eines mit Michelin-Empfehlung, sowie ein paar kleine Cafés für Frühstück, Cappuccino und den obligatorischen Espresso. Perfekt für alle, die italienisches Dorfleben und gute Küche mögen, ansonsten aber keinen Trubel brauchen.',
+		),
+		stays: [
+			{
+				name: 'Deb’s Home',
+				url: 'https://www.booking-engine.it/Scripts/group.pl?group_id=16&lang=en',
+				sleeps: 8,
+				blurb: bi(
+					'Four houses in the village — Casa La Vittoria, Villa Emma, Il Torrino Suite and Villa Il Giardino del Cardinale. From a double room up to a villa for eight.',
+					'Vier Häuser im Ort — Casa La Vittoria, Villa Emma, Il Torrino Suite und Villa Il Giardino del Cardinale. Vom Doppelzimmer bis zur Villa für acht.',
+				),
+			},
+			{
+				name: 'La Casa di Adelina',
+				url: 'https://www.lacasadiadelina.eu/le-nostre-strutture/eleganza-nel-cuore-di-monticchiello-la-casa-di-adelina/',
+				blurb: bi(
+					'An elegant little B&B in the heart of the village, with four doubles.',
+					'Ein elegantes kleines B&B mitten im Ort, mit vier Doppelzimmern.',
+				),
+			},
+			{
+				name: 'Agriturismo Casalpiano',
+				url: 'https://casalpiano.com/en/',
+				distance: { minutes: 5 },
+				amenities: ['breakfast'],
+				blurb: bi(
+					'Handsome double rooms with breakfast.',
+					'Schöne Doppelzimmer inklusive Frühstück.',
+				),
+			},
+			{
+				name: 'Affittacamere Maria Gabriella',
+				url: 'https://booking.ireservation.it/it/toscana/affittacamere-maria-gabriella-monticchiello/23959',
+				distance: { minutes: 3 },
+				sleeps: 3,
+				amenities: ['garden', 'breakfast'],
+				blurb: bi(
+					'Quiet, good rooms and a big garden — breakfast included.',
+					'Ruhe, schöne Zimmer und ein großer Garten — mit Frühstück.',
+				),
+			},
+			{
+				name: 'Appartamenti Le Maribelle',
+				url: 'https://www.lemaribelle.it',
+				distance: { minutes: 5 },
+				sleeps: 5,
+				amenities: ['kitchen'],
+				blurb: bi(
+					'Two apartments with their own kitchen, each sleeping up to five.',
+					'Zwei Ferienwohnungen mit eigener Küche, jeweils für bis zu fünf Personen.',
+				),
+			},
+			{
+				name: 'Casa Lizzi',
+				url: 'https://www.booking.com/hotel/it/a-casa-di-lizzy-b-amp-b.html',
+				distance: { minutes: 5 },
+				blurb: bi('Rustic and quiet, two family rooms.', 'Rustikal und ruhig, zwei Familienzimmer.'),
+			},
+			{
+				name: 'La Casa nel Borgo',
+				url: 'https://www.lacasanelborgo-toscana.it/I/Appartamenti',
+				distance: { minutes: 5 },
+				amenities: ['kitchen'],
+				blurb: bi(
+					'Modern apartments with a kitchen, for couples and families alike.',
+					'Moderne Ferienwohnungen mit Küche, für Paare wie für Familien.',
+				),
+			},
+			{
+				name: 'Casa Bonari',
+				url: 'https://www.casabonari.it/en/indoor/',
+				distance: { minutes: 2 },
+				sleeps: 6,
+				amenities: ['kitchen'],
+				blurb: bi(
+					'The whole house to yourselves — typically Tuscan rooms, a kitchen, and six beds in all.',
+					'Das ganze Haus für euch, mit typisch toskanischen Zimmern, Küche und insgesamt sechs Betten.',
+				),
+			},
+		],
+	},
+
+	{
 		id: 'pienza',
 		name: bi('Pienza', 'Pienza'),
 		tagline: bi(
@@ -167,247 +390,6 @@ export const stayGroups: StayGroup[] = [
 				blurb: bi(
 					'A small, fine hotel right in Pienza.',
 					'Ein kleines, feines Hotel mitten in Pienza.',
-				),
-			},
-		],
-	},
-
-	{
-		id: 'monticchiello',
-		name: bi('Monticchiello', 'Monticchiello'),
-		tagline: bi('Small, authentic and a little quieter', 'Klein, authentisch und etwas ruhiger'),
-		distance: { km: 1, minutes: 3 },
-		note: bi(
-			'Monticchiello is our other favourite village in the Val d’Orcia. The same beautiful lanes and old stone houses, exactly the Tuscany you picture — only quieter, smaller and far less touristy, a walled medieval village. You will not eat badly for it: there are several genuinely good restaurants, one of them Michelin-listed, and a few small cafés for breakfast, cappuccino and the obligatory espresso. Right for anyone who wants village life and good food without the bustle.',
-			'Monticchiello ist unser zweiter kleiner Lieblingsort im Val d’Orcia. Auch hier erwarten euch wunderschöne Gassen, alte Steinhäuser und genau das Toskana-Gefühl, das man sich vorstellt — nur deutlich ruhiger, kleiner und weniger touristisch, ein malerisches Mittelalterdorf. Auf gutes Essen müsst ihr trotzdem nicht verzichten: Im Ort gibt es mehrere richtig gute Restaurants, sogar eines mit Michelin-Empfehlung, sowie ein paar kleine Cafés für Frühstück, Cappuccino und den obligatorischen Espresso. Perfekt für alle, die italienisches Dorfleben und gute Küche mögen, ansonsten aber keinen Trubel brauchen.',
-		),
-		stays: [
-			{
-				name: 'Deb’s Home',
-				url: 'https://www.booking-engine.it/Scripts/group.pl?group_id=16&lang=en',
-				rooms: [{ kind: 'double', count: 2 }, { kind: 'villa' }],
-				sleeps: 8,
-				blurb: bi(
-					'Four houses in the village — Casa La Vittoria, Villa Emma, Il Torrino Suite and Villa Il Giardino del Cardinale. From a double room up to a villa for eight.',
-					'Vier Häuser im Ort — Casa La Vittoria, Villa Emma, Il Torrino Suite und Villa Il Giardino del Cardinale. Vom Doppelzimmer bis zur Villa für acht.',
-				),
-			},
-			{
-				name: 'La Casa di Adelina',
-				url: 'https://www.lacasadiadelina.eu/le-nostre-strutture/eleganza-nel-cuore-di-monticchiello-la-casa-di-adelina/',
-				rooms: [{ kind: 'double', count: 4 }],
-				blurb: bi(
-					'An elegant little B&B in the heart of the village, with four doubles.',
-					'Ein elegantes kleines B&B mitten im Ort, mit vier Doppelzimmern.',
-				),
-			},
-			{
-				name: 'Agriturismo Casalpiano',
-				url: 'https://casalpiano.com/en/',
-				distance: { minutes: 5 },
-				rooms: [{ kind: 'double' }],
-				amenities: ['breakfast'],
-				blurb: bi(
-					'Handsome double rooms with breakfast.',
-					'Schöne Doppelzimmer inklusive Frühstück.',
-				),
-			},
-			{
-				name: 'Affittacamere Maria Gabriella',
-				url: 'https://booking.ireservation.it/it/toscana/affittacamere-maria-gabriella-monticchiello/23959',
-				distance: { minutes: 3 },
-				rooms: [{ kind: 'double' }],
-				sleeps: 3,
-				amenities: ['garden', 'breakfast'],
-				blurb: bi(
-					'Quiet, good rooms and a big garden — breakfast included.',
-					'Ruhe, schöne Zimmer und ein großer Garten — mit Frühstück.',
-				),
-			},
-			{
-				name: 'Appartamenti Le Maribelle',
-				url: 'https://www.lemaribelle.it',
-				distance: { minutes: 5 },
-				rooms: [{ kind: 'apartment', count: 2 }],
-				sleeps: 5,
-				amenities: ['kitchen'],
-				blurb: bi(
-					'Two apartments with their own kitchen, each sleeping up to five.',
-					'Zwei Ferienwohnungen mit eigener Küche, jeweils für bis zu fünf Personen.',
-				),
-			},
-			{
-				name: 'Casa Lizzi',
-				url: 'https://www.booking.com/hotel/it/a-casa-di-lizzy-b-amp-b.html',
-				distance: { minutes: 5 },
-				rooms: [{ kind: 'family', count: 2 }],
-				blurb: bi('Rustic and quiet, two family rooms.', 'Rustikal und ruhig, zwei Familienzimmer.'),
-			},
-			{
-				name: 'La Casa nel Borgo',
-				url: 'https://www.lacasanelborgo-toscana.it/I/Appartamenti',
-				distance: { minutes: 5 },
-				rooms: [{ kind: 'apartment' }],
-				amenities: ['kitchen'],
-				blurb: bi(
-					'Modern apartments with a kitchen, for couples and families alike.',
-					'Moderne Ferienwohnungen mit Küche, für Paare wie für Familien.',
-				),
-			},
-			{
-				name: 'Casa Bonari',
-				url: 'https://www.casabonari.it/en/indoor/',
-				distance: { minutes: 2 },
-				rooms: [{ kind: 'wholeHouse' }],
-				sleeps: 6,
-				amenities: ['kitchen'],
-				blurb: bi(
-					'The whole house to yourselves — typically Tuscan rooms, a kitchen, and six beds in all.',
-					'Das ganze Haus für euch, mit typisch toskanischen Zimmern, Küche und insgesamt sechs Betten.',
-				),
-			},
-		],
-	},
-
-	{
-		id: 'agriturismo',
-		name: bi('Agriturismo', 'Agriturismo'),
-		tagline: bi(
-			'For quiet, nature and the real Tuscany',
-			'Für Ruhe, Natur und echtes Toskana-Gefühl',
-		),
-		note: bi(
-			'If you do not need restaurants at the door or a town around you, and would rather switch off and look at the landscape, take one of the agriturismo nearby. We have picked out a few we like, spread around Villa Apparita and towards Pienza and Monticchiello. You wake up in the middle of the countryside, with vineyards, olive groves and the hills of the Val d’Orcia in front of you. And do not be put off by the word: agriturismo translates as farm, but in Italy it mostly means the place grows some of what it serves — its own olive oil at breakfast, say.',
-			'Wenn ihr weder Restaurants direkt vor der Tür noch ein Städtchen um euch herum braucht, sondern lieber einfach abschalten und die Landschaft genießen möchtet, empfehlen wir euch eines der vielen agriturismo in der Umgebung. Wir haben einige schöne herausgesucht, die rund um die Villa Apparita sowie in Richtung Pienza und Monticchiello liegen. Hier wacht ihr mitten in der Natur auf, mit Weinbergen, Olivenhainen und den Hügeln des Val d’Orcia direkt vor der Tür. Und bitte nicht falsch verstehen: Agriturismo wird zwar mit Bauernhof übersetzt, bedeutet in Italien aber vor allem, dass die Unterkunft eigene Produkte anbietet oder im Frühstück verwendet — zum Beispiel das eigene Olivenöl.',
-		),
-		link: {
-			url: 'https://www.agriturismo.it/',
-			label: bi(
-				'An even bigger selection of agriturismo',
-				'Eine noch größere Auswahl an agriturismo',
-			),
-		},
-		stays: [
-			{
-				name: 'Agriturismo Campo alla Piana',
-				url: 'https://www.campoallapiana.com',
-				email: 'feldallapiana@gmail.com',
-				phone: '+39 338 159 2187',
-				distance: { minutes: 1 },
-				blurb: bi(
-					'Nothing but countryside, and rooms done up with real care. Booking goes direct, by email or phone.',
-					'Natur pur und mit Liebe hergerichtete Zimmer. Gebucht wird direkt per Mail oder Telefon.',
-				),
-			},
-			{
-				name: 'Agriturismo La Casellina',
-				url: 'https://www.agriturismolacasellina.it/en/home-english/',
-				distance: { minutes: 5 },
-				rooms: [{ kind: 'double' }, { kind: 'family' }],
-				amenities: ['pool', 'breakfast', 'kitchen'],
-				blurb: bi(
-					'Lovely doubles with breakfast and a pool; the family rooms come with their own kitchen.',
-					'Sehr schöne Doppelzimmer mit Frühstück und Pool; die Familienzimmer haben eine eigene Küche.',
-				),
-			},
-			{
-				name: 'Agriturismo Marinello',
-				url: 'https://www.agriturismomarinello.it/it',
-				distance: { minutes: 9 },
-				rooms: [{ kind: 'double' }, { kind: 'family' }],
-				amenities: ['pool', 'restaurant'],
-				blurb: bi(
-					'A pool and a restaurant of its own, doubles and family rooms.',
-					'Mit Pool und eigenem Restaurant, Doppel- und Familienzimmer.',
-				),
-			},
-			{
-				name: 'Le Sorbelle d’Orcia',
-				url: 'https://www.lesorbelle.it/en/home-en/',
-				distance: { minutes: 11 },
-				rooms: [{ kind: 'double' }, { kind: 'family' }],
-				blurb: bi(
-					'Doubles and family rooms, quietly set above the Val d’Orcia.',
-					'Doppel- und Familienzimmer, ruhig gelegen über dem Val d’Orcia.',
-				),
-			},
-			{
-				name: 'Posarelli Villas',
-				url: 'https://www.posarellivillas.de/italien/toskana/monticchiello/1611',
-				distance: { minutes: 8 },
-				rooms: [{ kind: 'apartment', count: 3 }],
-				amenities: ['pool'],
-				blurb: bi(
-					'Three self-contained apartments with a pool, in the classic Tuscan style.',
-					'Drei eigene Ferienwohnungen mit Pool, im klassischen toskanischen Stil.',
-				),
-			},
-			{
-				name: 'Fonte Senesi Country House',
-				url: 'https://www.fontesenesi.com',
-				distance: { minutes: 7 },
-				rooms: [{ kind: 'wholeHouse' }],
-				sleeps: 12,
-				amenities: ['pool'],
-				caveat: bi('Minimum stay: one week', 'Mindestaufenthalt: eine Woche'),
-				blurb: bi(
-					'The whole villa for up to twelve, with a pool — the one to take if a group of you travels together.',
-					'Die ganze Villa für bis zu zwölf Personen, mit Pool — das Richtige, wenn ihr als Gruppe reist.',
-				),
-			},
-			{
-				name: 'Agriturismo Lunadoro',
-				url: 'https://www.agriturismolunadoro.it/GB/Rooms',
-				distance: { minutes: 6 },
-				rooms: [{ kind: 'double' }, { kind: 'family' }],
-				amenities: ['pool', 'breakfast', 'kitchen'],
-				blurb: bi(
-					'Classic Tuscan, good rooms, a pool and breakfast; the family rooms have a kitchen.',
-					'Klassisch toskanisch, schöne Zimmer, Pool und Frühstück; die Familienzimmer haben eine Küche.',
-				),
-			},
-			{
-				name: 'Agriturismo Palazzi del Papa',
-				url: 'https://www.palazzidelpapa.it/de/',
-				distance: { minutes: 14 },
-				rooms: [{ kind: 'apartment', count: 5 }],
-				amenities: ['pool', 'kitchen', 'animals'],
-				blurb: bi(
-					'Five apartments with kitchens, done in a thoroughly classic Tuscan style, plus a pool and animals. Breakfast can be added.',
-					'Fünf Ferienwohnungen mit Küche in ganz klassischem Toskana-Stil, dazu Pool und Tiere. Frühstück lässt sich dazubuchen.',
-				),
-			},
-			{
-				name: 'Podere Spedalone',
-				url: 'https://poderespedalone.it/home/?lang=en',
-				distance: { minutes: 17 },
-				rooms: [{ kind: 'room', count: 16 }, { kind: 'villa' }],
-				amenities: ['pool', 'breakfast', 'restaurant'],
-				blurb: bi(
-					'Sixteen rooms plus a villa, with breakfast, a restaurant and a pool. The largest place on this list.',
-					'Sechzehn Zimmer und dazu eine Villa, mit Frühstück, Restaurant und Pool. Das größte Haus auf dieser Liste.',
-				),
-			},
-			{
-				name: 'Agriturismo Barbi',
-				url: 'http://www.agriturismobarbi.it/agriturismoing.html',
-				distance: { minutes: 2 },
-				rooms: [{ kind: 'double', count: 4 }],
-				amenities: ['kitchen', 'selfCatering'],
-				blurb: bi(
-					'Four doubles, self-catering with a kitchen — kept very simple.',
-					'Vier Doppelzimmer, Selbstverpflegung mit Küche — sehr einfach gehalten.',
-				),
-			},
-			{
-				name: 'Valdorcia Belvedere',
-				url: 'https://www.valdorciabelvedere.it/en/bed-and-breakfast.php',
-				distance: { minutes: 10 },
-				rooms: [{ kind: 'double' }, { kind: 'family' }],
-				amenities: ['breakfast'],
-				blurb: bi(
-					'Small, simple and quiet, with breakfast.',
-					'Klein, einfach und ruhig, mit Frühstück.',
 				),
 			},
 		],

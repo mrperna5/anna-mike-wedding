@@ -160,14 +160,16 @@ export const accommodation = {
 	kicker: { en: 'Where to stay', de: 'Wo übernachten' } as L,
 	title: { en: 'Accommodation', de: 'Unterkunft' } as L,
 	intro: {
-		en: 'Twenty-seven places we’d happily send you to, in five pockets of the Val d’Orcia — a town, a village, the open countryside, a wishlist, and something a little indulgent. Everything here is within about twenty minutes of the villa.',
-		de: 'Siebenundzwanzig Orte, die wir euch guten Gewissens empfehlen, in fünf Ecken des Val d’Orcia — eine Stadt, ein Dorf, das offene Land, eine Wunschliste und etwas zum Verwöhnen. Alles liegt rund zwanzig Autominuten von der Villa entfernt.',
+		en: 'What matters most to us is that each of you finds a place that feels just right for you. \n' +
+			'We got you a little preselection of accommodation in typical old tiny Tuscan towns but also options a little <i>dolce far niente</i> sounds more like you.\n' +
+			'Our recommendations are only a small selection, so feel free to browse Booking.com, Airbnb or Agriturismo.it as well and find the place that suits you best.\n' +
+			'<br><br>One little tip: our wedding falls during the holiday season and around a public holiday, so we’d recommend booking early. Some places are already filling up and only have a few rooms left for our weekend. So the sooner, the better - because we hope you’ll not only enjoy our wedding weekend with us, but also have the most wonderful time in Tuscany.',
+		de: 'Uns ist wichtig, dass jede und jeder von euch etwas findet, das genau zu euren Vorstellungen passt\n' +
+			'Wir haben euch eine kleine Vorauswahl zusammengestellt mit typischen kleinen italienischen Städtchen nahe der Villa Apparita, bis hin zu wunderschönen Orten mehr auf dem Land und in der Natur, falls euch eher nach <i>il dolce far niente</i> ist.\n' +
+			'\n' +
+			'<br><br>Ein kleiner Tipp noch am Ende: Da unsere Hochzeit in die Ferienzeit und rund um einen Feiertag fällt, kümmert euch am besten früh um eure Unterkunft. Einige Häuser sind bereits gut gebucht und haben für unser Wochenende nur noch einzelne Zimmer frei. Schnell sein, lohnt sich also, denn wir hoffen, dass ihr nicht nur unser Hochzeitswochenende mit uns genießt, sondern auch eine wunderschöne Zeit in der Toskana habt.',
 	} as L,
 	jump: { en: 'Jump to', de: 'Direkt zu' } as L,
-	bookEarly: {
-		en: 'Our wedding falls in the Italian holiday season and around a public holiday, so please sort your room sooner rather than later — several of these are already well booked and down to single rooms for our weekend. What matters to us is that everyone finds something that suits them, whether that’s the middle of a small town, the quiet of the countryside, or a pool and a good dinner. We hope you enjoy not just our weekend, but a beautiful stretch of time in Tuscany.',
-		de: 'Da unsere Hochzeit in die Ferienzeit und rund um einen Feiertag fällt, kümmert euch am besten früh um eure Unterkunft — einige Häuser sind bereits gut gebucht und haben für unser Wochenende nur noch einzelne Zimmer frei. Uns ist wichtig, dass jede und jeder von euch etwas findet, das zu den eigenen Vorstellungen passt: mitten im Städtchen, in der Ruhe der Landschaft oder mit Pool und gutem Essen. Wir hoffen, dass ihr nicht nur unser Hochzeitswochenende mit uns genießt, sondern auch eine wunderschöne Zeit in der Toskana habt.',
-	} as L,
 };
 
 export const dress = {
