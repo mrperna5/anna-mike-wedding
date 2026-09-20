@@ -41,8 +41,8 @@ export const overview = {
 		de: 'Von Anfang an wussten wir nur eines ganz genau: Wir möchten diesen besonderen Tag mit den Menschen verbringen, die uns am wichtigsten sind. An einem wunderschönen Ort, mit ganz viel Zeit füreinander – für lange Gespräche, gemeinsames Lachen, gutes Essen genießen, ein schönes Glas Wein (oder zwei, drei … vielleicht auch ein paar mehr 😇), und Tanzen bis tief in die Nacht. <br> Einfach unsere Liebe feiern – gemeinsam mit euch.',
 	} as L,
 	p3: {
-		en: 'And we couldn\'t be happier to say our dream is finally coming true.',
-		de: 'Und wir können es immer noch kaum glauben und sind überglücklich heute sagen zu können, dass dieser Traum nun endlich Wirklichkeit wird.',
+		en: 'And we couldn\'t be happier to say our dream is finally coming true 🧡.',
+		de: 'Und wir können es immer noch kaum glauben und sind überglücklich heute sagen zu können, dass dieser Traum nun endlich Wirklichkeit wird 🧡.',
 	} as L,
 };
 
@@ -195,6 +195,42 @@ export const faqCopy = {
 	title: { en: 'Questions', de: 'Fragen' } as L,
 };
 
+// FAQ's replacement — a closing note where the Q&A list used to sit. The
+// old copy above is unused now but left in place; see src/data/faq.ts for
+// the list itself, still intact.
+export const outro = {
+	kicker: { en: 'A last word', de: 'Noch ein letztes Wort' } as L,
+	title: { en: 'With lots of love and excitement, <br> Anna and Mike', de: 'Mit ganz viel Liebe und Vorfreude' } as L,
+	p1: {
+		en: 'We hope you’ve now found everything you wanted to know, and are already just as excited for this weekend as we are. 🧡',
+		de: 'Wir hoffen, ihr habt jetzt alles gefunden, was ihr noch wissen wolltet, und habt schon genauso viel Vorfreude auf dieses Wochenende wie wir. 🧡',
+	} as L,
+	p2: {
+		en: 'If you still have any questions, wishes, or anything else on your mind, please feel free to reach out to us or our witnesses anytime.',
+		de: 'Falls trotzdem noch Fragen offen sind, ihr Wünsche habt oder euch irgendetwas auf dem Herzen liegt, meldet euch jederzeit bei uns oder bei unseren Trauzeugen.',
+	} as L,
+	p3: {
+		en: 'We truly can’t wait to celebrate our dream wedding with you in Tuscany and make this very special weekend unforgettable together. We’re already so incredibly excited to have you there!',
+		de: 'Wir können es kaum erwarten, mit euch unsere Traumhochzeit in der Toskana zu feiern und dieses ganz besondere Wochenende gemeinsam unvergesslich zu machen. Wir freuen uns jetzt schon ganz wahnsinnig auf euch!',
+	} as L,
+	signoff: { en: 'Anna and Mike', de: 'Anna und Mike' } as L,
+};
+
+/** A contact card in the outro's little directory — us, plus our witnesses. */
+export type OutroContact = { name: string; role?: L; email?: string; phone: string };
+
+export const outroContacts: OutroContact[] = [
+	{ name: 'Mike', email: 'pernamichael55@gmail.com', phone: '+49 160 7662707' },
+	{ name: 'Anna', email: 'anna.stoeckeler@gmx.de', phone: '+49 179 4199893' },
+	{
+		name: 'Laura',
+		role: { en: 'Maid of Honor', de: 'Trauzeugin' },
+		email: 'laura.lieble@gmx.de',
+		phone: '+49 176 55295038',
+	},
+	{ name: 'Kyle', role: { en: 'Best Man', de: 'Trauzeuge' }, phone: '+1 407 408 9908' },
+];
+
 export const registry = {
 	kicker: { en: 'Just in case you were wondering ...', de: 'Falls ihr euch fragt ...' } as L,
 	title: { en: 'Registry', de: 'Wünsche' } as L,
@@ -205,8 +241,9 @@ export const registry = {
 			'Wenn ihr uns trotzdem gerne eine kleine Freude machen möchtet, tippt unten auf eine der Ideen — jede zeigt euch die passenden Kontodaten, egal von wo ihr überweist. 🧡',
 	} as L,
 	outro: {
-		en: 'If you’d rather hand us something on the day, a card finds us just as well.',
-		de: 'Wenn ihr uns lieber am Tag selbst etwas gebt — eine Karte erreicht uns genauso gut.',
+		en: 'And if all this modern stuff feels a little too complicated, the classic way is absolutely fine too. A card on the wedding day will make us just as happy.',
+		de: 'Wir wissen, dass das für manche von euch vielleicht erst einmal ungewohnt und ein bisschen unpersönlich wirkt. Uns war einfach wichtig, eine Lösung zu finden, die für euch und für uns so unkompliziert wie möglich ist und bei der weder ihr noch wir große Toskana-Deutschland-Logistikpläne aufstellen müssen. In den USA ist diese Art von Hochzeitsgeschenk übrigens ganz üblich, deshalb übernehmen wir an dieser Stelle einfach mal ein kleines Stück amerikanische Tradition. \n' +
+			'<br><br>Falls euch das ganze neumodische Zeug aber zu kompliziert ist: Ganz klassisch und wie gewohnt geht natürlich auch. Eine Karte am Hochzeitstag freut uns mindestens genauso sehr.',
 	} as L,
 	// The call to action on every card.
 	cta: { en: 'Contribute', de: 'Klingt gut' } as L,

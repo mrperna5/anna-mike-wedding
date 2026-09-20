@@ -33,7 +33,7 @@ export const pages: PageDef[] = [
 	// Things to do — parked for now, maybe later. Uncomment to bring it back
 	// into the nav, home-page index, and pager.
 	// { id: 'things-to-do', href: '/things-to-do', label: { en: 'Things to do', de: 'Unternehmungen' } },
-	{ id: 'faq', href: '/faq', label: { en: 'FAQ', de: 'FAQ' } },
+	{ id: 'faq', href: '/faq', label: { en: '♥', de: '♥' } },
 	// Reachable from the footer and the pager, but kept out of the top nav.
 	{ id: 'contact', href: '/contact', label: { en: 'Contact', de: 'Kontakt' }, inNav: false },
 ];

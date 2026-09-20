@@ -1,24 +1,76 @@
 ---
-import { faq } from '../data/faq';
-import { faqCopy } from '../data/copy';
+// Formerly the FAQ list. Replaced with a closing note + a little directory
+// of us and our witnesses. The old Q&A rendering is commented out below
+// rather than deleted, and its data still lives untouched in
+// src/data/faq.ts, in case this page ever needs to come back.
+// import { faq } from '../data/faq';
+// import { faqCopy } from '../data/copy';
+import { outro, outroContacts } from '../data/copy';
 import Bi from './Bi.astro';
 ---
 
 <section id="faq" class="section">
-	<div class="container faq">
-		<header class="faq__head reveal">
-			<p class="kicker"><Bi t={faqCopy.kicker} /></p>
-			<h1 class="faq__title"><Bi t={faqCopy.title} /></h1>
+	<div class="container outro measure">
+		<header class="outro__head reveal">
+			<p class="kicker"><Bi t={outro.kicker} /></p>
+			<h1 class="outro__title"><Bi t={outro.title} /></h1>
 		</header>
 
-		<div class="faq__list">
+		<div class="outro__body reveal">
+			<p><Bi t={outro.p1} /></p>
+			<p><Bi t={outro.p2} /></p>
+			<p><Bi t={outro.p3} /></p>
+		</div>
+
+		<p class="outro__signoff reveal"><Bi t={outro.signoff} /></p>
+
+		<ul class="outro__contacts reveal">
 			{
-				faq.map((item) => (
+				outroContacts.map((c) => (
+					<li class="outro__contact">
+						<p class="outro__name">
+							{c.name}
+							{c.role && (
+								<span class="outro__role">
+									{' — '}
+									<Bi t={c.role} />
+								</span>
+							)}
+						</p>
+						<p class="outro__reach">
+							{c.email && (
+								<a class="link outro__link" href={`mailto:${c.email}`}>
+									{c.email}
+								</a>
+							)}
+							<a class="link outro__link" href={`tel:${c.phone.replace(/\s/g, '')}`}>
+								{c.phone}
+							</a>
+						</p>
+					</li>
+				))
+			}
+		</ul>
+	</div>
+</section>
+
+<!--
+	Original FAQ markup — commented out, not deleted. Restore by re-adding
+	the two imports at the top of this file and swapping this block back in
+	for the <section> above; src/data/faq.ts already has the full list.
+
+	<section id="faq" class="section">
+		<div class="container faq">
+			<header class="faq__head reveal">
+				<p class="kicker"><Bi t={faqCopy.kicker} /></p>
+				<h1 class="faq__title"><Bi t={faqCopy.title} /></h1>
+			</header>
+
+			<div class="faq__list">
+				{faq.map((item) => (
 					<details class="faq__item reveal">
 						<summary class="faq__q">
-							<span>
-								<Bi t={item.q} />
-							</span>
+							<span><Bi t={item.q} /></span>
 							<span class="faq__icon" aria-hidden="true" />
 						</summary>
 						<p class:list={['faq__a', item.places && 'faq__a--lead']}>
@@ -31,9 +83,7 @@ import Bi from './Bi.astro';
 										<p class="faq__place-name">{pl.name}</p>
 										<p class="faq__place-addr">{pl.address}</p>
 										{pl.note && (
-											<p class="faq__place-note">
-												<Bi t={pl.note} />
-											</p>
+											<p class="faq__place-note"><Bi t={pl.note} /></p>
 										)}
 										<a class="link faq__tel" href={`tel:${pl.phone.replace(/[^+\d]/g, '')}`}>
 											{pl.phone}
@@ -43,134 +93,82 @@ import Bi from './Bi.astro';
 							</ul>
 						)}
 					</details>
-				))
-			}
+				))}
+			</div>
 		</div>
-	</div>
-</section>
+	</section>
+-->
 
 <style>
-	.faq {
-		display: grid;
-		gap: clamp(2rem, 5vw, 4rem);
+	.outro__head {
+		margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
 	}
-	.faq__title {
+	.outro__title {
 		font-size: var(--fs-h1);
 		margin-top: 1rem;
 	}
-	.faq__list {
-		margin: 0;
+	.outro__body p {
+		margin-bottom: 1.5rem;
 	}
-	.faq__item {
-		border-top: 1px solid var(--hairline);
-	}
-	.faq__item:last-child {
-		border-bottom: 1px solid var(--hairline);
-	}
-	.faq__q {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		gap: 1.5rem;
-		padding: 1.4rem 0;
-		cursor: pointer;
-		list-style: none;
+	.outro__signoff {
 		font-family: var(--font-display);
+		font-style: italic;
 		font-size: var(--fs-h3);
-		color: var(--ink);
-	}
-	.faq__q::-webkit-details-marker {
-		display: none;
-	}
-	.faq__icon {
-		position: relative;
-		flex: 0 0 14px;
-		width: 14px;
-		height: 14px;
-	}
-	.faq__icon::before,
-	.faq__icon::after {
-		content: '';
-		position: absolute;
-		background: var(--terracotta);
-		transition: transform 0.3s var(--ease);
-	}
-	.faq__icon::before {
-		top: 6px;
-		left: 0;
-		width: 14px;
-		height: 1px;
-	}
-	.faq__icon::after {
-		top: 0;
-		left: 6px;
-		width: 1px;
-		height: 14px;
-	}
-	.faq__item[open] .faq__icon::after {
-		transform: scaleY(0);
-	}
-	.faq__a {
-		max-width: var(--measure);
-		padding-bottom: 1.5rem;
-		margin: 0;
-		font-size: var(--fs-small);
-	}
-	.faq__a--lead {
-		padding-bottom: 1rem;
+		color: var(--olive);
+		margin: clamp(0.5rem, 2vw, 1rem) 0 clamp(2rem, 5vw, 3rem);
 	}
 
-	/* Phone-book list under an answer — the salons. Hairline rows, same
-	   grammar as the listings on /accommodation. */
-	.faq__places {
+	/* A little phone-book directory — same grammar as the salon listings
+	   that used to sit under the hair FAQ, and the listings on /accommodation. */
+	.outro__contacts {
 		list-style: none;
 		margin: 0;
-		padding: 0 0 1.75rem;
+		padding-top: 1.75rem;
+		border-top: 1px solid var(--hairline);
 		display: grid;
 		gap: 1.4rem;
 	}
-	.faq__place {
+	.outro__contact {
 		padding-top: 1.1rem;
 		border-top: 1px solid var(--hairline);
 	}
-	.faq__place-name {
+	.outro__name {
 		font-family: var(--font-display);
 		font-size: var(--fs-h3);
 		color: var(--ink);
-		margin: 0 0 0.25rem;
+		margin: 0 0 0.6rem;
 	}
-	.faq__place-addr {
-		font-size: var(--fs-small);
+	.outro__role {
+		font-family: var(--font-sans);
+		font-size: var(--fs-label);
+		letter-spacing: var(--track-wide);
+		text-transform: uppercase;
 		color: var(--olive-muted);
-		margin: 0 0 0.7rem;
 	}
-	.faq__place-note {
-		font-family: var(--font-display);
-		font-style: italic;
-		font-size: var(--fs-small);
-		color: var(--olive);
-		margin: -0.3rem 0 0.7rem;
+	.outro__reach {
+		margin: 0;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.9rem 1.5rem;
 	}
-	.faq__tel {
+	.outro__link {
 		font-size: 0.78rem;
 		text-transform: none;
 		letter-spacing: 0.08em;
 		border-bottom-color: var(--hairline);
 	}
-	.faq__tel:hover,
-	.faq__tel:focus-visible {
+	.outro__link:hover,
+	.outro__link:focus-visible {
 		border-bottom-color: var(--terracotta);
 	}
+
 	@media (min-width: 48rem) {
-		.faq {
-			grid-template-columns: 16rem 1fr;
-			align-items: start;
-		}
-		.faq__places {
+		.outro__contacts {
 			grid-template-columns: repeat(2, 1fr);
 			column-gap: 2.5rem;
+			row-gap: 1.75rem;
 		}
-		.faq__tel {
+		.outro__link {
 			font-size: 0.68rem;
 		}
 	}

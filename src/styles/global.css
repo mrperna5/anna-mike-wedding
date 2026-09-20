@@ -5,6 +5,16 @@
    hairlines do the luxury work. Terracotta is a rare accent, never a theme.
    ===================================================================== */
 
+/* Self-hosted script face. Used ONLY on the word "and" in the couple
+   lockup (.couple__and) — see --font-script below. */
+@font-face {
+	font-family: 'Amalfi Coast';
+	src: url('/fonts/amalfi-coast.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
 :root {
 	/* --- palette ----------------------------------------------------- */
 	--cream: #f8f4ed; /* warm alabaster page bg */
@@ -20,9 +30,7 @@
 	/* --- type families ---------------------------------------------- */
 	--font-display: 'Playfair Display', 'Times New Roman', serif;
 	--font-sans: 'Hanken Grotesk', system-ui, -apple-system, sans-serif;
-	/* Placeholder for Amalfi Coast. When the woff2 is added to
-	   /public/fonts and @font-face'd below, change ONLY this line. */
-	--font-script: 'Tangerine', cursive;
+	--font-script: 'Amalfi Coast', cursive;
 
 	/* --- fluid type scale ------------------------------------------- */
 	--fs-display: clamp(3.25rem, 13vw, 7.5rem); /* the names */
@@ -157,10 +165,10 @@ p {
 .couple__and {
 	display: block;
 	font-family: var(--font-script);
-	font-size: 0.62em;
+	font-size: 0.48em;
 	line-height: 0.6;
 	color: var(--terracotta);
-	margin: 0.06em 0;
+	margin: 0.45em 0;
 	text-transform: lowercase;
 	letter-spacing: 0;
 }
