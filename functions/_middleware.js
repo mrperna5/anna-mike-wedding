@@ -16,7 +16,6 @@ const GATE_ASSETS = new Set([
 	'/favicon.svg',
 	'/favicon.ico',
 	'/fonts/amalfi-coast.woff2',
-	'/images/hero-poster.jpg',
 ]);
 
 export async function onRequest(context) {
@@ -160,11 +159,8 @@ function gatePage({ redirect = '/', error = '' } = {}) {
     margin-top:clamp(2rem,5vw,3rem);cursor:pointer;transition:color .3s var(--ease)}
   button:hover{color:var(--terracotta)}
   .error{color:var(--terracotta);font-size:.875rem;line-height:1.5;margin:1.25rem 0 0}
-  .photo{position:relative;flex:0 0 auto;width:100%;height:clamp(20rem,40vw,32rem);margin:0;overflow:hidden;background:var(--olive)}
-  .photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 20%}
   :focus-visible{outline:2px solid var(--olive);outline-offset:3px}
   ::selection{background:var(--olive);color:var(--cream)}
-  @media(max-width:47.99rem){.photo{height:auto;aspect-ratio:8/5}}
 </style>
 </head>
 <body>
@@ -179,9 +175,6 @@ function gatePage({ redirect = '/', error = '' } = {}) {
         ${error ? `<p class="error" role="alert">${escapeHtml(error)}</p>` : ''}
       </form>
     </section>
-    <figure class="photo" aria-hidden="true">
-      <img src="/images/hero-poster.jpg" alt="" />
-    </figure>
   </main>
 </body>
 </html>`;
