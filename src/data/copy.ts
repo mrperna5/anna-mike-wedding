@@ -210,8 +210,8 @@ export const outro = {
 		de: 'Falls trotzdem noch Fragen offen sind, ihr Wünsche habt oder euch irgendetwas auf dem Herzen liegt, meldet euch jederzeit bei uns oder bei unseren Trauzeugen.',
 	} as L,
 	p3: {
-		en: 'We truly can’t wait to celebrate our dream wedding with you in Tuscany and make this very special weekend unforgettable together. We’re already so incredibly excited to have you there!',
-		de: 'Wir können es kaum erwarten, mit euch unsere Traumhochzeit in der Toskana zu feiern und dieses ganz besondere Wochenende gemeinsam unvergesslich zu machen. Wir freuen uns jetzt schon ganz wahnsinnig auf euch!',
+		en: 'We truly can’t wait to celebrate our dream wedding with you in Tuscany and make this very special weekend unforgettable together. <br>We’re already so incredibly excited to have you there!',
+		de: 'Wir können es kaum erwarten, mit euch unsere Traumhochzeit in der Toskana zu feiern und dieses ganz besondere Wochenende gemeinsam unvergesslich zu machen. <br>Wir freuen uns jetzt schon ganz wahnsinnig auf euch!',
 	} as L,
 	signoff: { en: 'Anna and Mike', de: 'Anna und Mike' } as L,
 };
@@ -224,21 +224,21 @@ export const outroContacts: OutroContact[] = [
 	{ name: 'Anna', email: 'anna.stoeckeler@gmx.de', phone: '+49 179 4199893' },
 	{
 		name: 'Laura',
-		role: { en: 'Maid of Honor', de: 'Trauzeugin' },
+		role: { en: 'Maid of Honor', de: 'Allerbeste Trauzeugin' },
 		email: 'laura.lieble@gmx.de',
 		phone: '+49 176 55295038',
 	},
-	{ name: 'Kyle', role: { en: 'Best Man', de: 'Trauzeuge' }, phone: '+1 407 408 9908' },
+	{ name: 'Kyle', role: { en: 'Best Man', de: 'Allerbester Trauzeuge' }, email: 'kmcnulty435@gmail.com', phone: '+1 407 408 9908' },
 ];
 
 export const registry = {
 	kicker: { en: 'Just in case you were wondering ...', de: 'Falls ihr euch fragt ...' } as L,
 	title: { en: 'Registry', de: 'Wünsche' } as L,
 	intro: {
-		en: 'For us, the greatest gift is already getting to spend this special weekend with you in Tuscany. We’re happy, healthy, living in our favorite city in a dream apartment, and honestly have pretty much everything we need. Even our kitchen is fully equipped – from a crêpe maker all the way to an espuma siphon ☺️.\n' +
-			'If you’d still really like to give us a little something, tap one of the ideas below — each one comes with the account details for wherever you’re sending from. 🧡',
+		en: 'For us, the greatest gift is already getting to spend this special weekend with you in Tuscany. We’re happy, healthy, living in our favorite city in a dream apartment, and honestly have pretty much everything we need. And our kitchen is fully equipped – from a crêpe maker all the way to an espuma siphon ☺️.\n' +
+			'If you’d still really like to give us a little something, We\'ve put together a few ideas below. 🧡',
 		de: 'Für uns ist es eigentlich schon das schönste Geschenk, dieses besondere Wochenende mit euch in der Toskana verbringen zu können. Wir sind gesund und glücklich, leben in unserer Lieblingsstadt in einer Traumwohnung und haben eigentlich alles, was wir brauchen. Auch unser Haushalt ist komplett ausgestattet – vom Crêpes-Maker bis hin zum Espuma-Siphon ☺️.\n' +
-			'Wenn ihr uns trotzdem gerne eine kleine Freude machen möchtet, tippt unten auf eine der Ideen — jede zeigt euch die passenden Kontodaten, egal von wo ihr überweist. 🧡',
+			'Wenn ihr uns trotzdem gerne eine kleine Freude machen möchtet, haben wir euch ein paar Ideen zusammengestellt. 🧡',
 	} as L,
 	outro: {
 		en: 'And if all this modern stuff feels a little too complicated, the classic way is absolutely fine too. A card on the wedding day will make us just as happy.',
@@ -368,8 +368,8 @@ export const rsvp = {
 	headPreDe: 'Bist du',
 	headPostDe: '?',
 	sub: {
-		en: 'We’d be so incredibly happy to have you with us in Tuscany. 🧡 Please let us know by December 20th if you’ll be able to spend this special weekend with us.',
-		de: 'Wir würden uns riesig freuen, euch in der Toskana dabei zu haben. 🧡Gebt uns bitte bis zum 20.12. Bescheid, ob ihr dieses Wochenende mit uns verbringen könnt.',
+		en: 'We’d be so incredibly happy to have you with us in Tuscany. 🧡 <br>Please let us know by December 20th if you’ll be able to spend this special weekend with us.',
+		de: 'Wir würden uns riesig freuen, euch in der Toskana dabei zu haben. 🧡<br>Gebt uns bitte bis zum 20.12. Bescheid, ob ihr dieses Wochenende mit uns verbringen könnt.',
 	} as L,
 };
 
@@ -396,7 +396,7 @@ export const rsvpForm = {
 		hint: { en: 'Tick all that apply', de: 'Alles Zutreffende ankreuzen' } as L,
 		options: [
 			{ id: 'friday', label: { en: 'Friday - Get Together', de: 'Freitag - Get Together' } as L },
-			{ id: 'saturday', label: { en: 'Saturday - Wedding day', de: 'Samstag - Trauung & Hochzeitfeier' } as L },
+			{ id: 'saturday', label: { en: 'Saturday - Wedding day', de: 'Samstag - Trauung & Hochzeitsfeier' } as L },
 			{ id: 'sunday', label: { en: 'Sunday - Sip, Swim & Recover', de: 'Sonntag - Sonne, Spritz & Pool' } as L },
 		],
 	},

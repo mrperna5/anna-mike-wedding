@@ -9,7 +9,7 @@ import { outro, outroContacts } from '../data/copy';
 import Bi from './Bi.astro';
 ---
 
-<section id="faq" class="section">
+<section id="faq" class="section outro-section">
 	<div class="container outro measure">
 		<header class="outro__head reveal">
 			<p class="kicker"><Bi t={outro.kicker} /></p>
@@ -51,6 +51,18 @@ import Bi from './Bi.astro';
 				))
 			}
 		</ul>
+	</div>
+
+	<div class="container outro__photo-wrap">
+		<figure class="outro__photo photo reveal">
+			<img
+				src="/images/anna-mike-holding-hands.jpeg"
+				alt="Anna and Mike holding hands"
+				width="2000"
+				height="1333"
+				loading="lazy"
+			/>
+		</figure>
 	</div>
 </section>
 
@@ -100,6 +112,9 @@ import Bi from './Bi.astro';
 -->
 
 <style>
+	.outro-section {
+		padding-bottom: clamp(3rem, 7vw, 5rem);
+	}
 	.outro__head {
 		margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
 	}
@@ -123,14 +138,13 @@ import Bi from './Bi.astro';
 	.outro__contacts {
 		list-style: none;
 		margin: 0;
-		padding-top: 1.75rem;
+		padding: 1.75rem 0 0;
 		border-top: 1px solid var(--hairline);
 		display: grid;
 		gap: 1.4rem;
 	}
 	.outro__contact {
-		padding-top: 1.1rem;
-		border-top: 1px solid var(--hairline);
+		padding-top: 0;
 	}
 	.outro__name {
 		font-family: var(--font-display);
@@ -143,23 +157,39 @@ import Bi from './Bi.astro';
 		font-size: var(--fs-label);
 		letter-spacing: var(--track-wide);
 		text-transform: uppercase;
+		white-space: nowrap;
 		color: var(--olive-muted);
 	}
 	.outro__reach {
 		margin: 0;
 		display: flex;
-		flex-wrap: wrap;
-		gap: 0.9rem 1.5rem;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 0.9rem;
 	}
 	.outro__link {
 		font-size: 0.78rem;
 		text-transform: none;
 		letter-spacing: 0.08em;
-		border-bottom-color: var(--hairline);
+		padding-bottom: 0;
+		border-bottom: 0;
 	}
 	.outro__link:hover,
 	.outro__link:focus-visible {
-		border-bottom-color: var(--terracotta);
+		color: var(--terracotta);
+	}
+	.outro__photo-wrap {
+		margin-top: clamp(3.5rem, 8vw, 6rem);
+	}
+	.outro__photo {
+		max-width: 52rem;
+		margin: 0 auto;
+		aspect-ratio: 3 / 2;
+	}
+	.outro__photo img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
 	}
 
 	@media (min-width: 48rem) {
