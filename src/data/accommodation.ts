@@ -245,6 +245,7 @@ export const stayGroups: StayGroup[] = [
 				name: 'Deb’s Home',
 				url: 'https://www.booking-engine.it/Scripts/group.pl?group_id=16&lang=en',
 				sleeps: 8,
+				amenities: ['breakfast'],
 				blurb: bi(
 					'Four houses in the village — Casa La Vittoria, Villa Emma, Il Torrino Suite and Villa Il Giardino del Cardinale. From a double room up to a villa for eight.',
 					'Vier Häuser im Ort — Casa La Vittoria, Villa Emma, Il Torrino Suite und Villa Il Giardino del Cardinale. Vom Doppelzimmer bis zur Villa für acht.',
@@ -253,6 +254,7 @@ export const stayGroups: StayGroup[] = [
 			{
 				name: 'La Casa di Adelina',
 				url: 'https://www.lacasadiadelina.eu/le-nostre-strutture/eleganza-nel-cuore-di-monticchiello-la-casa-di-adelina/',
+				amenities: ['breakfast'],
 				blurb: bi(
 					'An elegant little B&B in the heart of the village, with four doubles.',
 					'Ein elegantes kleines B&B mitten im Ort, mit vier Doppelzimmern.',
@@ -261,7 +263,6 @@ export const stayGroups: StayGroup[] = [
 			{
 				name: 'Agriturismo Casalpiano',
 				url: 'https://casalpiano.com/en/',
-				distance: { minutes: 5 },
 				amenities: ['breakfast'],
 				blurb: bi(
 					'Handsome double rooms with breakfast.',
@@ -271,8 +272,6 @@ export const stayGroups: StayGroup[] = [
 			{
 				name: 'Affittacamere Maria Gabriella',
 				url: 'https://booking.ireservation.it/it/toscana/affittacamere-maria-gabriella-monticchiello/23959',
-				distance: { minutes: 3 },
-				sleeps: 3,
 				amenities: ['garden', 'breakfast'],
 				blurb: bi(
 					'Quiet, good rooms and a big garden — breakfast included.',
@@ -282,8 +281,6 @@ export const stayGroups: StayGroup[] = [
 			{
 				name: 'Appartamenti Le Maribelle',
 				url: 'https://www.lemaribelle.it',
-				distance: { minutes: 5 },
-				sleeps: 5,
 				amenities: ['kitchen'],
 				blurb: bi(
 					'Two apartments with their own kitchen, each sleeping up to five.',
@@ -293,13 +290,12 @@ export const stayGroups: StayGroup[] = [
 			{
 				name: 'Casa Lizzi',
 				url: 'https://www.booking.com/hotel/it/a-casa-di-lizzy-b-amp-b.html',
-				distance: { minutes: 5 },
+				amenities: ['breakfast'],
 				blurb: bi('Rustic and quiet, two family rooms.', 'Rustikal und ruhig, zwei Familienzimmer.'),
 			},
 			{
 				name: 'La Casa nel Borgo',
 				url: 'https://www.lacasanelborgo-toscana.it/I/Appartamenti',
-				distance: { minutes: 5 },
 				amenities: ['kitchen'],
 				blurb: bi(
 					'Modern apartments with a kitchen, for couples and families alike.',
@@ -309,8 +305,6 @@ export const stayGroups: StayGroup[] = [
 			{
 				name: 'Casa Bonari',
 				url: 'https://www.casabonari.it/en/indoor/',
-				distance: { minutes: 2 },
-				sleeps: 6,
 				amenities: ['kitchen'],
 				blurb: bi(
 					'The whole house to yourselves — typically Tuscan rooms, a kitchen, and six beds in all.',
@@ -334,20 +328,9 @@ export const stayGroups: StayGroup[] = [
 		),
 		stays: [
 			{
-				name: 'La Chiocarella',
-				reserved: true,
-				askUs: true,
-				rooms: [{ kind: 'double', count: 3 }],
-				blurb: bi(
-					'Three lovely double rooms are already held here for our guests. Tell us and we will put your name on one.',
-					'Drei wunderschöne Doppelzimmer sind hier bereits für unsere Gäste vorreserviert. Sagt uns Bescheid, dann tragen wir euch ein.',
-				),
-			},
-			{
 				name: 'Il Giardino Segreto',
 				url: 'http://www.ilgiardinosegretopienza.it/en/',
-				rooms: [{ kind: 'double' }, { kind: 'family' }, { kind: 'apartment' }],
-				amenities: ['garden'],
+				amenities: ['breakfast','garden'],
 				blurb: bi(
 					'On the edge of town, with a small garden of its own.',
 					'Am Stadtrand gelegen, mit einem kleinen eigenen Garten.',
@@ -356,8 +339,6 @@ export const stayGroups: StayGroup[] = [
 			{
 				name: 'Casa Gozzante',
 				url: 'https://gozzante.com/pienza-accommodation.php',
-				rooms: [{ kind: 'apartment' }],
-				sleeps: 3,
 				amenities: ['breakfast', 'view'],
 				blurb: bi(
 					'Right on the town wall, with the view and breakfast included.',
@@ -367,7 +348,7 @@ export const stayGroups: StayGroup[] = [
 			{
 				name: 'Dimora Segreta',
 				url: 'https://www.dimorasegreta.it',
-				rooms: [{ kind: 'double' }],
+				amenities: ['kitchen'],
 				blurb: bi(
 					'Modern, elegantly furnished doubles to a high standard.',
 					'Modern und elegant eingerichtete Doppelzimmer auf hohem Standard.',
@@ -376,8 +357,7 @@ export const stayGroups: StayGroup[] = [
 			{
 				name: 'Agriturismo Podere San Gregorio',
 				url: 'https://www.poderesangregorio.it/de/ospitalita/',
-				rooms: [{ kind: 'double' }, { kind: 'family' }],
-				amenities: ['breakfast'],
+				amenities: ['kitchen'],
 				blurb: bi(
 					'Classic Tuscan style with breakfast — countryside, and still close enough to walk into town.',
 					'Klassischer Toskana-Stil mit Frühstück — Natur und trotzdem zu Fuß in der Stadt.',
@@ -386,7 +366,7 @@ export const stayGroups: StayGroup[] = [
 			{
 				name: 'Hotel Corsignano',
 				url: 'https://www.hotelcorsignano.it/en/',
-				rooms: [{ kind: 'room' }],
+				amenities: ['breakfast', 'restaurant'],
 				blurb: bi(
 					'A small, fine hotel right in Pienza.',
 					'Ein kleines, feines Hotel mitten in Pienza.',
@@ -426,8 +406,7 @@ export const stayGroups: StayGroup[] = [
 				name: 'L’Olmo',
 				url: 'https://www.olmopienza.it/en/',
 				distance: { minutes: 1 },
-				rooms: [{ kind: 'double', count: 6 }, { kind: 'family' }],
-				amenities: ['pool', 'walkable'],
+				amenities: ['breakfast', 'pool', 'restaurant', 'walkable'],
 				blurb: bi(
 					'Within walking distance of the villa, and thoroughly luxurious, with a pool.',
 					'Fußläufig zur Villa und ausgesprochen luxuriös, mit Pool.',
@@ -437,7 +416,6 @@ export const stayGroups: StayGroup[] = [
 				name: 'Tenuta Santo Pietro',
 				url: 'https://tenutasantopietro.com',
 				distance: { minutes: 18 },
-				rooms: [{ kind: 'double' }, { kind: 'family' }],
 				amenities: ['pool', 'breakfast', 'restaurant'],
 				blurb: bi(
 					'A pool, breakfast and a restaurant of its own.',
