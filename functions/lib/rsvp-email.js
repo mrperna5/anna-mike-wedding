@@ -4,7 +4,7 @@
 // Self-contained on purpose: Cloudflare Pages Functions are bundled
 // separately from the Astro site, so this does not import from `src/data`.
 // The wedding facts below (dates, venue, schedule) are duplicated from
-// `src/data/site.ts` and `src/data/schedule.ts` — if those change, update
+// `src/data/site.ts` and `src/data/schedule.ts` - if those change, update
 // here too.
 //
 // Every guest-facing string ships in both English and German, same as the
@@ -19,9 +19,9 @@ const FACTS = {
 };
 
 const DAY_LABEL = {
-	friday: { en: 'Friday — welcome pizza', de: 'Freitag — Willkommens-Pizza' },
-	saturday: { en: 'Saturday — ceremony & celebration', de: 'Samstag — Trauung & Feier' },
-	sunday: { en: 'Sunday — pool party', de: 'Sonntag — Poolparty' },
+	friday: { en: 'Friday - Get Together', de: 'Freitag - Get Together' },
+	saturday: { en: 'Saturday - Wedding day', de: 'Samstag - Trauung & Hochzeitsfeier' },
+	sunday: { en: 'Sunday - Sip, Swim & Recover', de: 'Sonntag - Sonne, Spritz & Pool' },
 };
 
 const SCHEDULE = [
@@ -64,13 +64,13 @@ export function buildRsvpEmail(rsvp) {
 		.map((d) => DAY_LABEL[d]);
 
 	const subject = yes
-		? "You're in! / Ihr seid dabei! — Anna & Mike"
-		: 'Thanks for letting us know / Danke für eure Antwort — Anna & Mike';
+		? "You're in! / Du bist dabei! - Anna & Mike"
+		: 'Thanks for letting us know / Danke für deine Antwort - Anna & Mike';
 
 	const notes = [
 		dietary && { en: `Dietary note: ${dietary}`, de: `Ernährung: ${dietary}` },
 		song && { en: `Song request: ${song}`, de: `Songwunsch: ${song}` },
-		message && { en: `Your message: "${message}"`, de: `Eure Nachricht: „${message}“` },
+		message && { en: `Your message: "${message}"`, de: `Deine Nachricht: „${message}“` },
 	].filter(Boolean);
 
 	const html = `<!doctype html>
@@ -98,8 +98,8 @@ export function buildRsvpEmail(rsvp) {
   <h1 style="margin:0 0 1rem; font-family:Georgia,'Times New Roman',serif; font-weight:400; font-size:1.35rem; color:#26251f;">${yes ? `We can't wait, ${safeName}.` : `We'll miss you, ${safeName}.`}</h1>
   <p style="margin:0 0 1rem; font-family:Helvetica,Arial,sans-serif; font-size:0.98rem; line-height:1.65; color:#46453c;">
     ${yes
-			? `Your RSVP is in — we've got you down for ${escapeHtml(formatDayList(pickedDayLabels, 'en')) || 'the weekend'}. Here's a reminder of where and when, so you can pencil it in.`
-			: `Thank you for letting us know. We're sad you can't make it, but we're glad you told us — and we'll be raising a glass to you from Tuscany.`}
+			? `Your RSVP is in - we've got you down for ${escapeHtml(formatDayList(pickedDayLabels, 'en')) || 'the weekend'}. Here's a reminder of where and when, so you can pencil it in.`
+			: `Thank you for letting us know. We're sad you can't make it, but we're glad you told us - and we'll be raising a glass to you from Tuscany.`}
   </p>
   ${yes ? scheduleHtmlEn() : ''}
   <p style="margin:1.25rem 0 0; font-family:Helvetica,Arial,sans-serif; font-size:0.9rem; line-height:1.6; color:#46453c;">
@@ -107,7 +107,7 @@ export function buildRsvpEmail(rsvp) {
   </p>
   ${notes.length ? `<p style="margin:1rem 0 0; font-family:Helvetica,Arial,sans-serif; font-size:0.9rem; line-height:1.6; color:#46453c;">${notes.map((n) => escapeHtml(n.en)).join('<br/>')}</p>` : ''}
   <p style="margin:1.25rem 0 0; font-family:Helvetica,Arial,sans-serif; font-size:0.85rem; line-height:1.6; color:#7c7e66;">
-    Plans changed? Just fill in the RSVP again at <a href="${FACTS.siteUrl}/rsvp" style="color:#7c7e66;">${FACTS.siteUrl.replace('https://', '')}/rsvp</a> — it updates your answer.
+    Plans changed? Just fill in the RSVP again at <a href="${FACTS.siteUrl}/rsvp" style="color:#7c7e66;">${FACTS.siteUrl.replace('https://', '')}/rsvp</a> - it updates your answer.
   </p>
 
 </td></tr>
@@ -116,11 +116,11 @@ export function buildRsvpEmail(rsvp) {
 
   <!-- German -->
   <p style="margin:0 0 0.35rem; font-family:Helvetica,Arial,sans-serif; font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:#7c7e66;">${yes ? 'Zusage erhalten' : 'Antwort erhalten'}</p>
-  <h1 style="margin:0 0 1rem; font-family:Georgia,'Times New Roman',serif; font-weight:400; font-size:1.35rem; color:#26251f;">${yes ? `Wir freuen uns riesig, ${safeName}.` : `Wir werden euch vermissen, ${safeName}.`}</h1>
+  <h1 style="margin:0 0 1rem; font-family:Georgia,'Times New Roman',serif; font-weight:400; font-size:1.35rem; color:#26251f;">${yes ? `Wir freuen uns riesig, ${safeName}.` : `Wir werden dich vermissen, ${safeName}.`}</h1>
   <p style="margin:0 0 1rem; font-family:Helvetica,Arial,sans-serif; font-size:0.98rem; line-height:1.65; color:#46453c;">
     ${yes
-			? `Eure Zusage ist da — wir haben euch für ${escapeHtml(formatDayList(pickedDayLabels, 'de')) || 'das Wochenende'} eingetragen. Hier noch einmal alle Termine zur Erinnerung.`
-			: `Danke, dass ihr uns Bescheid gebt. Schade, dass ihr nicht dabei sein könnt — wir stoßen trotzdem auf euch an.`}
+			? `Deine Rückmeldung ist da - wir haben dich für ${escapeHtml(formatDayList(pickedDayLabels, 'de')) || 'das Wochenende'} eingetragen. Hier noch einmal alle Termine zur Erinnerung.`
+			: `Danke, dass du uns Bescheid gibts. Schade, dass du nicht dabei sein kannst - wir stoßen trotzdem auf dich an.`}
   </p>
   ${yes ? scheduleHtmlDe() : ''}
   <p style="margin:1.25rem 0 0; font-family:Helvetica,Arial,sans-serif; font-size:0.9rem; line-height:1.6; color:#46453c;">
@@ -128,7 +128,7 @@ export function buildRsvpEmail(rsvp) {
   </p>
   ${notes.length ? `<p style="margin:1rem 0 0; font-family:Helvetica,Arial,sans-serif; font-size:0.9rem; line-height:1.6; color:#46453c;">${notes.map((n) => escapeHtml(n.de)).join('<br/>')}</p>` : ''}
   <p style="margin:1.25rem 0 0; font-family:Helvetica,Arial,sans-serif; font-size:0.85rem; line-height:1.6; color:#7c7e66;">
-    Etwas geändert? Einfach die Zusage unter <a href="${FACTS.siteUrl}/rsvp" style="color:#7c7e66;">${FACTS.siteUrl.replace('https://', '')}/rsvp</a> erneut ausfüllen — das aktualisiert eure Antwort.
+    Etwas geändert? Einfach die Zusage unter <a href="${FACTS.siteUrl}/rsvp" style="color:#7c7e66;">${FACTS.siteUrl.replace('https://', '')}/rsvp</a> erneut ausfüllen - das aktualisiert deine Antwort.
   </p>
 
 </td></tr>
@@ -176,12 +176,12 @@ function buildText({ name, yes, pickedDayLabels, notes }) {
 	lines.push(yes ? `We can't wait, ${name}.` : `We'll miss you, ${name}.`);
 	lines.push(
 		yes
-			? `Your RSVP is in — we've got you down for ${formatDayList(pickedDayLabels, 'en') || 'the weekend'}.`
+			? `Your RSVP is in - we've got you down for ${formatDayList(pickedDayLabels, 'en') || 'the weekend'}.`
 			: `Thank you for letting us know. We're sad you can't make it.`,
 	);
 	if (yes) {
 		lines.push('');
-		for (const s of SCHEDULE) lines.push(`${s.day.en} — ${s.title.en}, ${s.time.en}, ${s.place.en}`);
+		for (const s of SCHEDULE) lines.push(`${s.day.en} - ${s.title.en}, ${s.time.en}, ${s.place.en}`);
 	}
 	lines.push('');
 	lines.push(`${FACTS.dateLong.en} · ${FACTS.location.en}`);
@@ -194,15 +194,15 @@ function buildText({ name, yes, pickedDayLabels, notes }) {
 	lines.push('');
 	lines.push('---');
 	lines.push('');
-	lines.push(yes ? `Wir freuen uns riesig, ${name}.` : `Wir werden euch vermissen, ${name}.`);
+	lines.push(yes ? `Wir freuen uns riesig, ${name}.` : `Wir werden dich vermissen, ${name}.`);
 	lines.push(
 		yes
-			? `Eure Zusage ist da — wir haben euch für ${formatDayList(pickedDayLabels, 'de') || 'das Wochenende'} eingetragen.`
-			: `Danke, dass ihr uns Bescheid gebt. Schade, dass ihr nicht dabei sein könnt.`,
+			? `Deine Rückmeldung ist da - wir haben dich für ${formatDayList(pickedDayLabels, 'de') || 'das Wochenende'} eingetragen.`
+			: `Danke, dass du uns Bescheid gibst. Schade, dass du nicht dabei sein kannst.`,
 	);
 	if (yes) {
 		lines.push('');
-		for (const s of SCHEDULE) lines.push(`${s.day.de} — ${s.title.de}, ${s.time.de}, ${s.place.de}`);
+		for (const s of SCHEDULE) lines.push(`${s.day.de} - ${s.title.de}, ${s.time.de}, ${s.place.de}`);
 	}
 	lines.push('');
 	lines.push(`${FACTS.dateLong.de} · ${FACTS.location.de}`);
@@ -211,6 +211,6 @@ function buildText({ name, yes, pickedDayLabels, notes }) {
 		for (const n of notes) lines.push(n.de);
 	}
 	lines.push('');
-	lines.push(`Etwas geändert? Zusage aktualisieren: ${FACTS.siteUrl}/rsvp`);
+	lines.push(`Etwas geändert? Rückmeldung aktualisieren: ${FACTS.siteUrl}/rsvp`);
 	return lines.join('\n');
 }
