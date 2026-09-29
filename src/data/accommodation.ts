@@ -287,7 +287,7 @@ export const stayGroups: StayGroup[] = [
 			},
 			{
 				name: 'Casa Lizzi',
-				url: 'https://www.booking.com/hotel/it/a-casa-di-lizzy-b-amp-b.html',
+				url: 'http://www.casalizzi.it/The_appartments/Casa_Lizzi_Monticchiello_1_Ing/casa_lizzi_monticchiello_1_ing.html',
 				amenities: ['breakfast'],
 				blurb: bi('Rustic and quiet, two family rooms.', 'Rustikal und ruhig, zwei Familienzimmer.'),
 			},
