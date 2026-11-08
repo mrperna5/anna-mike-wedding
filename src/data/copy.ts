@@ -44,6 +44,18 @@ export const overview = {
 		en: 'And we couldn\'t be happier to say our dream is finally coming true 🧡.',
 		de: 'Und wir können es immer noch kaum glauben und sind überglücklich heute sagen zu können, dass dieser Traum nun endlich Wirklichkeit wird 🧡.',
 	} as L,
+	// A practical aside under the run of the weekend: speeches and surprises
+	// go through Laura first. Rendered as the editorial note in Overview.astro.
+	tipLabel: { en: 'Special moments', de: 'Besondere Momente' } as L,
+	tip: {
+		en: 'If you are thinking about a little speech, planning a surprise, or preparing any kind of special contribution for the get-together or the wedding day, we would kindly ask you to get in touch with Laura in advance. It helps us keep the days running smoothly — and keeps the surprise a surprise.',
+		de: 'Falls ihr vielleicht vorhabt, eine Rede zu halten, oder eine Überraschung für Freitag oder Samstag plant, würden wir euch bitten, euch vorab mit Laura abzustimmen. So können wir den Tag ein bisschen besser planen und für alle schön gestalten.',
+	} as L,
+	tipContact: {
+		name: 'Laura Lieble',
+		role: { en: 'Maid of honour', de: 'Trauzeugin' } as L,
+		phone: '+49 176 5529 5038',
+	},
 };
 
 export const schedule = {
