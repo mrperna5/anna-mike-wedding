@@ -37,8 +37,8 @@ export const schedule: Event[] = [
 		},
 		place: { en: 'Villa Apparita, Monticchiello', de: 'Villa Apparita, Monticchiello' },
 		blurb: {
-			en: 'We can‘t wait to celebrate our love with you and share one of the most meaningful moments of our lives with the people we love most. Followed by delicious Tuscan food and drinks, we’ll dance the night away and create unforgettable memories together.',
-			de: 'Wir können es kaum erwarten, in der wunderschönen Villa Apparita mit euch unsere Liebe zu feiern und einen ganz besonderen Tag zu erleben. Nach unserer freien Trauung heißt es dann: gemütlich anstoßen, essen, lachen, tanzen und einfach den Abend mit all unseren Lieblingsmenschen genießen. Genau so haben wir uns diesen Tag immer vorgestellt. Und genau auf diese Momente mit euch freuen wir uns am meisten.',
+			en: 'We can‘t wait to celebrate our love with you and share one of the most meaningful moments of our lives with the people we love most. Welcome drink at 4:30 pm and Ceremony starting at 5:00 pm. Followed by delicious Tuscan food and drinks, we’ll dance the night away and create unforgettable memories together.',
+			de: 'Wir können es kaum erwarten, in der wunderschönen Villa Apparita mit euch unsere Liebe zu feiern und einen ganz besonderen Tag zu erleben. Um 16:30 heißen wir euch mit einem Welcome drink willkommen, bevor um 17 Uhr unsere freie Trauung beginnt. Dannach heißt es dann: gemütlich anstoßen, essen, lachen, tanzen und einfach den Abend mit all unseren Lieblingsmenschen genießen. Genau so haben wir uns diesen Tag immer vorgestellt. Und genau auf diese Momente mit euch freuen wir uns am meisten.',
 		},
 	},
 	{
